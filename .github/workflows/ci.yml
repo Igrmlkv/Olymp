@@ -11,10 +11,12 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      # v4 targets Node 20, which the runners now force onto Node 24 with a
-      # deprecation warning; v5+ ships on Node 24 natively.
+      # v4 targets Node 20, which the runners force onto Node 24 with a
+      # deprecation warning. v5 is the match for this project: it ships on
+      # Node 24, while v6 carries the pnpm 11 installer and warns about the
+      # v10 layout we pin. Bump to v6 when the project moves to pnpm 11.
       # Version comes from `packageManager` in package.json; setting it here too is an error.
-      - uses: pnpm/action-setup@v6
+      - uses: pnpm/action-setup@v5
 
       - uses: actions/setup-node@v5
         with:
