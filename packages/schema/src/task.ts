@@ -39,18 +39,30 @@ export const SourceAttributionSchema = z.object({
 })
 export type SourceAttribution = z.infer<typeof SourceAttributionSchema>
 
-export const AnswerSchema = z.discriminatedUnion('type', [
-  z.object({ type: z.literal('number'), value: z.number(), tolerance: z.number().min(0).optional() }),
-  z.object({ type: z.literal('string'), value: z.string().min(1), accept: z.array(z.string()).default([]) }),
-  z.object({ type: z.literal('choice'), value: z.string().min(1), options: z.array(z.string()).min(2) }),
-  z.object({ type: z.literal('multi'), value: z.array(z.string()).min(1), options: z.array(z.string()).min(2) }),
-])
+export const AnswerSchema = z
+  .discriminatedUnion('type', [
+    z.object({ type: z.literal('number'), value: z.number(), tolerance: z.number().min(0).optional() }),
+    z.object({ type: z.literal('string'), value: z.string().min(1), accept: z.array(z.string()).default([]) }),
+    z.object({ type: z.literal('choice'), value: z.string().min(1), options: z.array(z.string()).min(2) }),
+    z.object({ type: z.literal('multi'), value: z.array(z.string()).min(1), options: z.array(z.string()).min(2) }),
+  ])
+  // A correct answer that is not on the list is unanswerable: worth catching at
+  // import time rather than in front of a child.
+  .refine((a) => a.type !== 'choice' || a.options.includes(a.value), {
+    message: 'choice answer value must be one of the options',
+    path: ['value'],
+  })
+  .refine((a) => a.type !== 'multi' || a.value.every((v) => a.options.includes(v)), {
+    message: 'every multi answer value must be one of the options',
+    path: ['value'],
+  })
 export type Answer = z.infer<typeof AnswerSchema>
 
 export const VerificationSchema = z.object({
   verdict: z.enum(['pass', 'fail', 'needs_review']),
   method: z.string().min(1),
-  model: z.string().min(1),
+  /** Null for archive tasks, whose answers come from the organiser's own key. */
+  model: z.string().min(1).nullable(),
   checked_at: z.iso.datetime().optional(),
   notes: z.string().optional(),
 })

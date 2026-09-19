@@ -18,9 +18,8 @@ build/
 .env.*
 !.env.example
 
-# generated content packages (published to R2, not to git)
-content/packages/*/
-!content/packages/.gitkeep
+# Content packages ARE tracked: the archive bank is curated source content and
+# the app is unusable without it. Only pipeline run artifacts stay out.
 
 # pipeline run artifacts
 pipeline/.runs/

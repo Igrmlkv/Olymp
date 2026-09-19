@@ -21,6 +21,18 @@ describe('checkAnswer', () => {
     expect(checkAnswer({ type: 'string', value: 'подлежащее', accept: ['подлежащие'] }, 'ПОДЛЕЖАЩИЕ')).toBe(true)
   })
 
+  it('accepts an ordering answer whatever dash the keyboard produced', () => {
+    const answer: Answer = {
+      type: 'string',
+      value: 'Маша–Катя–Оля–Вика',
+      accept: ['Маша, Катя, Оля, Вика'],
+    }
+    expect(checkAnswer(answer, 'Маша-Катя-Оля-Вика')).toBe(true)
+    expect(checkAnswer(answer, 'Маша—Катя—Оля—Вика')).toBe(true)
+    expect(checkAnswer(answer, 'Маша, Катя, Оля, Вика')).toBe(true)
+    expect(checkAnswer(answer, 'Катя-Маша-Оля-Вика')).toBe(false)
+  })
+
   it('requires every option for a multi answer, in any order', () => {
     const answer: Answer = { type: 'multi', value: ['а', 'б'], options: ['а', 'б', 'в'] }
     expect(checkAnswer(answer, ['б', 'а'])).toBe(true)

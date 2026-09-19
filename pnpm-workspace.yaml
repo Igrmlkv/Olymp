@@ -7,4 +7,5 @@ packages:
 # esbuild and workerd fetch platform binaries in postinstall.
 onlyBuiltDependencies:
   - esbuild
+  - sharp
   - workerd

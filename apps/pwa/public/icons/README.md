@@ -1,13 +1,15 @@
 # Иконки PWA
 
-Здесь должны лежать `icon-192.png`, `icon-512.png` и `icon-512-maskable.png`,
-на которые ссылается манифест в `vite.config.ts`.
+Файлы в этой папке **сгенерированы**, а не нарисованы вручную. Источник —
+`apps/pwa/scripts/generate-icons.mjs`.
 
-Сгенерировать из `public/favicon.svg` можно любым конвертером, например:
+Пересобрать после изменения логотипа:
 
 ```bash
-npx pwa-asset-generator public/favicon.svg public/icons --icon-only --favicon --opaque false
+pnpm --filter @olymp/pwa icons
 ```
 
-Пока файлов нет, установка PWA на домашний экран будет без иконки — сборка при
-этом не ломается.
+- `icon-192.png`, `icon-512.png` — обычные иконки со скруглённой подложкой.
+- `icon-512-maskable.png` — для Android: подложка во весь кадр, рисунок сжат
+  до безопасной зоны, потому что лаунчер обрезает углы.
+- `apple-touch-icon.png` — для домашнего экрана iOS (iOS сам скругляет углы).

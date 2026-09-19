@@ -22,7 +22,12 @@ export async function computeChecksum(tasks: ContentPackage['tasks']): Promise<s
 }
 
 export async function downloadPackage(subject: Subject, grade: Grade): Promise<StoredPackage> {
-  const response = await fetch(`/api/packages/${subject}/${grade}/latest.json`)
+  // A download only happens on first run or after an erase, and the result is
+  // then kept offline for a long time — so revalidate rather than accept a
+  // stale `latest` pointer from the HTTP cache.
+  const response = await fetch(`/api/packages/${subject}/${grade}/latest.json`, {
+    cache: 'no-cache',
+  })
   if (!response.ok) {
     throw new ContentError(`не удалось загрузить пакет: HTTP ${response.status}`)
   }

@@ -74,14 +74,55 @@ describe('ContentPackageSchema', () => {
 })
 
 describe('olympiad formats', () => {
-  it('ships maths grade 4 as 60 minutes / 56 points with partial scoring', () => {
+  it('defaults to the Moscow format, which is what the shipped packages contain', () => {
     const format = findOlympiadFormat('math', 4)
-    expect(format).toMatchObject({ time_limit_min: 60, max_score: 56, scoring: 'partial' })
+    expect(format).toMatchObject({ organizer: 'moscow', max_score: 8, scoring: 'binary' })
+  })
+
+  it('still exposes the Sirius format when asked for it', () => {
+    expect(findOlympiadFormat('math', 4, 'sirius')).toMatchObject({ max_score: 56, scoring: 'partial' })
+  })
+
+  it('scores Russian grade 4 out of 52, per the 2025/26 answer key', () => {
+    expect(findOlympiadFormat('russian', 4)).toMatchObject({ max_score: 52, season: '2025/26' })
   })
 
   it('follows the Sirius time ladder by grade', () => {
     expect(olympiadMinutesForGrade(4)).toBe(60)
     expect(olympiadMinutesForGrade(7)).toBe(90)
     expect(olympiadMinutesForGrade(10)).toBe(120)
+  })
+})
+
+describe('answer options', () => {
+  it('rejects a choice answer that is not among its own options', () => {
+    const result = TaskSchema.safeParse({
+      ...validTask,
+      answer: { type: 'choice', value: 'жёлтый', options: ['красный', 'синий'] },
+    })
+    expect(result.success).toBe(false)
+  })
+
+  it('rejects a multi answer containing a value that is not an option', () => {
+    const result = TaskSchema.safeParse({
+      ...validTask,
+      answer: { type: 'multi', value: ['а', 'я'], options: ['а', 'б', 'в'] },
+    })
+    expect(result.success).toBe(false)
+  })
+
+  it('accepts an archive task verified against an answer key, with no model', () => {
+    const result = TaskSchema.safeParse({
+      ...validTask,
+      origin: 'archive',
+      source_attribution: {
+        name: 'Всероссийская олимпиада школьников, Москва',
+        url: 'https://vos.olimpiada.ru/',
+        year: 2025,
+        stage: 'school',
+      },
+      verification: { verdict: 'pass', method: 'official_answer_key', model: null },
+    })
+    expect(result.success).toBe(true)
   })
 })

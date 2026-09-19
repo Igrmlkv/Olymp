@@ -47,6 +47,7 @@ pnpm dev:proxy
 | `pnpm test` | тесты |
 | `pnpm build` | сборка всех пакетов |
 | `pnpm db:migrate:local` | применить миграции D1 локально |
+| `pnpm --filter @olymp/pwa icons` | пересобрать иконки PWA |
 
 ## Конвейер контента
 
@@ -56,6 +57,12 @@ cd pipeline && cp .env.example .env    # вписать ANTHROPIC_API_KEY
 pnpm --filter @olymp/pipeline generate -- --subject math --grade 4 --topic word_problems --level 2 --count 10
 pnpm --filter @olymp/pipeline verify   -- --run <run-id>
 pnpm --filter @olymp/pipeline publish  -- --run <run-id> --version 1.0.0
+```
+
+Архивные задачи идут в обход генерации — их ответы берутся из официального ключа:
+
+```bash
+pnpm --filter @olymp/pipeline import-archive -- --subject math --grade 4 --version 1.0.0
 ```
 
 Генерация и верификация — независимые прогоны Claude Opus 5; спорные случаи уходят
@@ -71,9 +78,21 @@ pnpm --filter @olymp/pipeline publish  -- --run <run-id> --version 1.0.0
 
 Правовая рамка: GDPR + нидерландский UAVG. См. [docs/legal/](docs/legal/).
 
+## Контент
+
+В приложении 28 задач для 4 класса — школьный этап ВсОШ в Москве за 2024/25 и
+2025/26 годы, с официальными ключами ответов и обязательной атрибуцией
+(математика — 15, русский язык — 13). Подробнее, включая критерии отбора и то,
+что не вошло: [docs/content-bank.md](docs/content-bank.md).
+
+Чтобы задачи были видны при локальном запуске, пакеты нужно положить в локальный
+R2 — команды там же.
+
 ## Статус
 
-Каркас. Реализовано: схемы данных, ядро PWA (выбор класса, темы, решение задач,
-режим олимпиады, родительский экран, стрики), Worker-прокси, скрипты конвейера,
-схема D1, CI. Не реализовано: банк задач, панели админки, регистрация service worker
-в UI, иконки PWA. См. [docs/roadmap.md](docs/roadmap.md).
+Реализовано: схемы данных, ядро PWA (выбор класса, темы, решение задач с
+подсказками и разбором, режим олимпиады, родительский экран, стрики),
+Worker-прокси, конвейер контента, архивный банк задач, иконки PWA, схема D1, CI.
+
+Не реализовано: генерация новых задач (конвейер готов, нужен ключ API), панели
+админки, регистрация service worker в UI. См. [docs/roadmap.md](docs/roadmap.md).

@@ -6,6 +6,8 @@ import { checkAnswer } from '../lib/answer.js'
 import { getProfile } from '../lib/profile.js'
 import { formatDuration } from '../lib/time.js'
 import { track } from '../lib/telemetry.js'
+import { Markdown } from '../components/Markdown.js'
+import { AnswerInput } from '../components/AnswerInput.js'
 
 /**
  * Timed run in the real school-stage format: duration, max score and scoring
@@ -18,7 +20,7 @@ export function OlympiadScreen() {
 
   const [format, setFormat] = useState<OlympiadFormat | null>(null)
   const [tasks, setTasks] = useState<Task[]>([])
-  const [answers, setAnswers] = useState<Record<string, string>>({})
+  const [answers, setAnswers] = useState<Record<string, string | string[]>>({})
   const [remainingMs, setRemainingMs] = useState<number | null>(null)
   const [finished, setFinished] = useState(false)
   const startedAt = useRef<number | null>(null)
@@ -118,17 +120,15 @@ export function OlympiadScreen() {
             <p className="muted">
               Задача {i + 1} · {task.points} б.
             </p>
-            <article className="statement">{task.statement_md}</article>
-            <input
-              className="answer-input"
+            <Markdown className="statement">{task.statement_md}</Markdown>
+            <AnswerInput
+              answer={task.answer}
               value={answers[task.id] ?? ''}
               disabled={finished}
-              onChange={(e) => setAnswers((prev) => ({ ...prev, [task.id]: e.target.value }))}
-              placeholder="Ответ"
-              autoComplete="off"
-              aria-label={`Ответ на задачу ${i + 1}`}
+              onChange={(next) => setAnswers((prev) => ({ ...prev, [task.id]: next }))}
+              label={`Ответ на задачу ${i + 1}`}
             />
-            {finished && <article className="solution">{task.solution_md}</article>}
+            {finished && <Markdown className="solution">{task.solution_md}</Markdown>}
           </li>
         ))}
       </ol>

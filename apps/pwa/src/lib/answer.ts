@@ -1,8 +1,17 @@
 import type { Answer } from '@olymp/schema'
 
-/** Normalises the way a 10-year-old actually types: stray spaces, ё/е, comma decimals. */
+/**
+ * Normalises the way a 10-year-old actually types: stray spaces, ё/е, comma
+ * decimals, and whichever dash their keyboard produced. Ordering answers like
+ * "Маша–Катя–Оля–Вика" are otherwise marked wrong over an en dash.
+ */
 function normalise(input: string): string {
-  return input.trim().toLowerCase().replace(/ё/g, 'е').replace(/\s+/g, ' ')
+  return input
+    .trim()
+    .toLowerCase()
+    .replace(/ё/g, 'е')
+    .replace(/[\u2010-\u2015\u2212]/g, '-')
+    .replace(/\s+/g, ' ')
 }
 
 function parseNumber(input: string): number | null {

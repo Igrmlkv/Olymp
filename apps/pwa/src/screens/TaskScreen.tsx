@@ -4,11 +4,20 @@ import { SubjectSchema, type Task } from '@olymp/schema'
 import { ensurePackage, tasksByTopic } from '../lib/content.js'
 import { checkAnswer } from '../lib/answer.js'
 import { getProfile } from '../lib/profile.js'
+import { Markdown } from '../components/Markdown.js'
+import { AnswerInput, hasAnswer } from '../components/AnswerInput.js'
 import { db } from '../lib/db.js'
 import { recordActivity } from '../lib/streak.js'
 import { track } from '../lib/telemetry.js'
 
 type Phase = 'solving' | 'correct' | 'wrong'
+
+const STAGE_LABELS: Record<string, string> = {
+  school: 'школьный этап',
+  municipal: 'муниципальный этап',
+  regional: 'региональный этап',
+  final: 'заключительный этап',
+}
 
 /**
  * The core loop: statement → attempt → hint ladder → solution → next task.
@@ -20,7 +29,7 @@ export function TaskScreen() {
 
   const [tasks, setTasks] = useState<Task[]>([])
   const [index, setIndex] = useState(0)
-  const [input, setInput] = useState('')
+  const [input, setInput] = useState<string | string[]>('')
   const [hintsShown, setHintsShown] = useState(0)
   const [phase, setPhase] = useState<Phase>('solving')
   const [showSolution, setShowSolution] = useState(false)
@@ -101,30 +110,21 @@ export function TaskScreen() {
         Уровень {task.level} · задача {index + 1} из {tasks.length}
       </p>
 
-      <article className="statement">{task.statement_md}</article>
+      <Markdown className="statement">{task.statement_md}</Markdown>
 
       {hintsShown > 0 && (
         <ol className="hints">
           {task.hints.slice(0, hintsShown).map((hint, i) => (
-            <li key={i}>{hint}</li>
+            <li key={i}>
+              <Markdown>{hint}</Markdown>
+            </li>
           ))}
         </ol>
       )}
 
       <div className="answer-row">
-        <label className="visually-hidden" htmlFor="answer">
-          Твой ответ
-        </label>
-        <input
-          id="answer"
-          className="answer-input"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Твой ответ"
-          inputMode={task.answer.type === 'number' ? 'decimal' : 'text'}
-          autoComplete="off"
-        />
-        <button className="primary" onClick={() => void submit()} disabled={input.trim() === ''}>
+        <AnswerInput answer={task.answer} value={input} onChange={setInput} />
+        <button className="primary" onClick={() => void submit()} disabled={!hasAnswer(input)}>
           Проверить
         </button>
       </div>
@@ -151,11 +151,11 @@ export function TaskScreen() {
         )}
       </div>
 
-      {showSolution && <article className="solution">{task.solution_md}</article>}
+      {showSolution && <Markdown className="solution">{task.solution_md}</Markdown>}
 
       {attribution && (
         <footer className="attribution">
-          Источник: {attribution.name}, {attribution.year}, школьный этап ·{' '}
+          Источник: {attribution.name}, {STAGE_LABELS[attribution.stage]}, {attribution.year} ·{' '}
           <a href={attribution.url} target="_blank" rel="noreferrer noopener">
             оригинал
           </a>
