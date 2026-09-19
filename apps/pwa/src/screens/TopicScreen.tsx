@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router'
 import { SubjectSchema, TOPICS_BY_SUBJECT, type Subject, type Task } from '@olymp/schema'
 import { ensurePackage } from '../lib/content.js'
 import { getProfile } from '../lib/profile.js'
+import { tasksWord } from '../lib/plural.js'
 
 const TOPIC_LABELS: Record<string, string> = {
   multi_digit: 'Многозначные числа',
@@ -55,7 +56,9 @@ export function TopicScreen() {
             <li key={topic}>
               <Link className="topic-card" to={`/${subject.data}/${topic}`} aria-disabled={count === 0}>
                 <span>{TOPIC_LABELS[topic] ?? topic}</span>
-                <span className="muted">{count} задач</span>
+                <span className="muted">
+                  {count} {tasksWord(count)}
+                </span>
               </Link>
             </li>
           )

@@ -11,8 +11,10 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
+      # v4 targets Node 20, which the runners now force onto Node 24 with a
+      # deprecation warning; v5+ ships on Node 24 natively.
       # Version comes from `packageManager` in package.json; setting it here too is an error.
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
 
       - uses: actions/setup-node@v5
         with:

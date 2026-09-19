@@ -3,6 +3,7 @@ import { Link } from 'react-router'
 import { TELEMETRY_RETENTION_DAYS } from '@olymp/schema'
 import { db, eraseAllLocalData } from '../lib/db.js'
 import { getStreak } from '../lib/streak.js'
+import { daysWord } from '../lib/plural.js'
 
 interface Summary {
   solved: number
@@ -45,7 +46,9 @@ export function ParentScreen() {
           <ul className="summary">
             <li>Решено задач: {summary.solved}</li>
             <li>Всего попыток по задачам: {summary.attempted}</li>
-            <li>Серия дней подряд: {summary.streakDays}</li>
+            <li>
+              Серия подряд: {summary.streakDays} {daysWord(summary.streakDays)}
+            </li>
           </ul>
         ) : (
           <p className="muted">Считаем…</p>

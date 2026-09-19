@@ -41,6 +41,19 @@ export default defineConfig({
       },
     }),
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        // Split the heavy, rarely-changing libraries out of the app chunk so a
+        // content or UI change does not invalidate them in the service worker.
+        manualChunks: {
+          react: ['react', 'react-dom', 'react-router'],
+          markdown: ['react-markdown', 'remark-gfm'],
+          schema: ['zod', 'dexie'],
+        },
+      },
+    },
+  },
   server: {
     port: 5173,
     proxy: {

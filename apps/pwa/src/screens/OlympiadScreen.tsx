@@ -5,6 +5,7 @@ import { ensurePackage } from '../lib/content.js'
 import { checkAnswer } from '../lib/answer.js'
 import { getProfile } from '../lib/profile.js'
 import { formatDuration } from '../lib/time.js'
+import { pointsWord, tasksWord } from '../lib/plural.js'
 import { track } from '../lib/telemetry.js'
 import { Markdown } from '../components/Markdown.js'
 import { AnswerInput } from '../components/AnswerInput.js'
@@ -34,7 +35,7 @@ export function OlympiadScreen() {
       if (!fmt) return
       setFormat(fmt)
       const pkg = await ensurePackage(subject.data, profile.grade)
-      const count = fmt.task_count ?? 8
+      const count = Math.min(fmt.task_count ?? pkg.payload.tasks.length, pkg.payload.tasks.length)
       setTasks(pkg.payload.tasks.slice(0, count))
     })()
   }, [rawSubject])
@@ -77,6 +78,15 @@ export function OlympiadScreen() {
     0,
   )
 
+  /**
+   * Score against what this run actually contains, not the official paper's
+   * maximum. The archive bank cannot include image-dependent tasks, so a real
+   * paper worth 52 points may ship here as 20 — and telling a child they scored
+   * "12 из 52" when 20 was the ceiling is simply wrong.
+   */
+  const availableScore = tasks.reduce((sum, t) => sum + t.points, 0)
+  const isFullPaper = format !== null && availableScore === format.max_score
+
   if (!subject.success) return <p className="screen">Неизвестный предмет.</p>
   if (!format) return <p className="screen">Для твоего класса режим олимпиады пока не настроен.</p>
 
@@ -88,8 +98,15 @@ export function OlympiadScreen() {
         </Link>
         <h1>Режим олимпиады</h1>
         <p>
-          {format.time_limit_min} минут · максимум {format.max_score} баллов · формат школьного этапа{' '}
-          {format.season}.
+          {format.time_limit_min} минут · {tasks.length} {tasksWord(tasks.length)} · максимум{' '}
+          {availableScore} {pointsWord(availableScore)}.
+        </p>
+        <p className="muted">
+          Формат школьного этапа {format.season}
+          {isFullPaper
+            ? '.'
+            : `: полная работа — ${format.max_score} ${pointsWord(format.max_score)}, но часть заданий
+               опирается на рисунки и в приложение пока не вошла.`}
         </p>
         <p className="muted">Таймер запустится сразу. Подсказок в этом режиме нет.</p>
         <button className="primary" onClick={start} disabled={tasks.length === 0}>
@@ -110,7 +127,7 @@ export function OlympiadScreen() {
 
       {finished && (
         <p className="verdict verdict--ok">
-          Готово: {earned} из {format.max_score} баллов.
+          Готово: {earned} из {availableScore} {pointsWord(availableScore)}.
         </p>
       )}
 
@@ -118,7 +135,7 @@ export function OlympiadScreen() {
         {tasks.map((task, i) => (
           <li key={task.id}>
             <p className="muted">
-              Задача {i + 1} · {task.points} б.
+              Задача {i + 1} · {task.points} {pointsWord(task.points)}
             </p>
             <Markdown className="statement">{task.statement_md}</Markdown>
             <AnswerInput

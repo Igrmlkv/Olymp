@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router'
 import { getStreak } from '../lib/streak.js'
 import { getProfile } from '../lib/profile.js'
+import { daysWord } from '../lib/plural.js'
 import { GRADE_MAPPING, type Grade } from '@olymp/schema'
 
 /** Map of worlds. For now: two subjects, the streak, and the olympiad entrance. */
@@ -21,7 +22,9 @@ export function HomeScreen() {
       <header className="home-header">
         <h1>Олимп</h1>
         {grade && <p className="muted">{GRADE_MAPPING[grade].hint_ru}</p>}
-        <p className="streak">🔥 {streakDays} дн. подряд</p>
+        <p className="streak">
+          🔥 {streakDays} {daysWord(streakDays)} подряд
+        </p>
       </header>
 
       <nav className="world-grid">

@@ -9,6 +9,7 @@ import { AnswerInput, hasAnswer } from '../components/AnswerInput.js'
 import { db } from '../lib/db.js'
 import { recordActivity } from '../lib/streak.js'
 import { track } from '../lib/telemetry.js'
+import { pointsWord } from '../lib/plural.js'
 
 type Phase = 'solving' | 'correct' | 'wrong'
 
@@ -129,7 +130,11 @@ export function TaskScreen() {
         </button>
       </div>
 
-      {phase === 'correct' && <p className="verdict verdict--ok">Верно! +{task.points}</p>}
+      {phase === 'correct' && (
+        <p className="verdict verdict--ok">
+          Верно! +{task.points} {pointsWord(task.points)}
+        </p>
+      )}
       {phase === 'wrong' && <p className="verdict verdict--no">Пока не сходится. Попробуй подсказку.</p>}
 
       <div className="task-actions">
