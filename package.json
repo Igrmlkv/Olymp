@@ -1,0 +1,25 @@
+{
+  "name": "olymp",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Offline-first PWA keeping Russian-speaking children in the Netherlands at a VsOSh-comparable level in maths and Russian",
+  "packageManager": "pnpm@10.30.3",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "pnpm --filter @olymp/pwa dev",
+    "dev:admin": "pnpm --filter @olymp/admin dev",
+    "dev:proxy": "pnpm --filter @olymp/proxy dev",
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint",
+    "db:migrate:local": "wrangler d1 migrations apply olymp-audit --local --config workers/proxy/wrangler.toml",
+    "db:migrate:remote": "wrangler d1 migrations apply olymp-audit --remote --config workers/proxy/wrangler.toml"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "wrangler": "^4.135.0"
+  }
+}

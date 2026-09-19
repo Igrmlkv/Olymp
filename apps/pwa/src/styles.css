@@ -1,0 +1,268 @@
+/*
+ * Sized for 10-year-olds on phones: 56px minimum tap targets, 18px base text,
+ * WCAG AA contrast on every pairing below.
+ */
+:root {
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --surface-raised: #334155;
+  --text: #f8fafc;
+  --muted: #cbd5e1;
+  --accent: #fbbf24;
+  --accent-text: #1f2937;
+  --ok: #4ade80;
+  --no: #fca5a5;
+  --radius: 16px;
+  --tap: 56px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.screen {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 4rem;
+}
+
+h1 {
+  font-size: 1.75rem;
+  margin: 0.5rem 0 1rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+  margin: 1.5rem 0 0.5rem;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.error {
+  color: var(--no);
+}
+
+button,
+.link-button,
+.grade-button,
+.topic-card,
+.world-card {
+  min-height: var(--tap);
+  border-radius: var(--radius);
+  border: 2px solid var(--surface-raised);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  padding: 0.75rem 1.25rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+button:disabled,
+[aria-disabled='true'] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+button.primary {
+  background: var(--accent);
+  color: var(--accent-text);
+  border-color: var(--accent);
+  font-weight: 700;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.back-link {
+  display: inline-block;
+  color: var(--muted);
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+}
+
+.home-header .streak {
+  font-size: 1.25rem;
+  margin: 0.5rem 0 0;
+}
+
+.world-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.world-card {
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 8rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.world-card--math {
+  border-color: #38bdf8;
+}
+
+.world-card--russian {
+  border-color: #f472b6;
+}
+
+.world-emoji {
+  font-size: 2.5rem;
+}
+
+.home-actions,
+.task-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.link-button--quiet {
+  background: transparent;
+  color: var(--muted);
+}
+
+.grade-list,
+.topic-list,
+.olympiad-tasks,
+.hints,
+.summary {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.hints {
+  list-style: decimal inside;
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+
+.grade-button,
+.topic-card {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.grade-number {
+  font-weight: 700;
+}
+
+.badge {
+  background: var(--surface-raised);
+  color: var(--muted);
+  border-radius: 999px;
+  padding: 0.125rem 0.625rem;
+  font-size: 0.875rem;
+}
+
+.statement,
+.solution {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin: 1rem 0;
+  white-space: pre-wrap;
+}
+
+.solution {
+  border-left: 4px solid var(--ok);
+}
+
+.answer-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.answer-input {
+  flex: 1 1 12rem;
+  min-height: var(--tap);
+  border-radius: var(--radius);
+  border: 2px solid var(--surface-raised);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  padding: 0 1rem;
+}
+
+.verdict {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.verdict--ok {
+  color: var(--ok);
+}
+
+.verdict--no {
+  color: var(--no);
+}
+
+.olympiad-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  padding: 0.75rem 0;
+}
+
+.timer {
+  font-size: 2rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+.timer--low {
+  color: var(--no);
+}
+
+.attribution {
+  margin-top: 2rem;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.attribution a {
+  color: var(--muted);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

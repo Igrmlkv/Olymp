@@ -1,0 +1,30 @@
+name = "olymp-proxy"
+main = "src/index.ts"
+compatibility_date = "2026-09-01"
+compatibility_flags = ["nodejs_compat"]
+
+# EU data localisation. Both jurisdictions are set at creation time and cannot be
+# changed afterwards — see docs/deployment.md before running `wrangler d1 create`.
+
+[[d1_databases]]
+binding = "DB"
+database_name = "olymp-audit"
+database_id = "REPLACE_WITH_D1_ID"
+migrations_dir = "../../db/migrations"
+
+[[r2_buckets]]
+binding = "PACKAGES"
+bucket_name = "olymp-packages"
+jurisdiction = "eu"
+
+[[analytics_engine_datasets]]
+binding = "TELEMETRY"
+dataset = "olymp_telemetry"
+
+[vars]
+ENVIRONMENT = "development"
+# Anthropic model ids, per docs/spec-v4.md section 7.
+MODEL_HINTS = "claude-haiku-4-5-20251001"
+
+# Secrets (never in this file):
+#   wrangler secret put ANTHROPIC_API_KEY
