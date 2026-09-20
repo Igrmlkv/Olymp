@@ -1,16 +1,16 @@
 {
   "manifest": {
     "package_id": "russian-4",
-    "version": "1.9.0",
+    "version": "2.0.0",
     "subject": "russian",
     "grade": 4,
-    "created_at": "2026-09-20T09:53:51.238Z",
+    "created_at": "2026-09-20T09:57:08.940Z",
     "prompt_version": "archive-import-v1",
-    "task_count": 94,
-    "checksum": "9082217a14fc85ed55d3680826ec5dde95bfb9ec2cff5855f843fa79162dc841",
+    "task_count": 104,
+    "checksum": "97cf618babbf2f497583352ca4b2dbd8895f786c45f751249c3082abb423079a",
     "verification_summary": {
-      "total": 94,
-      "passed": 94,
+      "total": 104,
+      "passed": 104,
       "failed": 0,
       "needs_review": 0
     }
@@ -1925,6 +1925,469 @@
         "notes": "Ответ сверен с официальным ключом организатора."
       },
       "points": 3
+    },
+    {
+      "id": "russian-4-msk-2324p-01",
+      "subject": "russian",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "orthography",
+      "level": 4,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2023-24/prigl/russ/ans-russ-4-prigl-msk-23-24.pdf",
+        "year": 2023,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Выберите ряд, в каждом слове которого представлены как звонкие, так и глухие согласные.",
+      "answer": {
+        "type": "choice",
+        "value": "затвор, ястреб, календарь, есаул",
+        "options": [
+          "кость, затвор, ястреб, бор",
+          "затвор, ястреб, календарь, есаул",
+          "кепка, почта, календарь, вода",
+          "почта, ястреб, есаул, бордюр"
+        ]
+      },
+      "solution_md": "Проверять надо звуки, а не буквы: на конце слова звонкий согласный оглушается (*ястреб* звучит как [йастреп]).\n\nВ ряду *затвор, ястреб, календарь, есаул* в каждом слове есть и звонкий, и глухой согласный.\n\nВ других рядах находится слово, где все согласные одного типа: в *бор* и *вода* только звонкие, в *почта* и *кепка* только глухие.",
+      "hints": [
+        "Считай звуки, а не буквы: на конце слова звонкий оглушается.",
+        "Гласные не в счёт — нужны только согласные.",
+        "Проверь каждое слово в ряду по отдельности: хотя бы в одном может не оказаться пары."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным ключом организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "russian-4-msk-2324p-02",
+      "subject": "russian",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "vocabulary",
+      "level": 4,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2023-24/prigl/russ/ans-russ-4-prigl-msk-23-24.pdf",
+        "year": 2023,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Укажите слова, которые в современном русском языке содержат два суффикса.",
+      "answer": {
+        "type": "multi",
+        "value": [
+          "молоточек",
+          "кружочек",
+          "комочек",
+          "листочек"
+        ],
+        "options": [
+          "желудочек",
+          "молоточек",
+          "веничек",
+          "кружочек",
+          "горшочек",
+          "комочек",
+          "листочек"
+        ]
+      },
+      "solution_md": "*Молоточек*, *кружочек*, *комочек*, *листочек* образованы от слов *молоток*, *кружок*, *комок*, *листок*, в которых уже есть суффикс -ок-. Прибавляется ещё один — получается два.\n\nА *желудочек*, *веничек*, *горшочек* образованы от *желудок*, *веник*, *горшок* одним суффиксом.",
+      "hints": [
+        "Найди для каждого слова то, от которого оно образовано.",
+        "Если исходное слово уже содержит суффикс -ок-, суффиксов будет два.",
+        "Сравни «листок → листочек» и «веник → веничек»."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным ключом организатора."
+      },
+      "points": 4
+    },
+    {
+      "id": "russian-4-msk-2324p-03",
+      "subject": "russian",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "vocabulary",
+      "level": 4,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2023-24/prigl/russ/ans-russ-4-prigl-msk-23-24.pdf",
+        "year": 2023,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Укажите, от какого слова образовано слово **промахнулся**.",
+      "answer": {
+        "type": "choice",
+        "value": "махнуть",
+        "options": [
+          "махать",
+          "махнуть",
+          "промах",
+          "промахиваться"
+        ]
+      },
+      "solution_md": "*Промахнулся* — глагол совершенного вида с суффиксом -ну-, который уже есть в слове *махнуть*.\n\nОт *махать* образовалось бы *промахать*, а от *промах* — *промашка*. Слово *промахиваться* несовершенного вида и само образовано позже.",
+      "hints": [
+        "Посмотри, какие части есть в слове «промахнулся».",
+        "Суффикс -ну- уже должен быть в исходном слове.",
+        "Исходное слово тоже совершенного вида."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным ключом организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "russian-4-msk-2324p-04",
+      "subject": "russian",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "vocabulary",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2023-24/prigl/russ/ans-russ-4-prigl-msk-23-24.pdf",
+        "year": 2023,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Прочитайте две словарные статьи и определите, из каких типов словарей они могли быть взяты.\n\n**Статья 1. ДАР**\n\n> ДАР, -а, мн. -ы, -ов, м. 1. Подарок, приношение, пожертвование (высок.). Принести что-н. в д. кому-н. Получить в д. Дары моря, леса, природы (перен.: о том, что даёт человеку в пищу море, лес, природа). 2. ________ Литературный д. Лишиться дара речи. *Святые дары — в церковном таинстве: причастие. Дары волхвов — по евангельской притче: дары, принесённые волхвами младенцу Иисусу.\n\n**Статья 2**\n\n> ________ Разг. Делать безосновательные предположения, догадки. *Готов каждого из нас предать, чтобы только его не трогали… А ты, Филипп Иванович, как обо всём этом думаешь? — неожиданно обратился к нему Воронин. — Не люблю языком трепать зазря… А сейчас что же гадать на кофейной гуще* (А. Н. Степанов. «Семья Звонарёвых»).",
+      "answer": {
+        "type": "parts",
+        "labels": [
+          "Статья 1",
+          "Статья 2"
+        ],
+        "value": [
+          "толковый словарь",
+          "фразеологический словарь"
+        ],
+        "accept": []
+      },
+      "solution_md": "Первая статья объясняет значения слова *дар*, даёт пометы («высок.», «перен.») и примеры — так устроен **толковый словарь**.\n\nВторая описывает не слово, а устойчивое выражение *гадать на кофейной гуще*, объясняет его смысл и приводит цитату — это **фразеологический словарь**.",
+      "hints": [
+        "Посмотри, что стоит в заголовке каждой статьи: слово или сочетание?",
+        "Первая статья нумерует разные значения одного слова.",
+        "Вторая объясняет выражение, смысл которого не складывается из отдельных слов."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным ключом организатора."
+      },
+      "points": 2
+    },
+    {
+      "id": "russian-4-msk-2324p-05",
+      "subject": "russian",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "vocabulary",
+      "level": 4,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2023-24/prigl/russ/ans-russ-4-prigl-msk-23-24.pdf",
+        "year": 2023,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "В словарной статье слова ДАР пропущено второе значение:\n\n> ДАР, -а, мн. -ы, -ов, м. 1. Подарок, приношение, пожертвование (высок.). 2. ________ Литературный д. Лишиться дара речи.\n\nКакие слова правильно объясняют это значение?",
+      "answer": {
+        "type": "multi",
+        "value": [
+          "способность",
+          "талант"
+        ],
+        "options": [
+          "способность",
+          "возможность",
+          "желание",
+          "оригинальность",
+          "жизнелюбие",
+          "талант",
+          "любопытство",
+          "любознательность",
+          "смелость",
+          "самоотдача"
+        ]
+      },
+      "solution_md": "Подсказки в самой статье: *литературный дар*, *лишиться дара речи*. Речь о том, чем человек одарён от природы.\n\nЭто **способность** и **талант**.",
+      "hints": [
+        "Смотри на примеры: «литературный дар», «дар речи».",
+        "Речь о том, чем человек одарён от природы.",
+        "Верных слова два, и они близки по смыслу."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным ключом организатора."
+      },
+      "points": 2
+    },
+    {
+      "id": "russian-4-msk-2324p-06",
+      "subject": "russian",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "vocabulary",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2023-24/prigl/russ/ans-russ-4-prigl-msk-23-24.pdf",
+        "year": 2023,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Установите соответствие между номерами на рисунке и древнерусскими названиями частей тела.\n\n![Рисунок девушки в древнерусской одежде с поднятой рукой; цифрами 1–7 отмечены ладонь, пальцы, лоб, глаз, щека, губы и шея](data:image/webp;base64,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)",
+      "answer": {
+        "type": "parts",
+        "labels": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "value": [
+          "длань",
+          "перст",
+          "чело",
+          "око",
+          "ланита",
+          "уста",
+          "выя"
+        ],
+        "accept": []
+      },
+      "solution_md": "**Длань** — ладонь, **перст** — палец, **чело** — лоб, **око** — глаз, **ланита** — щека, **уста** — губы, рот, **выя** — шея.\n\nМногие из этих слов сохранились в выражениях: *бить челом*, *в мгновение ока*, *перст судьбы*.",
+      "hints": [
+        "Вспомни выражения: «бить челом», «в мгновение ока», «перст указующий».",
+        "«Длань» и «перст» относятся к руке.",
+        "«Выя» — это то, что гнут, когда склоняют голову."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным ключом организатора."
+      },
+      "points": 7
+    },
+    {
+      "id": "russian-4-msk-2324p-07",
+      "subject": "russian",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "orthography",
+      "level": 4,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2023-24/prigl/russ/ans-russ-4-prigl-msk-23-24.pdf",
+        "year": 2023,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Прочитайте текст.\n\n> (1) Поздно ночью рассказал мне дед Ларион историю о необыкновенном зайце. (2) В августе ходил дед на охоту, попался ему заяц с рваным левым ухом. (3) Дед выстрелил в него из старого ружья, но промахнулся. (4) Дед пошёл дальше, но потом затревожился. (5) Он понял, что начался лесной пожар. (6) Ветер стал ураганом. (7) Огонь свирепел. (8) Он стремительно мчался по земле. (9) Дед побежал по кочкам. (10) И в это время выскочил заяц с рваным ухом. (11) Он бежал медленно, волочил задние лапы, потому что они обгорели. (12) Дед знал, что звери лучше чуют опасность и всегда спасаются. (13) Он побежал за зайцем. (14) Дед, крича от страха, плакал, приговаривая: «Погоди, милый, не так шибко!» (15) Заяц вывел деда из огня. (16) Когда они выбежали из леса, оба упали от усталости. (17) Дед подобрал зайца, отнёс домой и вылечил.\n\nИз предложений 1–7 укажите предложение, в котором есть слово с непроизносимой согласной.",
+      "answer": {
+        "type": "choice",
+        "value": "(1) Поздно ночью рассказал мне дед Ларион историю о необыкновенном зайце.",
+        "options": [
+          "(1) Поздно ночью рассказал мне дед Ларион историю о необыкновенном зайце.",
+          "(2) В августе ходил дед на охоту, попался ему заяц с рваным левым ухом.",
+          "(3) Дед выстрелил в него из старого ружья, но промахнулся.",
+          "(4) Дед пошёл дальше, но потом затревожился.",
+          "(5) Он понял, что начался лесной пожар.",
+          "(6) Ветер стал ураганом.",
+          "(7) Огонь свирепел."
+        ]
+      },
+      "solution_md": "В слове *поздно* буква «д» не произносится — это непроизносимая согласная в корне. Проверочное слово — *опоздать*.",
+      "hints": [
+        "Ищи слово, в котором пишется буква, которую мы не произносим.",
+        "Такие слова проверяются подбором родственного, где эта буква слышна.",
+        "Посмотри на первое слово текста."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным ключом организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "russian-4-msk-2324p-08",
+      "subject": "russian",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "vocabulary",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2023-24/prigl/russ/ans-russ-4-prigl-msk-23-24.pdf",
+        "year": 2023,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Прочитайте текст.\n\n> (1) Поздно ночью рассказал мне дед Ларион историю о необыкновенном зайце. (2) В августе ходил дед на охоту, попался ему заяц с рваным левым ухом. (3) Дед выстрелил в него из старого ружья, но промахнулся. (4) Дед пошёл дальше, но потом затревожился. (5) Он понял, что начался лесной пожар. (6) Ветер стал ураганом. (7) Огонь свирепел. (8) Он стремительно мчался по земле. (9) Дед побежал по кочкам. (10) И в это время выскочил заяц с рваным ухом. (11) Он бежал медленно, волочил задние лапы, потому что они обгорели. (12) Дед знал, что звери лучше чуют опасность и всегда спасаются. (13) Он побежал за зайцем. (14) Дед, крича от страха, плакал, приговаривая: «Погоди, милый, не так шибко!» (15) Заяц вывел деда из огня. (16) Когда они выбежали из леса, оба упали от усталости. (17) Дед подобрал зайца, отнёс домой и вылечил.\n\nКакому слову из текста соответствует фрагмент словарной статьи из «Этимологического словаря» А. В. Семёнова?\n\n> Появление этого слова в русском языке некоторые исследователи относят к V–VI вв., хотя появиться оно могло значительно раньше. Это слово происходит от общей индоевропейской основы *agnis*. Встречается во многих европейских и азиатских языках (древнеиндийское — *agni*, латинское — *ignis*, литовское — *ugnis*). В Древней Индии бога домашнего очага называли *Агни*.\n\nЗапишите это слово в начальной форме.",
+      "answer": {
+        "type": "string",
+        "value": "огонь",
+        "accept": [
+          "огонь"
+        ]
+      },
+      "solution_md": "Латинское *ignis*, литовское *ugnis*, древнеиндийское *agni* — всё это родственники русского слова **огонь**.\n\nВ тексте оно встречается в предложениях 7 и 15.",
+      "hints": [
+        "Посмотри на приведённые иностранные слова — они похожи между собой.",
+        "Латинское «ignis» знакомо по слову «игнорировать»? Нет — по слову «зажигание».",
+        "Бог домашнего очага — подсказка о том, что это за стихия."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным ключом организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "russian-4-msk-2324p-09",
+      "subject": "russian",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "syntax",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2023-24/prigl/russ/ans-russ-4-prigl-msk-23-24.pdf",
+        "year": 2023,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Прочитайте текст.\n\n> (1) Поздно ночью рассказал мне дед Ларион историю о необыкновенном зайце. (2) В августе ходил дед на охоту, попался ему заяц с рваным левым ухом. (3) Дед выстрелил в него из старого ружья, но промахнулся. (4) Дед пошёл дальше, но потом затревожился. (5) Он понял, что начался лесной пожар. (6) Ветер стал ураганом. (7) Огонь свирепел. (8) Он стремительно мчался по земле. (9) Дед побежал по кочкам. (10) И в это время выскочил заяц с рваным ухом. (11) Он бежал медленно, волочил задние лапы, потому что они обгорели. (12) Дед знал, что звери лучше чуют опасность и всегда спасаются. (13) Он побежал за зайцем. (14) Дед, крича от страха, плакал, приговаривая: «Погоди, милый, не так шибко!» (15) Заяц вывел деда из огня. (16) Когда они выбежали из леса, оба упали от усталости. (17) Дед подобрал зайца, отнёс домой и вылечил.\n\nОпределите предложение по некоторым входящим в него словам (характеристики слов из предложения даны в перепутанном порядке и не ко всем словам).\n\n- Это слово имеет ту же основу, что и *лопасть, лопата, лапоть*, восходит к общеславянскому *lapstь*.\n- Это слово является историческим родственником словам *наволочка, влачить*.\n- Корень этого глагола восходит к общеславянскому слову, зафиксировано в других языках, например: литовское *garbti* — «жечь», древнеиндийское *haras* — «жар».\n- Это наречие образовано от имени прилагательного, которое имеет давнюю историю: древнерусское — *мьдльнъ*, старославянское — *мъдьлъ (вялый)*, общеславянское — *тъдыlъ*.\n\nЗапишите номер найденного вами предложения.",
+      "answer": {
+        "type": "number",
+        "value": 11
+      },
+      "solution_md": "Характеристики описывают слова *лапы* (родственно лопате и лаптю), *волочил* (родственно наволочке), *обгорели* (корень -гор-) и *медленно* (наречие от «медленный»).\n\nВсе четыре слова встречаются в предложении **11**: «Он бежал медленно, волочил задние лапы, потому что они обгорели».",
+      "hints": [
+        "Расшифруй каждую характеристику в отдельное слово.",
+        "«Наволочка» и «влачить» подскажут глагол движения.",
+        "Найди предложение, в котором встречаются сразу все четыре слова."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным ключом организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "russian-4-msk-2324p-10",
+      "subject": "russian",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "syntax",
+      "level": 4,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2023-24/prigl/russ/ans-russ-4-prigl-msk-23-24.pdf",
+        "year": 2023,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Прочитайте текст.\n\n> (1) Поздно ночью рассказал мне дед Ларион историю о необыкновенном зайце. (2) В августе ходил дед на охоту, попался ему заяц с рваным левым ухом. (3) Дед выстрелил в него из старого ружья, но промахнулся. (4) Дед пошёл дальше, но потом затревожился. (5) Он понял, что начался лесной пожар. (6) Ветер стал ураганом. (7) Огонь свирепел. (8) Он стремительно мчался по земле. (9) Дед побежал по кочкам. (10) И в это время выскочил заяц с рваным ухом. (11) Он бежал медленно, волочил задние лапы, потому что они обгорели. (12) Дед знал, что звери лучше чуют опасность и всегда спасаются. (13) Он побежал за зайцем. (14) Дед, крича от страха, плакал, приговаривая: «Погоди, милый, не так шибко!» (15) Заяц вывел деда из огня. (16) Когда они выбежали из леса, оба упали от усталости. (17) Дед подобрал зайца, отнёс домой и вылечил.\n\nНайдите в тексте один глагол, который отличается по форме от остальных. Выпишите его.",
+      "answer": {
+        "type": "string",
+        "value": "погоди",
+        "accept": [
+          "Погоди",
+          "погоди!"
+        ]
+      },
+      "solution_md": "Все глаголы в тексте стоят в прошедшем времени изъявительного наклонения: *рассказал, ходил, выстрелил, побежал*.\n\nИ только **погоди** — форма повелительного наклонения: это просьба деда, обращённая к зайцу.",
+      "hints": [
+        "Почти все глаголы текста рассказывают о том, что уже случилось.",
+        "Один глагол не рассказывает, а просит.",
+        "Ищи его внутри прямой речи."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным ключом организатора."
+      },
+      "points": 1
     },
     {
       "id": "russian-4-msk-2425-01",

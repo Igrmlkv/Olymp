@@ -60,12 +60,19 @@ async function main(): Promise<void> {
 
   // Papers repeat themselves across stages and years, and a child meeting the
   // same question twice in one topic reads as a bug.
-  const byStatement = new Map<string, string[]>()
+  //
+  // The key covers the answer too, not just the wording: several papers reuse a
+  // stem like "выберите ряд, в каждом слове которого…" over different word
+  // lists, and those are different questions despite the identical sentence.
+  const byQuestion = new Map<string, string[]>()
   for (const task of tasks) {
-    const key = task.statement_md.replace(/\s+/g, ' ').trim()
-    byStatement.set(key, [...(byStatement.get(key) ?? []), task.id])
+    const key = [
+      task.statement_md.replace(/\s+/g, ' ').trim(),
+      JSON.stringify(task.answer),
+    ].join('\u0000')
+    byQuestion.set(key, [...(byQuestion.get(key) ?? []), task.id])
   }
-  const duplicates = [...byStatement.values()].filter((ids) => ids.length > 1)
+  const duplicates = [...byQuestion.values()].filter((ids) => ids.length > 1)
   if (duplicates.length > 0) {
     throw new Error(
       `одинаковые условия у задач:\n${duplicates.map((ids) => '  ' + ids.join(' = ')).join('\n')}`,
