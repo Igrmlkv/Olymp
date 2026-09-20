@@ -11,7 +11,8 @@
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "vitest run",
     "import-archive": "tsx src/import-archive.ts",
-    "extract-images": "node scripts/extract-archive-images.mjs"
+    "extract-images": "node scripts/extract-archive-images.mjs",
+    "coverage": "tsx src/coverage.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.68.0",
