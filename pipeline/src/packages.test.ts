@@ -31,7 +31,6 @@ function load(key: string): Promise<ContentPackage> {
 }
 
 describe.each(SHIPPED)('$subject grade $grade', ({ subject, grade }) => {
-  const versionKey = packageKey(subject, grade, '1.0.0')
   const latestKey = packageKey(subject, grade, 'latest')
 
   it('parses, and its checksum matches its tasks', async () => {
@@ -56,11 +55,14 @@ describe.each(SHIPPED)('$subject grade $grade', ({ subject, grade }) => {
     expect(pkg.tasks.every((t) => t.verification.verdict === 'pass')).toBe(true)
   })
 
-  it('keeps `latest` pointing at the pinned version', async () => {
+  it('keeps `latest` pointing at the pinned version it names', async () => {
     // The two writes live in one helper now, but they used to drift — publish
-    // never wrote `latest` at all.
-    const [latest, pinned] = await Promise.all([load(latestKey), load(versionKey)])
-    expect(latest.manifest.checksum).toBe(pinned.manifest.checksum)
-    expect(latest.manifest.version).toBe(pinned.manifest.version)
+    // never wrote `latest` at all. The version comes from the file rather than
+    // a literal, so bumping a package does not break this test.
+    const latest = await load(latestKey)
+    const pinned = await load(packageKey(subject, grade, latest.manifest.version))
+
+    expect(pinned.manifest.checksum).toBe(latest.manifest.checksum)
+    expect(pinned.manifest.task_count).toBe(latest.manifest.task_count)
   })
 })

@@ -42,5 +42,14 @@ export function checkAnswer(answer: Answer, submitted: string | string[]): boole
       const expected = new Set(answer.value.map(normalise))
       return values.every((v) => expected.has(normalise(v)))
     }
+    case 'parts': {
+      // Order matters here: part 2 answers the second label, not "any of them".
+      const values = Array.isArray(submitted) ? submitted : [submitted]
+      if (values.length !== answer.value.length) return false
+      return answer.value.every((expected, i) => {
+        const alternatives = [expected, ...(answer.accept[i] ?? [])].map(normalise)
+        return alternatives.includes(normalise(values[i] ?? ''))
+      })
+    }
   }
 }

@@ -60,6 +60,30 @@ export function AnswerInput({
     )
   }
 
+  if (answer.type === 'parts') {
+    const values = Array.isArray(value) ? value : []
+    return (
+      <fieldset className="options parts" disabled={disabled}>
+        <legend className="options-legend">{label}</legend>
+        {answer.labels.map((partLabel, i) => (
+          <label key={partLabel} className="part">
+            <span className="part-label">{partLabel}</span>
+            <input
+              className="answer-input"
+              value={values[i] ?? ''}
+              autoComplete="off"
+              onChange={(e) => {
+                const next = answer.labels.map((_, j) => values[j] ?? '')
+                next[i] = e.target.value
+                onChange(next)
+              }}
+            />
+          </label>
+        ))}
+      </fieldset>
+    )
+  }
+
   return (
     <>
       <label className="visually-hidden" htmlFor={id}>
@@ -81,5 +105,8 @@ export function AnswerInput({
 
 /** True when the child has actually entered something to check. */
 export function hasAnswer(value: string | string[]): boolean {
-  return Array.isArray(value) ? value.length > 0 : value.trim() !== ''
+  // A parts answer is only ready once every blank has something in it.
+  return Array.isArray(value)
+    ? value.length > 0 && value.every((v) => v.trim() !== '')
+    : value.trim() !== ''
 }

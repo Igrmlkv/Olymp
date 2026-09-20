@@ -379,3 +379,43 @@ button.primary {
   cursor: not-allowed;
   opacity: 0.6;
 }
+
+/* Рисунок — часть условия, а не иллюстрация: он должен быть крупным и читаемым. */
+.statement img,
+.solution img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0.75rem auto;
+  border-radius: 8px;
+  /* Схемы рисуются чёрным по белому и на тёмном фоне теряются. */
+  background: #fff;
+  padding: 0.5rem;
+}
+
+/* Ответ из нескольких частей: подпись слева, поле справа. */
+.parts .part {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.375rem;
+  border: none;
+  background: none;
+  padding: 0;
+  min-height: 0;
+}
+
+.part-label {
+  color: var(--muted);
+}
+
+.parts .answer-input {
+  width: 100%;
+}
+
+@media (min-width: 30rem) {
+  .parts .part {
+    grid-template-columns: minmax(8rem, 2fr) minmax(6rem, 1fr);
+    align-items: center;
+    gap: 0.75rem;
+  }
+}

@@ -2,6 +2,7 @@ import { readdir, readFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 import { TaskSchema, type Grade, type Subject, type Task } from '@olymp/schema'
 import { requireArg } from './args.js'
+import { inlineImages, type InlineStats } from './inline-images.js'
 import { buildPackage, uploadHint, writePackage } from './package-writer.js'
 import { ARCHIVE_DIR } from './paths.js'
 
@@ -57,7 +58,20 @@ async function main(): Promise<void> {
     throw new Error(`задачи без атрибуции: ${unattributed.map((t) => t.id).join(', ')}`)
   }
 
-  const pkg = buildPackage(tasks, { version, promptVersion: 'archive-import-v1' })
+  // Figures are inlined last, so the schema check above still reads short,
+  // human-legible statements rather than megabytes of base64.
+  const cache = new Map<string, string>()
+  const stats: InlineStats = { references: 0, distinctImages: 0, bytes: 0 }
+  const withImages: Task[] = []
+  for (const task of tasks) {
+    withImages.push({
+      ...task,
+      statement_md: await inlineImages(task.statement_md, cache, stats),
+      solution_md: await inlineImages(task.solution_md, cache, stats),
+    })
+  }
+
+  const pkg = buildPackage(withImages, { version, promptVersion: 'archive-import-v1' })
   const key = await writePackage(pkg)
 
   const byTopic = new Map<string, number>()
@@ -65,6 +79,10 @@ async function main(): Promise<void> {
 
   console.log(`[import-archive] ${tasks.length} задач → content/${key}`)
   for (const [topic, count] of [...byTopic].sort()) console.log(`  ${topic}: ${count}`)
+  console.log(
+    `[import-archive] рисунков: ${stats.distinctImages} (${stats.references} вставок, ` +
+      `${(stats.bytes / 1024 / 1024).toFixed(2)} MB)`,
+  )
   console.log(`[import-archive] checksum ${pkg.manifest.checksum.slice(0, 16)}…`)
   console.log(`[import-archive] ${uploadHint(pkg)}`)
 }

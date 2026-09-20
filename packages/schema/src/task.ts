@@ -76,6 +76,19 @@ export const AnswerSchema = z
     z.object({ type: z.literal('string'), value: z.string().min(1), accept: z.array(z.string()).default([]) }),
     z.object({ type: z.literal('choice'), value: z.string().min(1), options: z.array(z.string()).min(2) }),
     z.object({ type: z.literal('multi'), value: z.array(z.string()).min(1), options: z.array(z.string()).min(2) }),
+    /**
+     * Several answers at once, each with its own label: "Алине / Галине /
+     * Полине", a table's blanks, or one adjective per noun group in a matching
+     * task. Folding these into a single string would mean rewriting the
+     * question into a format it was not set in.
+     */
+    z.object({
+      type: z.literal('parts'),
+      labels: z.array(z.string().min(1)).min(2),
+      value: z.array(z.string().min(1)).min(2),
+      /** Alternative spellings per part, same order as `value`. */
+      accept: z.array(z.array(z.string())).default([]),
+    }),
   ])
   // A correct answer that is not on the list is unanswerable: worth catching at
   // import time rather than in front of a child.
@@ -86,6 +99,14 @@ export const AnswerSchema = z
   .refine((a) => a.type !== 'multi' || a.value.every((v) => a.options.includes(v)), {
     message: 'every multi answer value must be one of the options',
     path: ['value'],
+  })
+  .refine((a) => a.type !== 'parts' || a.labels.length === a.value.length, {
+    message: 'parts answer needs one label per value',
+    path: ['labels'],
+  })
+  .refine((a) => a.type !== 'parts' || a.accept.length === 0 || a.accept.length === a.value.length, {
+    message: 'parts `accept` must be empty or hold one list per value',
+    path: ['accept'],
   })
 export type Answer = z.infer<typeof AnswerSchema>
 

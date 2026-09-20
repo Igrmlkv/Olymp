@@ -1,6 +1,15 @@
 import { memo } from 'react'
-import ReactMarkdown from 'react-markdown'
+import ReactMarkdown, { defaultUrlTransform } from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+
+/**
+ * Figures travel inside the package as data URIs, which react-markdown strips by
+ * default. Only base64 WebP images are let through — an image data URI cannot
+ * execute, and narrowing it to one type keeps `data:text/html` and friends out.
+ */
+function urlTransform(url: string): string {
+  return url.startsWith('data:image/webp;base64,') ? url : defaultUrlTransform(url)
+}
 
 /**
  * Task statements and solutions are Markdown: archive tasks carry blockquoted
@@ -23,7 +32,9 @@ export const Markdown = memo(function Markdown({
 }) {
   return (
     <div className={className}>
-      <ReactMarkdown remarkPlugins={[remarkGfm]}>{children}</ReactMarkdown>
+      <ReactMarkdown remarkPlugins={[remarkGfm]} urlTransform={urlTransform}>
+        {children}
+      </ReactMarkdown>
     </div>
   )
 })
