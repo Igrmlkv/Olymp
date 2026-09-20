@@ -11,6 +11,7 @@
     "dev": "pnpm --filter @olymp/pwa dev",
     "dev:admin": "pnpm --filter @olymp/admin dev",
     "dev:proxy": "pnpm --filter @olymp/proxy dev",
+    "r2:seed:local": "pnpm --filter @olymp/proxy r2:seed:local",
     "build": "pnpm -r build",
     "typecheck": "pnpm -r typecheck && tsc -p e2e/tsconfig.json",
     "test": "pnpm -r test",
