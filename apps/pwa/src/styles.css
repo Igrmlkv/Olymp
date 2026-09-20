@@ -380,17 +380,40 @@ button.primary {
   opacity: 0.6;
 }
 
-/* Рисунок — часть условия, а не иллюстрация: он должен быть крупным и читаемым. */
+/*
+ * Рисунок — часть условия, а не иллюстрация. Но высоту надо ограничить: в
+ * заданиях с четырьмя вариантами-картинками каждая иначе занимает целый экран,
+ * и сравнить их невозможно.
+ */
 .statement img,
 .solution img {
   display: block;
   max-width: 100%;
+  max-height: 40vh;
+  width: auto;
   height: auto;
   margin: 0.75rem auto;
   border-radius: 8px;
   /* Схемы рисуются чёрным по белому и на тёмном фоне теряются. */
   background: #fff;
   padding: 0.5rem;
+}
+
+/*
+ * Варианты-картинки записываются таблицей: подпись в заголовке столбца, рисунок
+ * под ней. Так вариант жёстко связан со своим рисунком, и все видны сразу.
+ */
+.statement td img,
+.solution td img {
+  max-height: 20vh;
+  margin: 0 auto;
+  padding: 0.25rem;
+}
+
+.statement td,
+.solution td {
+  text-align: center;
+  vertical-align: top;
 }
 
 /* Ответ из нескольких частей: подпись слева, поле справа. */
