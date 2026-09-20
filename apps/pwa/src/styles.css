@@ -170,6 +170,10 @@ button.primary {
   font-weight: 700;
 }
 
+.topic-card--empty {
+  cursor: default;
+}
+
 .badge {
   background: var(--surface-raised);
   color: var(--muted);
@@ -472,10 +476,17 @@ button.primary {
 }
 
 .task-row-title {
-  /* Превью в одну строку: список должен быть обозримым, а не читаемым. */
+  /*
+    Две строки, а не одна. В одну строку на телефоне помещалось «На
+    международной ...» — и четыре разные задачи выглядели одинаково, то есть
+    список переставал различать то, ради чего он существует.
+  */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  line-height: 1.35;
 }
 
 .task-row-meta {

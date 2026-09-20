@@ -11,8 +11,6 @@ export function TopicScreen() {
 
   if (subject === null) return <p className="screen">Неизвестный предмет.</p>
 
-  const tasks = state.status === 'ready' ? state.pkg.tasks : []
-
   return (
     <main className="screen">
       <Link className="back-link" to="/">
@@ -21,23 +19,45 @@ export function TopicScreen() {
       <h1>{SUBJECT_LABELS_RU[subject]}</h1>
 
       {state.status === 'error' && <p className="error">Не получилось загрузить задачи: {state.message}</p>}
-      {state.status === 'loading' && <p className="muted">Загружаем задачи…</p>}
+      {state.status !== 'ready' && <p className="muted">Загружаем задачи…</p>}
 
-      <ul className="topic-list">
-        {TOPICS_BY_SUBJECT[subject].map((topic) => {
-          const count = tasks.filter((t) => t.topic === topic).length
-          return (
-            <li key={topic}>
-              <Link className="topic-card" to={`/${subject}/${topic}`} aria-disabled={count === 0}>
-                <span>{TOPIC_LABELS_RU[topic]}</span>
-                <span className="muted">
-                  {count} {tasksWord(count)}
-                </span>
-              </Link>
-            </li>
-          )
-        })}
-      </ul>
+      {/*
+        Counts wait for the package. Rendering the list early showed every
+        topic as "0 задач", and those zeroes were links: a child tapping one
+        during the download landed on an empty list.
+      */}
+      {state.status === 'ready' && (
+        <ul className="topic-list">
+          {TOPICS_BY_SUBJECT[subject].map((topic) => {
+            const count = state.pkg.tasks.filter((t) => t.topic === topic).length
+            const label = TOPIC_LABELS_RU[topic]
+
+            // A topic we have no tasks for yet is not a door. Fractions are in
+            // the schema, but no grade-4 archive paper has produced one.
+            if (count === 0) {
+              return (
+                <li key={topic}>
+                  <div className="topic-card topic-card--empty" aria-disabled="true">
+                    <span>{label}</span>
+                    <span className="badge">скоро</span>
+                  </div>
+                </li>
+              )
+            }
+
+            return (
+              <li key={topic}>
+                <Link className="topic-card" to={`/${subject}/${topic}`}>
+                  <span>{label}</span>
+                  <span className="muted">
+                    {count} {tasksWord(count)}
+                  </span>
+                </Link>
+              </li>
+            )
+          })}
+        </ul>
+      )}
     </main>
   )
 }

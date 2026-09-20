@@ -12,13 +12,17 @@
     "dev:admin": "pnpm --filter @olymp/admin dev",
     "dev:proxy": "pnpm --filter @olymp/proxy dev",
     "build": "pnpm -r build",
-    "typecheck": "pnpm -r typecheck",
+    "typecheck": "pnpm -r typecheck && tsc -p e2e/tsconfig.json",
     "test": "pnpm -r test",
     "lint": "pnpm -r lint",
     "db:migrate:local": "wrangler d1 migrations apply olymp-audit --local --config workers/proxy/wrangler.toml",
-    "db:migrate:remote": "wrangler d1 migrations apply olymp-audit --remote --config workers/proxy/wrangler.toml"
+    "db:migrate:remote": "wrangler d1 migrations apply olymp-audit --remote --config workers/proxy/wrangler.toml",
+    "e2e": "playwright test"
   },
   "devDependencies": {
+    "@olymp/schema": "workspace:*",
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^22.20.4",
     "typescript": "^5.9.3",
     "wrangler": "^4.135.0"
   }

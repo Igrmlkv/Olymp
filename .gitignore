@@ -33,3 +33,8 @@ pipeline/.cache/
 
 # test & coverage
 coverage/
+
+# playwright
+e2e/screenshots/
+e2e/.artifacts/
+playwright-report/
