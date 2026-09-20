@@ -54,7 +54,7 @@ jobs:
       # Keyed on the Playwright version: a browser build belongs to the
       # runner that ships it, and pnpm-lock pins that version.
       - name: Cache the browser
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/.cache/ms-playwright
           key: playwright-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
@@ -90,7 +90,7 @@ jobs:
 
       - name: Keep the screenshots
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: e2e-screenshots
           path: |
