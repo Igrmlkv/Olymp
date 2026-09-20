@@ -30,6 +30,8 @@
       "season": "2022/23",
       "stage": "invitational",
       "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2022-23/prigl/math/sol-math-4-prigl-msk-22-23.pdf",
+      "max_score": 8,
+      "variants": 4,
       "task_count": 32,
       "structure": "8 заданий × 4 варианта",
       "unusable": [
@@ -55,6 +57,8 @@
       "season": "2023/24",
       "stage": "invitational",
       "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2023-24/prigl/math/sol-math-4-prigl-msk-23-24.pdf",
+      "max_score": 8,
+      "variants": 4,
       "task_count": 32,
       "structure": "8 заданий × 4 варианта",
       "unusable": [
@@ -79,6 +83,7 @@
       "season": "2024/25",
       "stage": "invitational",
       "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2024-25/prigl/math/sol-math-4-prigl-msk-24-25.pdf",
+      "max_score": 8,
       "task_count": 8,
       "unusable": []
     },
@@ -89,6 +94,8 @@
       "season": "2025/26",
       "stage": "school",
       "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/school/math/sol-math-4-sch-msk-25-26.pdf",
+      "max_score": 8,
+      "variants": 4,
       "task_count": 30,
       "structure": "задание 1 в 2 вариантах, задания 2–8 в 4",
       "unusable": []
@@ -100,6 +107,8 @@
       "season": "2025/26",
       "stage": "invitational",
       "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/prigl/math/sol-math-4-prigl-msk-25-26.pdf",
+      "max_score": 8,
+      "variants": 4,
       "task_count": 32,
       "structure": "8 заданий × 4 варианта",
       "unusable": [{ "count": 4, "reason": "задание 3: варианты ответа даны картинками без подписей" }]
@@ -111,6 +120,7 @@
       "season": "2026/27",
       "stage": "invitational",
       "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2026-27/prigl/math/sol-math-4-prigl-msk-26-27.pdf",
+      "max_score": 56,
       "task_count": 8,
       "unusable": []
     },
@@ -132,8 +142,9 @@
       "season": "2021/22",
       "stage": "invitational",
       "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2021-22/prigl/russ/ans-russ-4-prigl-msk-21-22.pdf",
+      "max_score": 13,
       "task_count": 11,
-      "structure": "ключ ответов перечисляет задания 1–11; файл с заданиями — скан без текстового слоя",
+      "structure": "ключ ответов перечисляет задания 1–11 и содержит их условия целиком; файл с заданиями — скан без текстового слоя",
       "unusable": []
     },
     {
@@ -163,6 +174,7 @@
       "season": "2023/24",
       "stage": "school",
       "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2023-24/school/russ/ans-russ-4-sch-msk-23-24.pdf",
+      "max_score": 36,
       "task_count": null,
       "unusable": []
     },
@@ -183,6 +195,7 @@
       "season": "2024/25",
       "stage": "school",
       "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2024-25/school/russ/ans-russ-4-sch-msk-24-25.pdf",
+      "max_score": 40,
       "task_count": null,
       "unusable": []
     },
@@ -193,6 +206,7 @@
       "season": "2024/25",
       "stage": "invitational",
       "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2024-25/prigl/russ/ans-russ-4-prigl-msk-24-25.pdf",
+      "max_score": 29,
       "task_count": 14,
       "unusable": []
     },
@@ -203,6 +217,7 @@
       "season": "2025/26",
       "stage": "school",
       "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/school/russ/ans-russ-4-sch-msk-25-26.pdf",
+      "max_score": 52,
       "task_count": null,
       "unusable": []
     },
@@ -213,6 +228,7 @@
       "season": "2025/26",
       "stage": "invitational",
       "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/prigl/russ/ans-russ-4-prigl-msk-25-26.pdf",
+      "max_score": 32,
       "task_count": null,
       "unusable": []
     },
@@ -223,6 +239,7 @@
       "season": "2026/27",
       "stage": "invitational",
       "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2026-27/prigl/russ/ans-russ-4-prigl-msk-26-27.pdf",
+      "max_score": 28,
       "task_count": 9,
       "unusable": [{ "count": 2, "reason": "дословно повторяют задания школьного этапа, уже взятые в банк" }]
     }

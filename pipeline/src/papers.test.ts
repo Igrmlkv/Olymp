@@ -43,6 +43,17 @@ describe('манифест работ', () => {
     expect(impossible).toEqual([])
   })
 
+  it('не начисляет за работу больше баллов, чем она стоит', () => {
+    // The check that catches a task transcribed twice: the bank once held the
+    // same 2024/25 task under two ids, and the only visible symptom was that
+    // the paper was suddenly worth 32 points instead of 29.
+    const over = coverageFor(papers, packages)
+      .filter((c) => c.maxPoints !== null && c.points > c.maxPoints)
+      .map((c) => `${c.paper.id}: ${c.points} баллов в банке при максимуме ${c.maxPoints}`)
+
+    expect(over).toEqual([])
+  })
+
   it('объясняет каждое непригодное задание', () => {
     for (const paper of papers) {
       for (const reason of paper.unusable) {

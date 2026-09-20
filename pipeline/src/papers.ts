@@ -38,6 +38,13 @@ export const PaperSchema = z.object({
    * report, rather than a number that looks checked.
    */
   task_count: z.number().int().min(1).nullable(),
+  /**
+   * What one child can score on this paper, as the organiser's key states it.
+   * Our `points` must add up to no more than this — times the number of
+   * variants, because a child answers one variant and we ship them all.
+   */
+  max_score: z.number().int().min(1).optional(),
+  variants: z.number().int().min(1).default(1),
   structure: z.string().optional(),
   unusable: z.array(UnusableSchema).default([]),
 })
@@ -60,14 +67,20 @@ export type Coverage = {
   /** Tasks that could still be transcribed, or null while the paper is uncounted. */
   remaining: number | null
   unusable: number
+  /** Points our tasks from this paper add up to, against what it is worth. */
+  points: number
+  maxPoints: number | null
 }
 
 export function coverageFor(papers: Paper[], packages: ContentPackage[]): Coverage[] {
   const taken = new Map<string, number>()
+  const points = new Map<string, number>()
   for (const pkg of packages) {
     for (const task of pkg.tasks) {
       const url = task.source_attribution?.url
-      if (url) taken.set(url, (taken.get(url) ?? 0) + 1)
+      if (!url) continue
+      taken.set(url, (taken.get(url) ?? 0) + 1)
+      points.set(url, (points.get(url) ?? 0) + task.points)
     }
   }
 
@@ -79,6 +92,8 @@ export function coverageFor(papers: Paper[], packages: ContentPackage[]): Covera
       taken: count,
       unusable,
       remaining: paper.task_count === null ? null : paper.task_count - unusable - count,
+      points: points.get(paper.url) ?? 0,
+      maxPoints: paper.max_score === undefined ? null : paper.max_score * paper.variants,
     }
   })
 }

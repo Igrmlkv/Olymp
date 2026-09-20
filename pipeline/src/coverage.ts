@@ -23,15 +23,18 @@ const papers = loadPapers()
 const packages = SHIPPED.map(({ subject, grade }) => load(subject, grade))
 const rows = coverageFor(papers, packages)
 
-console.log('| Работа | Этап | В работе | В банке | Непригодно | Осталось взять |')
-console.log('|---|---|---:|---:|---:|---:|')
+console.log('| Работа | Этап | В работе | В банке | Непригодно | Осталось взять | Баллов |')
+console.log('|---|---|---:|---:|---:|---:|---:|')
 
-for (const { paper, taken, unusable, remaining } of rows) {
+for (const { paper, taken, unusable, remaining, points, maxPoints } of rows) {
   const subject = paper.subject === 'math' ? 'Математика' : 'Русский'
   const stage = paper.stage === 'school' ? 'школьный' : 'пригласительный'
+  // Points are the second way to see a gap, and the more honest one where a
+  // paper's tasks are worth different amounts.
+  const score = maxPoints === null ? `${points}` : `${points} из ${maxPoints}`
   console.log(
     `| ${subject} ${paper.season} | ${stage} | ${paper.task_count ?? '—'} | ${taken} |` +
-      ` ${unusable || ''} | ${remaining === null ? 'не сверено' : remaining || ''} |`,
+      ` ${unusable || ''} | ${remaining === null ? 'не сверено' : remaining || ''} | ${score} |`,
   )
 }
 
