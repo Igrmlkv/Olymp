@@ -50,6 +50,7 @@ export async function downloadPackage(subject: Subject, grade: Grade): Promise<S
     subject: payload.manifest.subject,
     grade: payload.manifest.grade,
     downloadedAt: new Date().toISOString(),
+    checkedAt: new Date().toISOString(),
     payload,
   }
   await db.packages.put(stored)
@@ -75,6 +76,37 @@ const inMemory = new Map<string, Promise<StoredPackage>>()
 
 onErase(() => inMemory.clear())
 
+/** How long a downloaded package is trusted before we ask for a newer one. */
+export const PACKAGE_CHECK_INTERVAL_MS = 12 * 60 * 60 * 1000
+
+/**
+ * Looks for a newer package without making anyone wait for it.
+ *
+ * The bank grows — 113 maths tasks became 134 in one afternoon — and until now
+ * a device that had downloaded a package kept it forever: `ensurePackage`
+ * returned the stored copy and never asked again. A child who installed the app
+ * in September would never have seen a task added in October.
+ *
+ * The new version is stored, not swapped in: replacing the bank under a child
+ * in the middle of a task would move the ground under them. It applies on the
+ * next launch.
+ */
+async function refreshInBackground(stored: StoredPackage): Promise<void> {
+  const checkedAt = Date.parse(stored.checkedAt ?? stored.downloadedAt)
+  if (Number.isFinite(checkedAt) && Date.now() - checkedAt < PACKAGE_CHECK_INTERVAL_MS) return
+
+  try {
+    const fresh = await downloadPackage(stored.subject, stored.grade)
+    if (fresh.version !== stored.version) {
+      void track('package_updated', { subject: stored.subject, grade: stored.grade })
+    }
+  } catch {
+    // Offline, or the server is down. The stored package still works, and this
+    // is the whole point of keeping it — so only note that we tried.
+    await db.packages.update(stored.packageId, { checkedAt: new Date().toISOString() })
+  }
+}
+
 /** Cached package if present, otherwise a download. Throws offline with nothing cached. */
 export function ensurePackage(subject: Subject, grade: Grade): Promise<StoredPackage> {
   const key = `${subject}-${grade}`
@@ -83,7 +115,10 @@ export function ensurePackage(subject: Subject, grade: Grade): Promise<StoredPac
   if (!pending) {
     pending = (async () => {
       const stored = await getStoredPackage(subject, grade)
-      return stored ?? downloadPackage(subject, grade)
+      if (!stored) return downloadPackage(subject, grade)
+      // Not awaited: the stored package is what this session shows.
+      void refreshInBackground(stored)
+      return stored
     })()
     // A failed load must not be remembered as the answer forever.
     pending.catch(() => inMemory.delete(key))

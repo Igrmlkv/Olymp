@@ -17,6 +17,8 @@ export const INSTALLATION_ID_ROTATION_DAYS = 30
 export const TelemetryEventNameSchema = z.enum([
   'app_open',
   'package_downloaded',
+  /** A device picked up a newer bank than the one it had. */
+  'package_updated',
   'task_attempted',
   'task_solved',
   'hint_used',

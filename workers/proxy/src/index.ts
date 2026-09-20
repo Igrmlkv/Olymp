@@ -25,13 +25,21 @@ app.get('/api/packages/:subject/:grade/:version', async (c) => {
   const object = await c.env.PACKAGES.get(packageKey(subject.data, grade.data, version))
   if (!object) return c.json({ error: 'package not found' }, 404)
 
-  return new Response(object.body, {
-    headers: {
-      'content-type': 'application/json; charset=utf-8',
-      // `latest` must stay revalidated; a pinned version never changes.
-      'cache-control': version === 'latest' ? 'public, max-age=300' : 'public, max-age=31536000, immutable',
-    },
-  })
+  const headers = {
+    'content-type': 'application/json; charset=utf-8',
+    // `latest` must stay revalidated; a pinned version never changes.
+    'cache-control': version === 'latest' ? 'public, max-age=300' : 'public, max-age=31536000, immutable',
+    etag: object.httpEtag,
+  }
+
+  // Clients check for a newer bank on a schedule. Without this every check
+  // downloads the whole package again — hundreds of kilobytes, usually to
+  // find nothing has changed.
+  if (c.req.header('if-none-match') === object.httpEtag) {
+    return new Response(null, { status: 304, headers })
+  }
+
+  return new Response(object.body, { headers })
 })
 
 /**

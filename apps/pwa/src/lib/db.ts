@@ -22,6 +22,8 @@ export interface StoredPackage {
   subject: Subject
   grade: Grade
   downloadedAt: string
+  /** Last time we asked the server whether a newer version exists. */
+  checkedAt?: string
   payload: ContentPackage
 }
 
