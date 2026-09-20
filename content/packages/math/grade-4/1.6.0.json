@@ -1,16 +1,16 @@
 {
   "manifest": {
     "package_id": "math-4",
-    "version": "1.5.0",
+    "version": "1.6.0",
     "subject": "math",
     "grade": 4,
-    "created_at": "2026-09-20T09:42:46.834Z",
+    "created_at": "2026-09-20T09:47:33.575Z",
     "prompt_version": "archive-import-v1",
-    "task_count": 49,
-    "checksum": "20206ceb39af3ef6b4ef6907aa7dda845af2bc91587109400ee65a0deaf2133f",
+    "task_count": 77,
+    "checksum": "41807baa41a6c1e5e51cf64a058026b9a24afd9dc909aebe0a02d476f20dced8",
     "verification_summary": {
-      "total": 49,
-      "passed": 49,
+      "total": 77,
+      "passed": 77,
       "failed": 0,
       "needs_review": 0
     }
@@ -1842,6 +1842,1193 @@
         "method": "official_answer_key",
         "model": null,
         "notes": "Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2526p-a1",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "word_problems",
+      "level": 4,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/prigl/math/sol-math-4-prigl-msk-25-26.pdf",
+        "year": 2025,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Когда Васе было столько лет, сколько Боре сейчас, Вася был в 2 раза старше Антона. Сколько сейчас Васе лет, если Антону 15 и он младше Бори на 7 лет?",
+      "answer": {
+        "type": "number",
+        "value": 26
+      },
+      "solution_md": "Антону сейчас 15, значит Боре сейчас 22. Когда Васе было 22, он был вдвое старше Антона, то есть Антону было 11. Прошло 4 года, значит Васе сейчас 26.",
+      "hints": [
+        "Разница в возрасте между двумя людьми не меняется со временем.",
+        "Сначала найди, сколько лет было или будет каждому в тот момент, о котором идёт речь.",
+        "Посчитай, сколько лет прошло или пройдёт с того момента до сегодняшнего дня."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2526p-a2",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "word_problems",
+      "level": 4,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/prigl/math/sol-math-4-prigl-msk-25-26.pdf",
+        "year": 2025,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Когда Коле было столько лет, сколько Васе сейчас, Коля был в 3 раза старше Феди. Сколько сейчас Коле лет, если Феде 16 и он младше Васи на 5 лет?",
+      "answer": {
+        "type": "number",
+        "value": 30
+      },
+      "solution_md": "Феде 16, значит Васе 21. Когда Коле был 21, он был втрое старше Феди, то есть Феде было 7. Прошло 9 лет, значит Коле сейчас 30.",
+      "hints": [
+        "Разница в возрасте между двумя людьми не меняется со временем.",
+        "Сначала найди, сколько лет было или будет каждому в тот момент, о котором идёт речь.",
+        "Посчитай, сколько лет прошло или пройдёт с того момента до сегодняшнего дня."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2526p-a3",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "word_problems",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/prigl/math/sol-math-4-prigl-msk-25-26.pdf",
+        "year": 2025,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Когда Марине будет столько лет, сколько Юле сейчас, Марина будет в 2 раза младше Феди. Сколько сейчас Марине лет, если Феде 21 и он старше Юли на 5 лет?",
+      "answer": {
+        "type": "number",
+        "value": 5
+      },
+      "solution_md": "Феде 21, значит Юле 16. Когда Марине будет 16, она будет вдвое младше Феди, то есть Феде будет 32. До этого 11 лет, значит Марине сейчас 16 − 11 = 5.",
+      "hints": [
+        "Разница в возрасте между двумя людьми не меняется со временем.",
+        "Сначала найди, сколько лет было или будет каждому в тот момент, о котором идёт речь.",
+        "Посчитай, сколько лет прошло или пройдёт с того момента до сегодняшнего дня."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2526p-a4",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "word_problems",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/prigl/math/sol-math-4-prigl-msk-25-26.pdf",
+        "year": 2025,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Когда Оле будет столько лет, сколько Юле сейчас, Оля будет в 3 раза младше Тани. Сколько сейчас Оле лет, если Тане 33 и она старше Юли на 18 лет?",
+      "answer": {
+        "type": "number",
+        "value": 3
+      },
+      "solution_md": "Тане 33, значит Юле 15. Когда Оле будет 15, она будет втрое младше Тани, то есть Тане будет 45. До этого 12 лет, значит Оле сейчас 15 − 12 = 3.",
+      "hints": [
+        "Разница в возрасте между двумя людьми не меняется со временем.",
+        "Сначала найди, сколько лет было или будет каждому в тот момент, о котором идёт речь.",
+        "Посчитай, сколько лет прошло или пройдёт с того момента до сегодняшнего дня."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2526p-c1",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "word_problems",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/prigl/math/sol-math-4-prigl-msk-25-26.pdf",
+        "year": 2025,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "У бабушки есть двое часов, но одни отстают на 5 минут каждый час, а другие убегают вперёд на 5 минут каждый час. Однажды в полдень (12:00) в воскресенье Петя завёл все часы и установил правильное время. На следующий день бабушка в какой-то момент обнаружила, что показания приборов отличаются ровно на 5 часов. Сколько времени было на самом деле в этот момент? Ответ запишите в 24-часовом формате ЧЧ:ММ.",
+      "answer": {
+        "type": "string",
+        "value": "18:00",
+        "accept": [
+          "18:00",
+          "18.00",
+          "18 00"
+        ]
+      },
+      "solution_md": "Одни часы отстают на 5 минут в час, другие спешат на 5 минут в час, значит их показания расходятся на 10 минут каждый час.\n\nЧтобы набежала разница в 5 часов (300 минут), должно пройти 300 : 10 = 30 часов.\n\nОтсчитав 30 часов от момента завода, получаем **18:00**.",
+      "hints": [
+        "За каждый час расхождение между часами растёт на сумму их ошибок.",
+        "Переведи нужную разницу в минуты и раздели на скорость расхождения.",
+        "Полученное число — это сколько часов прошло с момента завода."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2526p-c2",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "word_problems",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/prigl/math/sol-math-4-prigl-msk-25-26.pdf",
+        "year": 2025,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "У бабушки есть двое часов, но одни отстают на 10 минут каждый час, а другие убегают вперёд на 10 минут каждый час. Однажды в полдень (12:00) в воскресенье Петя завёл все часы и установил правильное время. На следующий день бабушка в какой-то момент обнаружила, что показания приборов отличаются ровно на 5 часов. Сколько времени было на самом деле в этот момент? Ответ запишите в 24-часовом формате ЧЧ:ММ.",
+      "answer": {
+        "type": "string",
+        "value": "09:00",
+        "accept": [
+          "9:00",
+          "09.00",
+          "09 00"
+        ]
+      },
+      "solution_md": "Одни часы отстают на 10 минут в час, другие спешат на 10 минут в час, значит их показания расходятся на 20 минут каждый час.\n\nЧтобы набежала разница в 5 часов (300 минут), должно пройти 300 : 20 = 15 часов.\n\nОтсчитав 15 часов от момента завода, получаем **09:00**.",
+      "hints": [
+        "За каждый час расхождение между часами растёт на сумму их ошибок.",
+        "Переведи нужную разницу в минуты и раздели на скорость расхождения.",
+        "Полученное число — это сколько часов прошло с момента завода."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2526p-c3",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "word_problems",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/prigl/math/sol-math-4-prigl-msk-25-26.pdf",
+        "year": 2025,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "У бабушки есть двое часов, но одни отстают на 3 минут каждый час, а другие убегают вперёд на 3 минут каждый час. Однажды утром в 10:00 Петя завёл все часы и установил правильное время. На следующий день бабушка в какой-то момент обнаружила, что показания приборов отличаются ровно на 3 часов. Сколько времени было на самом деле в этот момент? Ответ запишите в 24-часовом формате ЧЧ:ММ.",
+      "answer": {
+        "type": "string",
+        "value": "16:00",
+        "accept": [
+          "16:00",
+          "16.00",
+          "16 00"
+        ]
+      },
+      "solution_md": "Одни часы отстают на 3 минут в час, другие спешат на 3 минут в час, значит их показания расходятся на 6 минут каждый час.\n\nЧтобы набежала разница в 3 часов (180 минут), должно пройти 180 : 6 = 30 часов.\n\nОтсчитав 30 часов от момента завода, получаем **16:00**.",
+      "hints": [
+        "За каждый час расхождение между часами растёт на сумму их ошибок.",
+        "Переведи нужную разницу в минуты и раздели на скорость расхождения.",
+        "Полученное число — это сколько часов прошло с момента завода."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2526p-c4",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "word_problems",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/prigl/math/sol-math-4-prigl-msk-25-26.pdf",
+        "year": 2025,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "У бабушки есть двое часов, но одни отстают на 6 минут каждый час, а другие убегают вперёд на 6 минут каждый час. Однажды утром в 11:00 Петя завёл все часы и установил правильное время. На следующий день бабушка в какой-то момент обнаружила, что показания приборов отличаются ровно на 6 часов. Сколько времени было на самом деле в этот момент? Ответ запишите в 24-часовом формате ЧЧ:ММ.",
+      "answer": {
+        "type": "string",
+        "value": "17:00",
+        "accept": [
+          "17:00",
+          "17.00",
+          "17 00"
+        ]
+      },
+      "solution_md": "Одни часы отстают на 6 минут в час, другие спешат на 6 минут в час, значит их показания расходятся на 12 минут каждый час.\n\nЧтобы набежала разница в 6 часов (360 минут), должно пройти 360 : 12 = 30 часов.\n\nОтсчитав 30 часов от момента завода, получаем **17:00**.",
+      "hints": [
+        "За каждый час расхождение между часами растёт на сумму их ошибок.",
+        "Переведи нужную разницу в минуты и раздели на скорость расхождения.",
+        "Полученное число — это сколько часов прошло с момента завода."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2526p-f1",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "logic",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/prigl/math/sol-math-4-prigl-msk-25-26.pdf",
+        "year": 2025,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Маруся нарисовала на листе бумаги несколько непересекающихся фигур: квадраты, круги, прямоугольники, возможно, треугольники (никаких других, кроме перечисленных, она не рисовала). Виталик сосчитал, что среди них ровно 3 квадрата, 5 кругов, 8 прямоугольников и 19 синих фигур (он сосчитал все фигуры каждого типа). Сколько треугольников могла нарисовать Маруся, если каждую нарисованную фигуру Виталик сосчитал хотя бы раз?\n\nВыберите все подходящие варианты.",
+      "answer": {
+        "type": "multi",
+        "value": [
+          "6",
+          "7",
+          "9",
+          "19"
+        ],
+        "options": [
+          "0",
+          "1",
+          "3",
+          "4",
+          "6",
+          "7",
+          "9",
+          "19"
+        ]
+      },
+      "solution_md": "Квадрат — это тоже прямоугольник, поэтому квадраты были сосчитаны дважды: и как квадраты, и как прямоугольники.\n\nВычтя это удвоение, находим, сколько фигур точно не являются искомыми. Остальные фигуры обязаны быть цветными, и от этого получаются нижняя и верхняя границы.\n\nДля любого количества между этими границами пример построить можно — достаточно постепенно перекрашивать фигуры и заменять их.",
+      "hints": [
+        "Квадрат — это тоже прямоугольник, поэтому его считали дважды.",
+        "Сначала посчитай, сколько фигур не являются треугольниками.",
+        "Подумай, каким может быть наименьшее и наибольшее число треугольников."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2526p-f2",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "logic",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/prigl/math/sol-math-4-prigl-msk-25-26.pdf",
+        "year": 2025,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Оля нарисовала на листе бумаги несколько непересекающихся фигур: квадраты, треугольники, прямоугольники, возможно, круги (никаких других, кроме перечисленных, она не рисовала). Виталик сосчитал, что среди них ровно 4 квадрата, 6 треугольников, 5 прямоугольников и 15 красных фигур (он сосчитал все фигуры каждого типа). Сколько кругов могла нарисовать Оля, если каждую нарисованную фигуру Виталик сосчитал хотя бы раз?\n\nВыберите все подходящие варианты.",
+      "answer": {
+        "type": "multi",
+        "value": [
+          "4",
+          "6",
+          "7",
+          "9",
+          "15"
+        ],
+        "options": [
+          "0",
+          "1",
+          "3",
+          "4",
+          "6",
+          "7",
+          "9",
+          "15"
+        ]
+      },
+      "solution_md": "Квадрат — это тоже прямоугольник, поэтому квадраты были сосчитаны дважды: и как квадраты, и как прямоугольники.\n\nВычтя это удвоение, находим, сколько фигур точно не являются искомыми. Остальные фигуры обязаны быть цветными, и от этого получаются нижняя и верхняя границы.\n\nДля любого количества между этими границами пример построить можно — достаточно постепенно перекрашивать фигуры и заменять их.",
+      "hints": [
+        "Квадрат — это тоже прямоугольник, поэтому его считали дважды.",
+        "Сначала посчитай, сколько фигур не являются треугольниками.",
+        "Подумай, каким может быть наименьшее и наибольшее число треугольников."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2526p-f3",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "logic",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/prigl/math/sol-math-4-prigl-msk-25-26.pdf",
+        "year": 2025,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Костя нарисовал на листе бумаги несколько непересекающихся фигур: квадраты, круги, прямоугольники, возможно, треугольники (никаких других, кроме перечисленных, он не рисовал). Женя сосчитал, что среди них ровно 5 квадратов, 5 кругов, 7 прямоугольников и 10 синих фигур (он сосчитал все фигуры каждого типа). Сколько треугольников мог нарисовать Костя, если каждую нарисованную фигуру Женя сосчитал хотя бы раз?\n\nВыберите все подходящие варианты.",
+      "answer": {
+        "type": "multi",
+        "value": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "9",
+          "10"
+        ],
+        "options": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "9",
+          "10",
+          "17"
+        ]
+      },
+      "solution_md": "Квадрат — это тоже прямоугольник, поэтому квадраты были сосчитаны дважды: и как квадраты, и как прямоугольники.\n\nВычтя это удвоение, находим, сколько фигур точно не являются искомыми. Остальные фигуры обязаны быть цветными, и от этого получаются нижняя и верхняя границы.\n\nДля любого количества между этими границами пример построить можно — достаточно постепенно перекрашивать фигуры и заменять их.",
+      "hints": [
+        "Квадрат — это тоже прямоугольник, поэтому его считали дважды.",
+        "Сначала посчитай, сколько фигур не являются треугольниками.",
+        "Подумай, каким может быть наименьшее и наибольшее число треугольников."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2526p-f4",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "logic",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/prigl/math/sol-math-4-prigl-msk-25-26.pdf",
+        "year": 2025,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Гриша нарисовал на листе бумаги несколько непересекающихся фигур: квадраты, треугольники, прямоугольники, возможно, круги (никаких других, кроме перечисленных, он не рисовал). Ваня сосчитал, что среди них ровно 3 квадрата, 7 треугольников, 6 прямоугольников и 14 зелёных фигур (он сосчитал все фигуры каждого типа). Сколько кругов мог нарисовать Гриша, если каждую нарисованную фигуру Ваня сосчитал хотя бы раз?\n\nВыберите все подходящие варианты.",
+      "answer": {
+        "type": "multi",
+        "value": [
+          "1",
+          "2",
+          "7",
+          "9",
+          "12",
+          "14"
+        ],
+        "options": [
+          "0",
+          "1",
+          "2",
+          "7",
+          "9",
+          "12",
+          "14",
+          "15"
+        ]
+      },
+      "solution_md": "Квадрат — это тоже прямоугольник, поэтому квадраты были сосчитаны дважды: и как квадраты, и как прямоугольники.\n\nВычтя это удвоение, находим, сколько фигур точно не являются искомыми. Остальные фигуры обязаны быть цветными, и от этого получаются нижняя и верхняя границы.\n\nДля любого количества между этими границами пример построить можно — достаточно постепенно перекрашивать фигуры и заменять их.",
+      "hints": [
+        "Квадрат — это тоже прямоугольник, поэтому его считали дважды.",
+        "Сначала посчитай, сколько фигур не являются треугольниками.",
+        "Подумай, каким может быть наименьшее и наибольшее число треугольников."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2526p-g1",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "geometry",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/prigl/math/sol-math-4-prigl-msk-25-26.pdf",
+        "year": 2025,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Имеется длинная клетчатая фигура из 2024 клеток, как показано на рисунке.\n\n![Длинная клетчатая фигура, составленная из повторяющихся крестообразных звеньев по диагонали](data:image/webp;base64,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)\n\nСколькими способами из неё можно вырезать один прямоугольник из двух клеточек (вертикальный или горизонтальный)?",
+      "answer": {
+        "type": "number",
+        "value": 2696
+      },
+      "solution_md": "В фигуре 2024 клеток, из них 674 — диагональные, вокруг которых собирается каждое звено.\n\nКаждая диагональная клетка даёт две вертикальные пары и две горизонтальные.\n\nВертикальных пар 674 · 2 = 1348, столько же горизонтальных. Итого 1348 · 2 = **2696**.",
+      "hints": [
+        "Каждый прямоугольник из двух клеток — это либо вертикальная, либо горизонтальная пара.",
+        "Присмотрись к диагональным клеткам: их число задаёт ответ.",
+        "Вертикальных пар столько же, сколько горизонтальных."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2526p-g2",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "geometry",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/prigl/math/sol-math-4-prigl-msk-25-26.pdf",
+        "year": 2025,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Имеется длинная клетчатая фигура из 2324 клеток, как показано на рисунке.\n\n![Длинная клетчатая фигура, составленная из повторяющихся крестообразных звеньев по диагонали](data:image/webp;base64,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)\n\nСколькими способами из неё можно вырезать один прямоугольник из двух клеточек (вертикальный или горизонтальный)?",
+      "answer": {
+        "type": "number",
+        "value": 3096
+      },
+      "solution_md": "В фигуре 2324 клеток, из них 774 — диагональные, вокруг которых собирается каждое звено.\n\nКаждая диагональная клетка даёт две вертикальные пары и две горизонтальные.\n\nВертикальных пар 774 · 2 = 1548, столько же горизонтальных. Итого 1548 · 2 = **3096**.",
+      "hints": [
+        "Каждый прямоугольник из двух клеток — это либо вертикальная, либо горизонтальная пара.",
+        "Присмотрись к диагональным клеткам: их число задаёт ответ.",
+        "Вертикальных пар столько же, сколько горизонтальных."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2526p-g3",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "geometry",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/prigl/math/sol-math-4-prigl-msk-25-26.pdf",
+        "year": 2025,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Имеется длинная клетчатая фигура из 2624 клеток, как показано на рисунке.\n\n![Длинная клетчатая фигура, составленная из повторяющихся крестообразных звеньев по диагонали](data:image/webp;base64,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)\n\nСколькими способами из неё можно вырезать один прямоугольник из двух клеточек (вертикальный или горизонтальный)?",
+      "answer": {
+        "type": "number",
+        "value": 3496
+      },
+      "solution_md": "В фигуре 2624 клеток, из них 874 — диагональные, вокруг которых собирается каждое звено.\n\nКаждая диагональная клетка даёт две вертикальные пары и две горизонтальные.\n\nВертикальных пар 874 · 2 = 1748, столько же горизонтальных. Итого 1748 · 2 = **3496**.",
+      "hints": [
+        "Каждый прямоугольник из двух клеток — это либо вертикальная, либо горизонтальная пара.",
+        "Присмотрись к диагональным клеткам: их число задаёт ответ.",
+        "Вертикальных пар столько же, сколько горизонтальных."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2526p-g4",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "geometry",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/prigl/math/sol-math-4-prigl-msk-25-26.pdf",
+        "year": 2025,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Имеется длинная клетчатая фигура из 2924 клеток, как показано на рисунке.\n\n![Длинная клетчатая фигура, составленная из повторяющихся крестообразных звеньев по диагонали](data:image/webp;base64,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)\n\nСколькими способами из неё можно вырезать один прямоугольник из двух клеточек (вертикальный или горизонтальный)?",
+      "answer": {
+        "type": "number",
+        "value": 3896
+      },
+      "solution_md": "В фигуре 2924 клеток, из них 974 — диагональные, вокруг которых собирается каждое звено.\n\nКаждая диагональная клетка даёт две вертикальные пары и две горизонтальные.\n\nВертикальных пар 974 · 2 = 1948, столько же горизонтальных. Итого 1948 · 2 = **3896**.",
+      "hints": [
+        "Каждый прямоугольник из двух клеток — это либо вертикальная, либо горизонтальная пара.",
+        "Присмотрись к диагональным клеткам: их число задаёт ответ.",
+        "Вертикальных пар столько же, сколько горизонтальных."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2526p-l1",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "logic",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/prigl/math/sol-math-4-prigl-msk-25-26.pdf",
+        "year": 2025,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Однажды на вечеринке разговаривали четверо друзей.\n\n- Василиса заявила: «Во всех моих предложениях меньше семи слов».\n- Павел ответил: «А в моём предложении не больше восьми слов!»\n- Олег высказался: «Василиса и Павел оба сказали правду».\n- Коля мрачно добавил: «Но вообще-то либо Василиса, либо Олег, либо они оба солгали».\n\nКто сказал правду? Выберите всех.",
+      "answer": {
+        "type": "multi",
+        "value": [
+          "Павел",
+          "Коля"
+        ],
+        "options": [
+          "Василиса",
+          "Павел",
+          "Олег",
+          "Коля"
+        ]
+      },
+      "solution_md": "Начни с утверждения о собственных предложениях — его можно проверить, просто сосчитав слова.\n\nОказывается, оно ложно, и отсюда сразу следует, кто ещё солгал: тот, кто подтвердил его правдивость.\n\nФраза «либо …, либо …, либо оба» истинна, если верна хотя бы одна её часть, — поэтому её автор сказал правду.",
+      "hints": [
+        "Сосчитай слова в предложении того, кто говорит про свои предложения.",
+        "Если его утверждение о самом себе ложно, что следует из этого для остальных?",
+        "Фраза «либо …, либо …, либо оба» истинна, если верна хотя бы одна её часть."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2526p-l2",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "logic",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/prigl/math/sol-math-4-prigl-msk-25-26.pdf",
+        "year": 2025,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Однажды на вечеринке разговаривали четверо друзей.\n\n- Аля заявила: «Во всех моих предложениях больше семи слов».\n- Рома ответил: «А в этом моём предложении не больше девяти слов!»\n- Олег высказался: «Аля и Рома оба солгали».\n- Федя мрачно добавил: «Но вообще-то либо Аля, либо Рома, либо они оба сказали правду».\n\nКто сказал правду? Выберите всех.",
+      "answer": {
+        "type": "multi",
+        "value": [
+          "Рома",
+          "Федя"
+        ],
+        "options": [
+          "Аля",
+          "Рома",
+          "Олег",
+          "Федя"
+        ]
+      },
+      "solution_md": "Начни с утверждения о собственных предложениях — его можно проверить, просто сосчитав слова.\n\nОказывается, оно ложно, и отсюда сразу следует, кто ещё солгал: тот, кто подтвердил его правдивость.\n\nФраза «либо …, либо …, либо оба» истинна, если верна хотя бы одна её часть, — поэтому её автор сказал правду.",
+      "hints": [
+        "Сосчитай слова в предложении того, кто говорит про свои предложения.",
+        "Если его утверждение о самом себе ложно, что следует из этого для остальных?",
+        "Фраза «либо …, либо …, либо оба» истинна, если верна хотя бы одна её часть."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2526p-l3",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "logic",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/prigl/math/sol-math-4-prigl-msk-25-26.pdf",
+        "year": 2025,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Однажды на вечеринке разговаривали четверо друзей.\n\n- Ира заявила: «Во всех моих предложениях всегда больше восьми слов».\n- Миша ответил: «В этот раз ты лжёшь!»\n- Коля высказался: «Кто-то из вас точно солгал!»\n- Федя мрачно добавил: «Но вообще-то либо Ира, либо Коля, либо они оба солгали».\n\nКто сказал правду? Выберите всех.",
+      "answer": {
+        "type": "multi",
+        "value": [
+          "Миша",
+          "Коля",
+          "Федя"
+        ],
+        "options": [
+          "Ира",
+          "Миша",
+          "Коля",
+          "Федя"
+        ]
+      },
+      "solution_md": "Начни с утверждения о собственных предложениях — его можно проверить, просто сосчитав слова.\n\nОказывается, оно ложно, и отсюда сразу следует, кто ещё солгал: тот, кто подтвердил его правдивость.\n\nФраза «либо …, либо …, либо оба» истинна, если верна хотя бы одна её часть, — поэтому её автор сказал правду.",
+      "hints": [
+        "Сосчитай слова в предложении того, кто говорит про свои предложения.",
+        "Если его утверждение о самом себе ложно, что следует из этого для остальных?",
+        "Фраза «либо …, либо …, либо оба» истинна, если верна хотя бы одна её часть."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2526p-l4",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "logic",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/prigl/math/sol-math-4-prigl-msk-25-26.pdf",
+        "year": 2025,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Однажды на вечеринке разговаривали четверо друзей.\n\n- Олег заявил: «Во всех моих предложениях больше семи слов».\n- Игорь ответил: «А в моём предложении не меньше восьми слов!»\n- Гриша высказался: «Олег и Игорь оба сказали правду».\n- Коля мрачно добавил: «Но вообще-то либо Олег, либо Гриша, либо они оба солгали».\n\nКто сказал правду? Выберите всех.",
+      "answer": {
+        "type": "multi",
+        "value": [
+          "Игорь",
+          "Коля"
+        ],
+        "options": [
+          "Олег",
+          "Игорь",
+          "Гриша",
+          "Коля"
+        ]
+      },
+      "solution_md": "Начни с утверждения о собственных предложениях — его можно проверить, просто сосчитав слова.\n\nОказывается, оно ложно, и отсюда сразу следует, кто ещё солгал: тот, кто подтвердил его правдивость.\n\nФраза «либо …, либо …, либо оба» истинна, если верна хотя бы одна её часть, — поэтому её автор сказал правду.",
+      "hints": [
+        "Сосчитай слова в предложении того, кто говорит про свои предложения.",
+        "Если его утверждение о самом себе ложно, что следует из этого для остальных?",
+        "Фраза «либо …, либо …, либо оба» истинна, если верна хотя бы одна её часть."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2526p-p1",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "word_problems",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/prigl/math/sol-math-4-prigl-msk-25-26.pdf",
+        "year": 2025,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "На новогоднем празднике каждый пятый ребёнок был в костюме Белоснежки. После того как во время праздника пришло ещё 9 детей в костюмах Гномиков, в костюме Белоснежки оказался каждый восьмой ребёнок. Сколько всего детей в итоге участвовало в этом празднике?",
+      "answer": {
+        "type": "number",
+        "value": 24
+      },
+      "solution_md": "До прихода новых детей всех можно было разбить на группы по 5 человек, в каждой из которых один ребёнок в костюме Белоснежки.\n\nПосле прихода гостей группы стали по 8 человек, но число групп не изменилось — ведь детей в костюме Белоснежки не прибавилось.\n\nКаждая группа выросла на 3 человек, а всего пришло 9 детей, значит групп было 3.\n\nИтого детей стало 3 · 8 = **24**.",
+      "hints": [
+        "До прихода новых детей всех можно было разбить на равные группы.",
+        "После прихода группы стали больше, но их число осталось прежним.",
+        "Раздели число пришедших детей на то, насколько выросла каждая группа."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2526p-p2",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "word_problems",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/prigl/math/sol-math-4-prigl-msk-25-26.pdf",
+        "year": 2025,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "На новогоднем празднике каждый шестой ребёнок был в костюме зайчика. После того как во время праздника пришло ещё 9 детей в костюмах Гномиков, в костюме зайчика оказался каждый девятый ребёнок. Сколько всего детей в итоге участвовало в этом празднике?",
+      "answer": {
+        "type": "number",
+        "value": 27
+      },
+      "solution_md": "До прихода новых детей всех можно было разбить на группы по 6 человек, в каждой из которых один ребёнок в костюме зайчика.\n\nПосле прихода гостей группы стали по 9 человек, но число групп не изменилось — ведь детей в костюме зайчика не прибавилось.\n\nКаждая группа выросла на 3 человек, а всего пришло 9 детей, значит групп было 3.\n\nИтого детей стало 3 · 9 = **27**.",
+      "hints": [
+        "До прихода новых детей всех можно было разбить на равные группы.",
+        "После прихода группы стали больше, но их число осталось прежним.",
+        "Раздели число пришедших детей на то, насколько выросла каждая группа."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2526p-p3",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "word_problems",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/prigl/math/sol-math-4-prigl-msk-25-26.pdf",
+        "year": 2025,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "На новогоднем празднике каждый пятый ребёнок был в костюме снежинки. После того как во время праздника пришло ещё 16 детей в костюмах зайчиков, в костюме снежинки оказался каждый девятый ребёнок. Сколько всего детей в итоге участвовало в этом празднике?",
+      "answer": {
+        "type": "number",
+        "value": 36
+      },
+      "solution_md": "До прихода новых детей всех можно было разбить на группы по 5 человек, в каждой из которых один ребёнок в костюме снежинки.\n\nПосле прихода гостей группы стали по 9 человек, но число групп не изменилось — ведь детей в костюме снежинки не прибавилось.\n\nКаждая группа выросла на 4 человек, а всего пришло 16 детей, значит групп было 4.\n\nИтого детей стало 4 · 9 = **36**.",
+      "hints": [
+        "До прихода новых детей всех можно было разбить на равные группы.",
+        "После прихода группы стали больше, но их число осталось прежним.",
+        "Раздели число пришедших детей на то, насколько выросла каждая группа."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2526p-p4",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "word_problems",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/prigl/math/sol-math-4-prigl-msk-25-26.pdf",
+        "year": 2025,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "На новогоднем празднике каждый пятый ребёнок был в костюме зайчика. После того как во время праздника пришло ещё 12 детей в костюмах снежинок, в костюме зайчика оказался каждый восьмой ребёнок. Сколько всего детей в итоге участвовало в этом празднике?",
+      "answer": {
+        "type": "number",
+        "value": 32
+      },
+      "solution_md": "До прихода новых детей всех можно было разбить на группы по 5 человек, в каждой из которых один ребёнок в костюме зайчика.\n\nПосле прихода гостей группы стали по 8 человек, но число групп не изменилось — ведь детей в костюме зайчика не прибавилось.\n\nКаждая группа выросла на 3 человек, а всего пришло 12 детей, значит групп было 4.\n\nИтого детей стало 4 · 8 = **32**.",
+      "hints": [
+        "До прихода новых детей всех можно было разбить на равные группы.",
+        "После прихода группы стали больше, но их число осталось прежним.",
+        "Раздели число пришедших детей на то, насколько выросла каждая группа."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2526p-r1",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "word_problems",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/prigl/math/sol-math-4-prigl-msk-25-26.pdf",
+        "year": 2025,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "У Бориса есть линейка с сантиметровыми и миллиметровыми делениями. Первая отметка (сантиметровая) приходится на 0 см. Борис сосчитал, что на этой линейке в точности 70 миллиметровых делений.\n\n![Линейка с сантиметровыми и миллиметровыми делениями](data:image/webp;base64,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)\n\nЧему равно расстояние между первым и последним делениями этой линейки? Ответ выразите в миллиметрах.",
+      "answer": {
+        "type": "number",
+        "value": 77
+      },
+      "solution_md": "Между двумя сантиметровыми делениями расположено 9 миллиметровых.\n\nРазделим 70 на 9 с остатком: получается 7 полных сантиметров (7 · 9 = 63) и ещё 7 делений, то есть 7 мм.\n\nИтого 7 · 10 + 7 = **77 мм**. Сантиметровой отметки дальше нет — иначе делений было бы ещё 9.",
+      "hints": [
+        "Между двумя соседними сантиметровыми делениями умещается 9 миллиметровых.",
+        "Раздели число миллиметровых делений на 9 с остатком.",
+        "Целая часть даст сантиметры, а остаток — дополнительные миллиметры."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2526p-r2",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "word_problems",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/prigl/math/sol-math-4-prigl-msk-25-26.pdf",
+        "year": 2025,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "У Феликса есть линейка с сантиметровыми и миллиметровыми делениями. Первая отметка (сантиметровая) приходится на 0 см. Феликс сосчитал, что на этой линейке в точности 88 миллиметровых делений.\n\n![Линейка с сантиметровыми и миллиметровыми делениями](data:image/webp;base64,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)\n\nЧему равно расстояние между первым и последним делениями этой линейки? Ответ выразите в миллиметрах.",
+      "answer": {
+        "type": "number",
+        "value": 97
+      },
+      "solution_md": "Между двумя сантиметровыми делениями расположено 9 миллиметровых.\n\nРазделим 88 на 9 с остатком: получается 9 полных сантиметров (9 · 9 = 81) и ещё 7 делений, то есть 7 мм.\n\nИтого 9 · 10 + 7 = **97 мм**. Сантиметровой отметки дальше нет — иначе делений было бы ещё 9.",
+      "hints": [
+        "Между двумя соседними сантиметровыми делениями умещается 9 миллиметровых.",
+        "Раздели число миллиметровых делений на 9 с остатком.",
+        "Целая часть даст сантиметры, а остаток — дополнительные миллиметры."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2526p-r3",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "word_problems",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/prigl/math/sol-math-4-prigl-msk-25-26.pdf",
+        "year": 2025,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "У Ксюши есть линейка с сантиметровыми и миллиметровыми делениями. Первая отметка (сантиметровая) приходится на 0 см. Ксюша сосчитала, что на этой линейке в точности 77 миллиметровых делений.\n\n![Линейка с сантиметровыми и миллиметровыми делениями](data:image/webp;base64,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)\n\nЧему равно расстояние между первым и последним делениями этой линейки? Ответ выразите в миллиметрах.",
+      "answer": {
+        "type": "number",
+        "value": 85
+      },
+      "solution_md": "Между двумя сантиметровыми делениями расположено 9 миллиметровых.\n\nРазделим 77 на 9 с остатком: получается 8 полных сантиметров (8 · 9 = 72) и ещё 5 делений, то есть 5 мм.\n\nИтого 8 · 10 + 5 = **85 мм**. Сантиметровой отметки дальше нет — иначе делений было бы ещё 9.",
+      "hints": [
+        "Между двумя соседними сантиметровыми делениями умещается 9 миллиметровых.",
+        "Раздели число миллиметровых делений на 9 с остатком.",
+        "Целая часть даст сантиметры, а остаток — дополнительные миллиметры."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2526p-r4",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "word_problems",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/prigl/math/sol-math-4-prigl-msk-25-26.pdf",
+        "year": 2025,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "У Беллы есть линейка с сантиметровыми и миллиметровыми делениями. Первая отметка (сантиметровая) приходится на 0 см. Белла сосчитала, что на этой линейке в точности 60 миллиметровых делений.\n\n![Линейка с сантиметровыми и миллиметровыми делениями](data:image/webp;base64,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)\n\nЧему равно расстояние между первым и последним делениями этой линейки? Ответ выразите в миллиметрах.",
+      "answer": {
+        "type": "number",
+        "value": 66
+      },
+      "solution_md": "Между двумя сантиметровыми делениями расположено 9 миллиметровых.\n\nРазделим 60 на 9 с остатком: получается 6 полных сантиметров (6 · 9 = 54) и ещё 6 делений, то есть 6 мм.\n\nИтого 6 · 10 + 6 = **66 мм**. Сантиметровой отметки дальше нет — иначе делений было бы ещё 9.",
+      "hints": [
+        "Между двумя соседними сантиметровыми делениями умещается 9 миллиметровых.",
+        "Раздели число миллиметровых делений на 9 с остатком.",
+        "Целая часть даст сантиметры, а остаток — дополнительные миллиметры."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
       },
       "points": 1
     },
