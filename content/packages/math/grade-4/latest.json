@@ -1,16 +1,16 @@
 {
   "manifest": {
     "package_id": "math-4",
-    "version": "1.7.0",
+    "version": "1.8.0",
     "subject": "math",
     "grade": 4,
-    "created_at": "2026-09-20T10:02:51.403Z",
+    "created_at": "2026-09-20T10:05:37.992Z",
     "prompt_version": "archive-import-v1",
-    "task_count": 85,
-    "checksum": "ac4d6530589f73c88008cbfb0bb1642215126d039cd402e3503c114c7a722784",
+    "task_count": 101,
+    "checksum": "69603bebccd7b5241f3bf9780760e3a0398b153af17dfb52aa19a89257b4bcf1",
     "verification_summary": {
-      "total": 85,
-      "passed": 85,
+      "total": 101,
+      "passed": 101,
       "failed": 0,
       "needs_review": 0
     }
@@ -348,6 +348,662 @@
         "method": "official_answer_key",
         "model": null,
         "notes": "Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2324p-c1",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "geometry",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2023-24/prigl/math/sol-math-4-prigl-msk-23-24.pdf",
+        "year": 2023,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Лист бумаги сложили гармошкой, как показано на рисунке, а затем ещё пополам по пунктирной линии. После чего разрезали всю получившуюся квадратную стопку по диагонали.\n\n![Лист, сложенный гармошкой, пунктирная линия сгиба и разрез по диагонали](data:image/webp;base64,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)\n\nСколько кусочков бумаги получилось после этого?",
+      "answer": {
+        "type": "number",
+        "value": 9
+      },
+      "solution_md": "Разверни лист и отметь на нём все линии разрезов: каждая складка отражает диагональ на соседнюю часть, а сгиб пополам добавляет ещё одну ось симметрии.\n\nСосчитав получившиеся части на развёрнутом листе, получаем **9**.",
+      "hints": [
+        "Разверни лист мысленно и отметь, где пройдут линии разрезов.",
+        "Каждая складка отражает разрез на соседнюю часть.",
+        "Сосчитай получившиеся кусочки на развёрнутом листе."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2324p-c2",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "geometry",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2023-24/prigl/math/sol-math-4-prigl-msk-23-24.pdf",
+        "year": 2023,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Лист бумаги сложили гармошкой, как показано на рисунке, а затем ещё пополам по пунктирной линии. После чего разрезали всю получившуюся квадратную стопку по диагонали.\n\n![Лист, сложенный гармошкой, пунктирная линия сгиба и разрез по диагонали](data:image/webp;base64,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)\n\nСколько кусочков бумаги получилось после этого?",
+      "answer": {
+        "type": "number",
+        "value": 8
+      },
+      "solution_md": "Разверни лист и отметь на нём все линии разрезов: каждая складка отражает диагональ на соседнюю часть, а сгиб пополам добавляет ещё одну ось симметрии.\n\nСосчитав получившиеся части на развёрнутом листе, получаем **8**.",
+      "hints": [
+        "Разверни лист мысленно и отметь, где пройдут линии разрезов.",
+        "Каждая складка отражает разрез на соседнюю часть.",
+        "Сосчитай получившиеся кусочки на развёрнутом листе."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2324p-c3",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "geometry",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2023-24/prigl/math/sol-math-4-prigl-msk-23-24.pdf",
+        "year": 2023,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Лист бумаги сложили гармошкой, как показано на рисунке, а затем ещё пополам по пунктирной линии. После чего разрезали всю получившуюся квадратную стопку по диагонали.\n\n![Лист, сложенный гармошкой, пунктирная линия сгиба и разрез по диагонали](data:image/webp;base64,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)\n\nСколько кусочков бумаги получилось после этого?",
+      "answer": {
+        "type": "number",
+        "value": 9
+      },
+      "solution_md": "Разверни лист и отметь на нём все линии разрезов: каждая складка отражает диагональ на соседнюю часть, а сгиб пополам добавляет ещё одну ось симметрии.\n\nСосчитав получившиеся части на развёрнутом листе, получаем **9**.",
+      "hints": [
+        "Разверни лист мысленно и отметь, где пройдут линии разрезов.",
+        "Каждая складка отражает разрез на соседнюю часть.",
+        "Сосчитай получившиеся кусочки на развёрнутом листе."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2324p-c4",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "geometry",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2023-24/prigl/math/sol-math-4-prigl-msk-23-24.pdf",
+        "year": 2023,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Лист бумаги сложили гармошкой, как показано на рисунке, а затем ещё пополам по пунктирной линии. После чего разрезали всю получившуюся квадратную стопку по диагонали.\n\n![Лист, сложенный гармошкой, пунктирная линия сгиба и разрез по диагонали](data:image/webp;base64,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)\n\nСколько кусочков бумаги получилось после этого?",
+      "answer": {
+        "type": "number",
+        "value": 7
+      },
+      "solution_md": "Разверни лист и отметь на нём все линии разрезов: каждая складка отражает диагональ на соседнюю часть, а сгиб пополам добавляет ещё одну ось симметрии.\n\nСосчитав получившиеся части на развёрнутом листе, получаем **7**.",
+      "hints": [
+        "Разверни лист мысленно и отметь, где пройдут линии разрезов.",
+        "Каждая складка отражает разрез на соседнюю часть.",
+        "Сосчитай получившиеся кусочки на развёрнутом листе."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2324p-f1",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "logic",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2023-24/prigl/math/sol-math-4-prigl-msk-23-24.pdf",
+        "year": 2023,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "На острове рыцарей, которые всегда говорят правду, и лжецов, которые всегда лгут, построили пятиэтажное здание. На каждом этаже поселился один жилец. Однажды каждый из них сделал одно и то же заявление:\n\n> «Выше меня живёт больше лжецов, чем рыцарей ниже меня!»\n\nСколько лжецов может жить в этом здании?",
+      "answer": {
+        "type": "number",
+        "value": 3
+      },
+      "solution_md": "Живущий на 5 этаже заведомо соврал: выше него нет никого, а значит и лжецов там 0.\n\nЖитель 1 этажа сказал правду: ниже него 0 рыцарей, а выше есть как минимум один лжец — тот, что на 5 этаже.\n\nНа 4 этаже выше живёт ровно 1 лжец, а ниже — минимум 1 рыцарь, поэтому его утверждение ложно: он лжец. На 2 этаже — по тем же причинам, что и на 1, живёт рыцарь.\n\nНа 3 этаже выше 2 лжеца, ниже 2 рыцаря — утверждение ложно, значит и он лжец. Итого лжецов **3**.",
+      "hints": [
+        "Начни с верхнего и нижнего жильца — про них известно больше всего.",
+        "Выше самого верхнего не живёт никто, ниже самого нижнего — тоже.",
+        "Определив крайних, двигайся к середине."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2324p-f2",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "logic",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2023-24/prigl/math/sol-math-4-prigl-msk-23-24.pdf",
+        "year": 2023,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "На острове рыцарей, которые всегда говорят правду, и лжецов, которые всегда лгут, построили шестиэтажное здание. На каждом этаже поселился один жилец. Однажды каждый из них сделал одно и то же заявление:\n\n> «Выше меня живёт меньше лжецов, чем рыцарей ниже меня!»\n\nСколько лжецов может жить в этом здании?",
+      "answer": {
+        "type": "number",
+        "value": 6
+      },
+      "solution_md": "Житель 1 этажа заведомо соврал: ниже него 0 рыцарей, а лжецов выше не может быть меньше нуля.\n\nЗначит, он лжец. Продвигаясь снизу вверх, каждый раз получаем, что рыцарей ниже по-прежнему нет, а потому утверждение снова ложно.\n\nТак рассуждение доходит до последнего этажа: лжецами оказываются все **6**.",
+      "hints": [
+        "Начни с верхнего и нижнего жильца — про них известно больше всего.",
+        "Выше самого верхнего не живёт никто, ниже самого нижнего — тоже.",
+        "Определив крайних, двигайся к середине."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2324p-f3",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "logic",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2023-24/prigl/math/sol-math-4-prigl-msk-23-24.pdf",
+        "year": 2023,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "На острове рыцарей, которые всегда говорят правду, и лжецов, которые всегда лгут, построили шестиэтажное здание. На каждом этаже поселился один жилец. Однажды каждый из них сделал одно и то же заявление:\n\n> «Выше меня живёт больше лжецов, чем рыцарей ниже меня!»\n\nСколько лжецов может жить в этом здании?",
+      "answer": {
+        "type": "number",
+        "value": 3
+      },
+      "solution_md": "Рассуждение то же, что и в пятиэтажном доме: верхний жилец заведомо лжёт, нижний заведомо говорит правду, и дальше этажи чередуются по тому же правилу.\n\nВ шестиэтажном здании лжецов оказывается **3**.",
+      "hints": [
+        "Начни с верхнего и нижнего жильца — про них известно больше всего.",
+        "Выше самого верхнего не живёт никто, ниже самого нижнего — тоже.",
+        "Определив крайних, двигайся к середине."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2324p-f4",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "logic",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2023-24/prigl/math/sol-math-4-prigl-msk-23-24.pdf",
+        "year": 2023,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "На острове рыцарей, которые всегда говорят правду, и лжецов, которые всегда лгут, построили пятиэтажное здание. На каждом этаже поселился один жилец. Однажды каждый из них сделал одно и то же заявление:\n\n> «Ниже меня живёт больше лжецов, чем рыцарей выше меня!»\n\nСколько рыцарей может жить в этом здании?",
+      "answer": {
+        "type": "number",
+        "value": 2
+      },
+      "solution_md": "Это зеркальное отражение первой задачи: теперь заведомо лжёт житель 1 этажа, а житель 5 этажа заведомо прав.\n\nПовторяя рассуждение сверху вниз, получаем, что рыцарей в доме **2**.",
+      "hints": [
+        "Начни с верхнего и нижнего жильца — про них известно больше всего.",
+        "Выше самого верхнего не живёт никто, ниже самого нижнего — тоже.",
+        "Определив крайних, двигайся к середине."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2324p-l1",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "word_problems",
+      "level": 4,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2023-24/prigl/math/sol-math-4-prigl-msk-23-24.pdf",
+        "year": 2023,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Бабушка вышивает имена своих внуков на их полотенцах. Имя «АННА» она вышила за 20 минут, а имя «ЛИНА» — за 16 минут. На одинаковые буквы она тратит одинаковое время, на разные — возможно, разное. За какое время она вышьет имя «ЛИЛИ»?\n\nОтвет выразите в минутах.",
+      "answer": {
+        "type": "number",
+        "value": 12
+      },
+      "solution_md": "«АННА» состоит из двух одинаковых половинок «АН», значит на слог «АН» уходит 20 : 2 = 10 минут.\n\n«ЛИНА» — это «ЛИ» плюс те же буквы «НА», то есть «ЛИ» стоит 16 − 10 = 6 минут.\n\nИмя «ЛИЛИ» — это два слога «ЛИ»: 6 + 6 = **12 минут**.",
+      "hints": [
+        "Одинаковые буквы стоят одинакового времени — сравни два известных слова.",
+        "Найди, из каких повторяющихся кусочков состоит каждое слово.",
+        "Вычитая одно слово из другого, можно узнать время на отдельный слог."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2324p-l2",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "word_problems",
+      "level": 4,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2023-24/prigl/math/sol-math-4-prigl-msk-23-24.pdf",
+        "year": 2023,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Машенька подписывает красивыми буквами подарки на Новый год. «МАМА» она написала за 12 минут, а имя «МИЛА» — за 8 минут. На одинаковые буквы она тратит одинаковое время, на разные — возможно, разное. За какое время она надпишет имя «ЛИЛИ»?\n\nОтвет выразите в минутах.",
+      "answer": {
+        "type": "number",
+        "value": 4
+      },
+      "solution_md": "«МАМА» — это два слога «МА», значит слог «МА» стоит 12 : 2 = 6 минут.\n\n«МИЛА» — это «МИ» плюс «ЛА»… удобнее считать по буквам: М + И + Л + А = 8, а М + А = 6, значит И + Л = 2.\n\n«ЛИЛИ» — это два раза «ЛИ», то есть 2 · (И + Л) = 2 · 2 = **4 минуты**.",
+      "hints": [
+        "Одинаковые буквы стоят одинакового времени — сравни два известных слова.",
+        "Найди, из каких повторяющихся кусочков состоит каждое слово.",
+        "Вычитая одно слово из другого, можно узнать время на отдельный слог."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2324p-l3",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "word_problems",
+      "level": 4,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2023-24/prigl/math/sol-math-4-prigl-msk-23-24.pdf",
+        "year": 2023,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Петя учит своего кота читать и для этого делает ему таблички со словами, выжигая их. Слово «МАМА» он выжег за 20 минут, а слово «МИСКА» — за 35 минут. На одинаковые буквы он тратит одинаковое время, на разные — возможно, разное. За какое время он выжжет «КИС КИС»?\n\nОтвет выразите в минутах.",
+      "answer": {
+        "type": "number",
+        "value": 50
+      },
+      "solution_md": "«МАМА» — два слога «МА», значит М + А = 20 : 2 = 10 минут.\n\n«МИСКА» = М + И + С + К + А = 35. Вычитая М + А = 10, получаем И + С + К = 25.\n\n«КИС КИС» — это два раза К + И + С: 25 + 25 = **50 минут**.",
+      "hints": [
+        "Одинаковые буквы стоят одинакового времени — сравни два известных слова.",
+        "Найди, из каких повторяющихся кусочков состоит каждое слово.",
+        "Вычитая одно слово из другого, можно узнать время на отдельный слог."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2324p-l4",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "word_problems",
+      "level": 4,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2023-24/prigl/math/sol-math-4-prigl-msk-23-24.pdf",
+        "year": 2023,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Бабушка вышивает имена своих внуков на их полотенцах. Имя «ЛАНА» она вышила за 15 минут, а имя «АЛЛА» — за 12 минут. На одинаковые буквы она тратит одинаковое время, на разные — возможно, разное. За какое время она вышьет имя «НАНА»?\n\nОтвет выразите в минутах.",
+      "answer": {
+        "type": "number",
+        "value": 18
+      },
+      "solution_md": "«ЛАНА» = Л + А + Н + А = 15, «АЛЛА» = А + Л + Л + А = 12.\n\nВычитая второе из первого: Н − Л = 3, то есть Н = Л + 3.\n\n«НАНА» = 2 · (Н + А). Из «ЛАНА» знаем Л + 2А + Н = 15, а из «АЛЛА» — 2А + 2Л = 12, откуда А + Л = 6.\n\nТогда Н + А = (Л + 3) + А = 6 + 3 = 9, и «НАНА» стоит 2 · 9 = **18 минут**.",
+      "hints": [
+        "Одинаковые буквы стоят одинакового времени — сравни два известных слова.",
+        "Найди, из каких повторяющихся кусочков состоит каждое слово.",
+        "Вычитая одно слово из другого, можно узнать время на отдельный слог."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2324p-r1",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "logic",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2023-24/prigl/math/sol-math-4-prigl-msk-23-24.pdf",
+        "year": 2023,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "В верном равенстве заменили одинаковые цифры одинаковыми буквами, а разные цифры — разными буквами. Получилось\n\n> П + Р + А + З + Д + Н + И + К = УУ\n\nЧему может быть равно У?",
+      "answer": {
+        "type": "choice",
+        "value": "3",
+        "options": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "0"
+        ]
+      },
+      "solution_md": "В выражении участвуют девять различных букв — значит, использованы все цифры, кроме одной.\n\nСумма всех однозначных чисел равна 0 + 1 + … + 9 = 45. Справа стоит двузначное число из одинаковых цифр, то есть 45 минус какие-то из слагаемых.\n\nПодходят только 44 = 45 − 1, 33 = 45 − 12, 22 = 45 − 23 и 11 = 45 − 34. Два последних невозможны: наибольшая сумма двух однозначных чисел равна 17.\n\nПроверка оставшихся вариантов даёт ответ **3**.",
+      "hints": [
+        "В выражении девять разных букв — значит, использованы все цифры, кроме одной.",
+        "Сумма всех однозначных чисел от 0 до 9 равна 45.",
+        "Справа стоит двузначное число из одинаковых цифр: 11, 22, 33 или 44."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2324p-r2",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "logic",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2023-24/prigl/math/sol-math-4-prigl-msk-23-24.pdf",
+        "year": 2023,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "В верном равенстве заменили одинаковые цифры одинаковыми буквами, а разные цифры — разными буквами. Получилось\n\n> П + О + Б + Е + Д + И + Ш + Ь = АА\n\nЧему может быть равно А?",
+      "answer": {
+        "type": "choice",
+        "value": "3",
+        "options": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "0"
+        ]
+      },
+      "solution_md": "В выражении участвуют девять различных букв — значит, использованы все цифры, кроме одной.\n\nСумма всех однозначных чисел равна 0 + 1 + … + 9 = 45. Справа стоит двузначное число из одинаковых цифр, то есть 45 минус какие-то из слагаемых.\n\nПодходят только 44 = 45 − 1, 33 = 45 − 12, 22 = 45 − 23 и 11 = 45 − 34. Два последних невозможны: наибольшая сумма двух однозначных чисел равна 17.\n\nПроверка оставшихся вариантов даёт ответ **3**.",
+      "hints": [
+        "В выражении девять разных букв — значит, использованы все цифры, кроме одной.",
+        "Сумма всех однозначных чисел от 0 до 9 равна 45.",
+        "Справа стоит двузначное число из одинаковых цифр: 11, 22, 33 или 44."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2324p-r3",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "logic",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2023-24/prigl/math/sol-math-4-prigl-msk-23-24.pdf",
+        "year": 2023,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "В верном равенстве заменили одинаковые цифры одинаковыми буквами, а разные цифры — разными буквами. Получилось\n\n> С + У + П + Е + Р + К + Л + А + Д = АА\n\nЧему может быть равно А?",
+      "answer": {
+        "type": "choice",
+        "value": "4",
+        "options": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "0"
+        ]
+      },
+      "solution_md": "В выражении участвуют девять различных букв — значит, использованы все цифры, кроме одной.\n\nСумма всех однозначных чисел равна 0 + 1 + … + 9 = 45. Справа стоит двузначное число из одинаковых цифр, то есть 45 минус какие-то из слагаемых.\n\nПодходят только 44 = 45 − 1, 33 = 45 − 12, 22 = 45 − 23 и 11 = 45 − 34. Два последних невозможны: наибольшая сумма двух однозначных чисел равна 17.\n\nПроверка оставшихся вариантов даёт ответ **4**.",
+      "hints": [
+        "В выражении девять разных букв — значит, использованы все цифры, кроме одной.",
+        "Сумма всех однозначных чисел от 0 до 9 равна 45.",
+        "Справа стоит двузначное число из одинаковых цифр: 11, 22, 33 или 44."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
+      },
+      "points": 1
+    },
+    {
+      "id": "math-4-msk-2324p-r4",
+      "subject": "math",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "logic",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2023-24/prigl/math/sol-math-4-prigl-msk-23-24.pdf",
+        "year": 2023,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "В верном равенстве заменили одинаковые цифры одинаковыми буквами, а разные цифры — разными буквами. Получилось\n\n> Г + Р + А + Д + У + С + Н + И + К = ИИ\n\nЧему может быть равно И?",
+      "answer": {
+        "type": "choice",
+        "value": "4",
+        "options": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "0"
+        ]
+      },
+      "solution_md": "В выражении участвуют девять различных букв — значит, использованы все цифры, кроме одной.\n\nСумма всех однозначных чисел равна 0 + 1 + … + 9 = 45. Справа стоит двузначное число из одинаковых цифр, то есть 45 минус какие-то из слагаемых.\n\nПодходят только 44 = 45 − 1, 33 = 45 − 12, 22 = 45 − 23 и 11 = 45 − 34. Два последних невозможны: наибольшая сумма двух однозначных чисел равна 17.\n\nПроверка оставшихся вариантов даёт ответ **4**.",
+      "hints": [
+        "В выражении девять разных букв — значит, использованы все цифры, кроме одной.",
+        "Сумма всех однозначных чисел от 0 до 9 равна 45.",
+        "Справа стоит двузначное число из одинаковых цифр: 11, 22, 33 или 44."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным разбором организатора."
       },
       "points": 1
     },
