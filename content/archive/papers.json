@@ -218,7 +218,8 @@
       "stage": "school",
       "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/school/russ/ans-russ-4-sch-msk-25-26.pdf",
       "max_score": 52,
-      "task_count": null,
+      "task_count": 16,
+      "structure": "26 заданий, объединённых организатором в 10 задач; часть заданий оценивается только вместе (15–17, 18–21, 10–13), поэтому в банке они взяты одной задачей — всего 16",
       "unusable": []
     },
     {

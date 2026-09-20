@@ -30,9 +30,13 @@ export const PaperSchema = z.object({
   /** Must match `source_attribution.url` of every task taken from this paper. */
   url: z.url(),
   /**
-   * Tasks in the paper, counted in the PDF. A variant is a task: the
-   * invitational papers set the same question four times with different
-   * numbers, and a child answers one of them.
+   * Answerable units in the paper, counted in the PDF — what a child fills in
+   * and what the bank holds one task for.
+   *
+   * A variant is a unit: the invitational papers set the same question four
+   * times with different numbers, and a child answers one of them. Several
+   * numbered заданий are one unit when the organiser only scores them
+   * together, which `structure` then says.
    *
    * Null means nobody has counted this paper yet — honest, and visible in the
    * report, rather than a number that looks checked.
