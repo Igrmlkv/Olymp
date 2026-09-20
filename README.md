@@ -28,8 +28,11 @@ pnpm install
 pnpm dev
 ```
 
-PWA поднимется на `http://localhost:5173`. Для работы с контентом и подсказками нужен
-локальный Worker:
+PWA поднимется на `http://localhost:5173` — именно по имени `localhost`: Vite слушает
+только IPv6-адрес `[::1]`, поэтому `http://127.0.0.1:5173` не ответит, хотя сервер
+работает.
+
+Для работы с контентом и подсказками нужен локальный Worker:
 
 ```bash
 cp workers/proxy/.dev.vars.example workers/proxy/.dev.vars   # вписать ANTHROPIC_API_KEY
