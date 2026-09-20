@@ -6,8 +6,9 @@ import { defineConfig, devices } from '@playwright/test'
  * child can actually reach a task, answer it, and see the result, and that the
  * console stays clean while they do.
  *
- * Not part of `pnpm test`: it needs a downloaded browser and a running dev
- * server, neither of which belongs in the CI check job today.
+ * Not part of `pnpm test`: it needs a downloaded browser, a proxy worker with
+ * a seeded local R2, and a built app. In CI it is its own job, so none of that
+ * sits in front of the typecheck result.
  */
 const DEV_URL = process.env.OLYMP_E2E_URL ?? 'http://localhost:5173'
 const PREVIEW_URL = 'http://localhost:4173'
