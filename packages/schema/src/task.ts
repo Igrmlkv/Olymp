@@ -58,7 +58,7 @@ export type Origin = z.infer<typeof OriginSchema>
  * Mandatory for every archive task: Auteurswet art. 15a quotation relies on
  * full attribution. See docs/legal/attribution.md.
  */
-export const StageSchema = z.enum(['school', 'municipal', 'regional', 'final'])
+export const StageSchema = z.enum(['invitational', 'school', 'municipal', 'regional', 'final'])
 export type Stage = z.infer<typeof StageSchema>
 
 export const SourceAttributionSchema = z.object({
@@ -111,6 +111,7 @@ export const AnswerSchema = z
 export type Answer = z.infer<typeof AnswerSchema>
 
 export const STAGE_LABELS_RU: Record<Stage, string> = {
+  invitational: 'пригласительный этап',
   school: 'школьный этап',
   municipal: 'муниципальный этап',
   regional: 'региональный этап',
