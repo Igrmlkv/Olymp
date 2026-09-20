@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router'
+import { useState } from 'react'
+import { Link, useNavigate, useParams } from 'react-router'
 import { SubjectSchema, type Task } from '@olymp/schema'
 import { tasksByTopic } from '../lib/content.js'
 import { checkAnswer } from '../lib/answer.js'
@@ -15,45 +15,62 @@ import { AnswerInput, hasAnswer } from '../components/AnswerInput.js'
 type Phase = 'solving' | 'correct' | 'wrong'
 
 /**
- * The core loop: statement → attempt → hint ladder → solution → next task.
- * Hints are revealed one at a time and never jump straight to the answer.
+ * One task, addressed by its id. The id lives in the URL rather than in
+ * component state, so leaving and coming back lands on the same task and the
+ * browser's own back button works between tasks.
  */
 export function TaskScreen() {
-  const { subject: rawSubject, topic } = useParams()
+  const { subject: rawSubject, topic, taskId } = useParams()
   const parsed = SubjectSchema.safeParse(rawSubject)
   const subject = parsed.success ? parsed.data : null
-
   const state = usePackage(subject)
-  const [index, setIndex] = useState(0)
-
-  const tasks = state.status === 'ready' && topic ? tasksByTopic(state.pkg, topic) : []
-  const task = tasks[index]
 
   if (subject === null) return <p className="screen">Неизвестный предмет.</p>
   if (state.status === 'error') {
     return <p className="screen error">Не получилось загрузить задачи: {state.message}</p>
   }
   if (state.status !== 'ready') return <p className="screen muted">Загружаем задачи…</p>
-  if (!task) return <p className="screen">Задачи в этой теме закончились.</p>
+
+  const tasks = topic ? tasksByTopic(state.pkg, topic) : []
+  const index = tasks.findIndex((t) => t.id === taskId)
+  const task = tasks[index]
+
+  if (!task) {
+    return (
+      <main className="screen">
+        <Link className="back-link" to={`/${subject}/${topic}`}>
+          ← К списку задач
+        </Link>
+        <p>Такой задачи в этой теме нет.</p>
+      </main>
+    )
+  }
+
+  const to = (i: number) => `/${subject}/${topic}/${tasks[i]!.id}`
 
   return (
     <main className="screen">
-      <Link className="back-link" to={`/${subject}`}>
-        ← К темам
+      <Link className="back-link" to={`/${subject}/${topic}`}>
+        ← К списку задач
       </Link>
 
       <p className="muted">
         Уровень {task.level} · задача {index + 1} из {tasks.length}
       </p>
 
-      {/* Keyed on the task so every per-task state resets itself; forgetting one
-          reset by hand used to leak a hint count into the next question. */}
-      <TaskAttempt key={task.id} task={task} onNext={index < tasks.length - 1 ? () => setIndex((i) => i + 1) : null} />
+      {/* Keyed on the task so every per-task state resets itself. */}
+      <TaskAttempt
+        key={task.id}
+        task={task}
+        prev={index > 0 ? to(index - 1) : null}
+        next={index < tasks.length - 1 ? to(index + 1) : null}
+      />
     </main>
   )
 }
 
-function TaskAttempt({ task, onNext }: { task: Task; onNext: (() => void) | null }) {
+function TaskAttempt({ task, prev, next }: { task: Task; prev: string | null; next: string | null }) {
+  const navigate = useNavigate()
   const [input, setInput] = useState<string | string[]>('')
   const [hintsShown, setHintsShown] = useState(0)
   const [phase, setPhase] = useState<Phase>('solving')
@@ -67,7 +84,6 @@ function TaskAttempt({ task, onNext }: { task: Task; onNext: (() => void) | null
     const existing = await db.progress.get(task.id)
     const attempts = (existing?.attempts ?? 0) + 1
 
-    // Independent writes; nothing below reads another's result.
     await Promise.all([
       db.progress.put({
         taskId: task.id,
@@ -148,14 +164,18 @@ function TaskAttempt({ task, onNext }: { task: Task; onNext: (() => void) | null
         >
           Показать разбор
         </button>
-        {onNext && (
-          <button className="primary" onClick={onNext}>
-            Следующая
-          </button>
-        )}
       </div>
 
       {showSolution && <Markdown className="solution">{task.solution_md}</Markdown>}
+
+      <nav className="task-nav">
+        <button disabled={prev === null} onClick={() => prev && navigate(prev)}>
+          ← Предыдущая
+        </button>
+        <button className="primary" disabled={next === null} onClick={() => next && navigate(next)}>
+          Следующая →
+        </button>
+      </nav>
     </>
   )
 }

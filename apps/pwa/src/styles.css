@@ -442,3 +442,81 @@ button.primary {
     gap: 0.75rem;
   }
 }
+
+/* --- Список задач в теме --- */
+
+.task-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.task-row {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: var(--tap);
+  padding: 0.625rem 1rem;
+  border: 2px solid var(--surface-raised);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.task-row-number {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.task-row-title {
+  /* Превью в одну строку: список должен быть обозримым, а не читаемым. */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.task-row-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.task-row-mark {
+  width: 1.25rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.task-row--solved {
+  border-color: var(--ok);
+}
+
+.task-row--solved .task-row-mark {
+  color: var(--ok);
+}
+
+.task-row--attempted {
+  border-color: var(--accent);
+}
+
+.task-row--attempted .task-row-mark {
+  color: var(--accent);
+}
+
+/* --- Листание задач --- */
+
+.task-nav {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.task-nav button {
+  flex: 1;
+  justify-content: center;
+}

@@ -14,6 +14,7 @@ import type { Grade } from '@olymp/schema'
  * Offline is unaffected: the service worker precaches every emitted chunk.
  */
 const TopicScreen = lazy(() => import('./screens/TopicScreen.js'))
+const TaskListScreen = lazy(() => import('./screens/TaskListScreen.js'))
 const TaskScreen = lazy(() => import('./screens/TaskScreen.js'))
 const OlympiadScreen = lazy(() => import('./screens/OlympiadScreen.js'))
 const ParentScreen = lazy(() => import('./screens/ParentScreen.js'))
@@ -26,7 +27,8 @@ const router = createBrowserRouter([
   { path: '/', element: <HomeScreen /> },
   { path: '/grade', element: <GradePickerScreen /> },
   { path: '/:subject', element: <TopicScreen /> },
-  { path: '/:subject/:topic', element: <TaskScreen /> },
+  { path: '/:subject/:topic', element: <TaskListScreen /> },
+  { path: '/:subject/:topic/:taskId', element: <TaskScreen /> },
   { path: '/olympiad/:subject', element: <OlympiadScreen /> },
   { path: '/parents', element: <ParentScreen /> },
   { path: '*', element: <Navigate to="/" replace /> },
