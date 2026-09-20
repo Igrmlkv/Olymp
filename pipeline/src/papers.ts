@@ -18,6 +18,8 @@ import { ARCHIVE_DIR } from './paths.js'
  */
 const UnusableSchema = z.object({
   count: z.number().int().min(1),
+  /** What these tasks are worth, so the report stops asking for them. */
+  points: z.number().int().min(1).optional(),
   reason: z.string().min(1),
 })
 
@@ -97,7 +99,11 @@ export function coverageFor(papers: Paper[], packages: ContentPackage[]): Covera
       unusable,
       remaining: paper.task_count === null ? null : paper.task_count - unusable - count,
       points: points.get(paper.url) ?? 0,
-      maxPoints: paper.max_score === undefined ? null : paper.max_score * paper.variants,
+      maxPoints:
+        paper.max_score === undefined
+          ? null
+          : (paper.max_score - paper.unusable.reduce((sum, u) => sum + (u.points ?? 0), 0)) *
+            paper.variants,
     }
   })
 }

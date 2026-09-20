@@ -133,6 +133,7 @@
       "stage": "school",
       "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2021-22/school/russ/ans-russ-4-sch-msk-21-22.pdf",
       "task_count": 15,
+      "max_score": 42,
       "unusable": []
     },
     {
@@ -145,7 +146,7 @@
       "max_score": 13,
       "task_count": 11,
       "structure": "ключ ответов перечисляет задания 1–11 и содержит их условия целиком; файл с заданиями — скан без текстового слоя",
-      "unusable": []
+      "unusable": [{ "count": 1, "points": 3, "reason": "задание 11 дословно повторяет задание 8 работы 2022/23, взятое в банк" }]
     },
     {
       "id": "russ-4-sch-2223",
@@ -155,6 +156,7 @@
       "stage": "school",
       "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2022-23/school/russ/ans-russ-4-sch-msk-22-23.pdf",
       "task_count": 15,
+      "structure": "в ключе нет итоговой суммы баллов: сверено только число заданий",
       "unusable": []
     },
     {
@@ -164,7 +166,9 @@
       "season": "2022/23",
       "stage": "invitational",
       "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2022-23/prigl/russ/ans-russ-4-prigl-msk-22-23.pdf",
-      "task_count": null,
+      "task_count": 17,
+      "max_score": 23,
+      "structure": "16 заданий, но 17 полей для ответа: задание 5 стоит 2 балла и состоит из двух вопросов с отдельными полями",
       "unusable": []
     },
     {
@@ -174,8 +178,9 @@
       "season": "2023/24",
       "stage": "school",
       "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2023-24/school/russ/ans-russ-4-sch-msk-23-24.pdf",
-      "max_score": 36,
-      "task_count": null,
+      "max_score": 34,
+      "structure": "нумерация организатора идёт 1, 2, 3–4, 6, 7, 8–9, 10–11, 12 — задачи 5 в работе нет; в ключе заявлен максимум 36, но сумма его же критериев по заданиям — 34",
+      "task_count": 10,
       "unusable": []
     },
     {
@@ -185,8 +190,9 @@
       "season": "2023/24",
       "stage": "invitational",
       "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2023-24/prigl/russ/ans-russ-4-prigl-msk-23-24.pdf",
-      "task_count": null,
-      "unusable": [{ "count": 6, "reason": "дословно повторяют задания школьного этапа, уже взятые в банк" }]
+      "task_count": 16,
+      "max_score": 33,
+      "unusable": [{ "count": 6, "points": 12, "reason": "дословно повторяют задания школьного этапа, уже взятые в банк" }]
     },
     {
       "id": "russ-4-sch-2425",
@@ -195,8 +201,9 @@
       "season": "2024/25",
       "stage": "school",
       "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2024-25/school/russ/ans-russ-4-sch-msk-24-25.pdf",
-      "max_score": 40,
-      "task_count": null,
+      "max_score": 37,
+      "task_count": 16,
+      "structure": "нумерация организатора идёт 1–14, 16–19, 20 — задания 15 в работе нет; задания 4–6, 7–9, 12–13 и 16–19 оцениваются внутри одной задачи; в ключе заявлен максимум 40, но сумма его же критериев по заданиям — 37",
       "unusable": []
     },
     {
@@ -208,7 +215,7 @@
       "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2024-25/prigl/russ/ans-russ-4-prigl-msk-24-25.pdf",
       "max_score": 29,
       "task_count": 14,
-      "unusable": []
+      "unusable": [{ "count": 1, "points": 1, "reason": "задание 7 дословно повторяет задание 8 работы 2026/27, взятое в банк" }]
     },
     {
       "id": "russ-4-sch-2526",
@@ -230,8 +237,8 @@
       "stage": "invitational",
       "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/prigl/russ/ans-russ-4-prigl-msk-25-26.pdf",
       "max_score": 32,
-      "task_count": null,
-      "unusable": []
+      "task_count": 8,
+      "unusable": [{ "count": 1, "points": 5, "reason": "задание 1: пять мест на рисунке отмечены знаками «?» без номеров и подписей, сослаться на конкретное место нечем" }]
     },
     {
       "id": "russ-4-prigl-2627",
@@ -242,7 +249,7 @@
       "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2026-27/prigl/russ/ans-russ-4-prigl-msk-26-27.pdf",
       "max_score": 28,
       "task_count": 9,
-      "unusable": [{ "count": 2, "reason": "дословно повторяют задания школьного этапа, уже взятые в банк" }]
+      "unusable": []
     }
   ]
 }
