@@ -1,16 +1,16 @@
 {
   "manifest": {
     "package_id": "russian-4",
-    "version": "1.6.0",
+    "version": "1.7.0",
     "subject": "russian",
     "grade": 4,
-    "created_at": "2026-09-20T09:38:57.737Z",
+    "created_at": "2026-09-20T09:44:56.828Z",
     "prompt_version": "archive-import-v1",
-    "task_count": 67,
-    "checksum": "4483f0e6a7f6c7e73ab745bd6c5ea18494f8342323c3ad7446e944c1f0c2f97a",
+    "task_count": 74,
+    "checksum": "6902f70dbdec722845063f7152e531804610d2d75a91366b6c1cf7a26e76e7a4",
     "verification_summary": {
-      "total": 67,
-      "passed": 67,
+      "total": 74,
+      "passed": 74,
       "failed": 0,
       "needs_review": 0
     }
@@ -3244,6 +3244,336 @@
         "notes": "Ответ сверен с официальным ключом организатора."
       },
       "points": 4
+    },
+    {
+      "id": "russian-4-msk-2627p-01",
+      "subject": "russian",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "syntax",
+      "level": 4,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2026-27/prigl/russ/ans-russ-4-prigl-msk-26-27.pdf",
+        "year": 2026,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Предлоги могут быть многозначными в русском языке. Соотнесите предлоги и их значения, которые появляются в приведённых примерах.\n\nЗначения: *место*, *время*, *направление*, *указание на форму, вид, размер*, *указание на цель*, *предназначение предмета*.",
+      "answer": {
+        "type": "parts",
+        "labels": [
+          "сидеть в помещении",
+          "юбка в горошек",
+          "идти на юг",
+          "на следующей неделе"
+        ],
+        "value": [
+          "место",
+          "указание на форму, вид, размер",
+          "направление",
+          "время"
+        ],
+        "accept": []
+      },
+      "solution_md": "*Сидеть в помещении* — где? Это **место**.\n\n*Юбка в горошек* — какая? Это **указание на форму, вид, размер** рисунка.\n\n*Идти на юг* — куда? Это **направление**.\n\n*На следующей неделе* — когда? Это **время**.\n\nДва значения из списка — цель и предназначение — здесь не используются.",
+      "hints": [
+        "Задай вопрос к каждому сочетанию: где? какая? куда? когда?",
+        "Один и тот же предлог «в» встречается дважды с разными значениями.",
+        "Два значения из списка окажутся лишними."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным ключом организатора."
+      },
+      "points": 4
+    },
+    {
+      "id": "russian-4-msk-2627p-02",
+      "subject": "russian",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "vocabulary",
+      "level": 4,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2026-27/prigl/russ/ans-russ-4-prigl-msk-26-27.pdf",
+        "year": 2026,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Составьте на основе данных словосочетаний сложные слова-существительные и запишите их. Учтите, что каждое сложное слово, составленное вами правильно, пишется слитно.\n\n**Пример:** косить сено → сенокос.",
+      "answer": {
+        "type": "parts",
+        "labels": [
+          "хранить овощи",
+          "снимать фото",
+          "зоологический сад"
+        ],
+        "value": [
+          "овощехранилище",
+          "фотосъёмка",
+          "зоосад"
+        ],
+        "accept": [
+          [],
+          [
+            "фотосъемка"
+          ],
+          []
+        ]
+      },
+      "solution_md": "*Хранить овощи* → **овощехранилище**.\n\n*Снимать фото* → **фотосъёмка**. Слово «фотоснимок» не подходит: оно называет результат (фотографию), а образец «сенокос» называет действие.\n\n*Зоологический сад* → **зоосад**. Слово «зоопарк» не годится: части «парк» в исходном словосочетании нет.",
+      "hints": [
+        "В образце «косить сено → сенокос» части поменялись местами.",
+        "Сложное слово должно называть то же, что и словосочетание, — действие, а не его результат.",
+        "Используй только те части, которые есть в исходном словосочетании."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным ключом организатора."
+      },
+      "points": 6
+    },
+    {
+      "id": "russian-4-msk-2627p-03",
+      "subject": "russian",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "vocabulary",
+      "level": 4,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2026-27/prigl/russ/ans-russ-4-prigl-msk-26-27.pdf",
+        "year": 2026,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "В придуманном слове (или в сочетании слов) посредством перестановки букв местами (анаграммирования) зашифрован лингвистический термин.\n\n**Пример:** *кекс Али* → лексика.\n\nРазгадайте зашифрованный в анаграмме лингвистический термин: **зассекумое**.",
+      "answer": {
+        "type": "string",
+        "value": "сказуемое",
+        "accept": [
+          "сказуемое"
+        ]
+      },
+      "solution_md": "Переставив буквы слова *зассекумое*, получаем **сказуемое** — главный член предложения, обозначающий то, что говорится о подлежащем.",
+      "hints": [
+        "Все буквы уже есть — их надо только переставить.",
+        "Это один из главных членов предложения.",
+        "Слово начинается на «ск»."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным ключом организатора."
+      },
+      "points": 2
+    },
+    {
+      "id": "russian-4-msk-2627p-04",
+      "subject": "russian",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "reading",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2026-27/prigl/russ/ans-russ-4-prigl-msk-26-27.pdf",
+        "year": 2026,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Переведите предложение на современный русский язык. Выберите **два** верных ответа.\n\n> А Римъ великий град стоить на рѣцѣ на Тиверѣ за 12 миль до моря.",
+      "answer": {
+        "type": "multi",
+        "value": [
+          "А великий город Рим стоит на реке Тибр в 12 милях от моря.",
+          "А Рим, великий город, стоит на реке Тибр в 12 милях от моря."
+        ],
+        "options": [
+          "Рим, великий город, стоит на реке Тибр, за 12 милями после моря.",
+          "А великий город Рим стоит на реке Тибр в 12 милях от моря.",
+          "А Рим, великий град, стоит на реке в Тибре, за 12 миль до моря.",
+          "Рим – великий город, стоит на реке Тибр, за двенадцатью милями от моря.",
+          "А Рим, великий город, стоит на реке Тибр в 12 милях от моря."
+        ]
+      },
+      "solution_md": "Выражение «за 12 миль до моря» в древнерусском означает «на расстоянии 12 миль от моря».\n\nВарианты «после моря» и «до моря» искажают географический смысл. Вариант «на реке в Тибре» неверен грамматически: река не может находиться внутри Тибра — Тибр и есть река.\n\nПравильных переводов два, они различаются только порядком слов.",
+      "hints": [
+        "«За 12 миль до моря» — это не «после моря», а расстояние от него.",
+        "Проверь, как в каждом варианте связаны слова «река» и «Тибр».",
+        "Верных вариантов два, и различаются они только порядком слов."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным ключом организатора."
+      },
+      "points": 2
+    },
+    {
+      "id": "russian-4-msk-2627p-05",
+      "subject": "russian",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "orthography",
+      "level": 5,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2026-27/prigl/russ/ans-russ-4-prigl-msk-26-27.pdf",
+        "year": 2026,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "**Оу (ук)** — буква старославянской азбуки.\n\n![Начертание старославянской буквы «ук»](data:image/webp;base64,UklGRmgDAABXRUJQVlA4IFwDAADwEQCdASo4AFEAPmEskUWkIqGWDVVUQAYEtIAJ6b+wdE55nPlfzfCrtR7wtkvRNeI+j19VP+x8cv09/4PcI/XAy0fOCU+LkMG3rnF6fTCnycWsYWqa7FyVywFaSF15F5q7O0bXdZzCypJ+/WlAOmJz5gzQ2rv61JAPpvXhKEMNsTt+b7YG1WMWyBjit52T5Nb7nymS/ipuAAD+/zJVUdODLA6Y9/p/0xW5t0VLxAtaYlomyNJ/9qIPW3/8ME4s/iPowVbkhywI847tXeMGscAe0rKcUOyJcxKT9TL1cE8jnsZ4gho8/Iz8IEaKVqZKjvX45uOWFsWRjsLh9vkfqoNiP+9lzbp4W1WH74Lo4IznEhk7O/pPbBHEz02+KD6GtHYaKyu23V7u7m86/OMk1PlSt6fLB5djrFyWidWJegagXf4UaUAFtBWKAGD7P1kOIKnZfvuyKb/ewWgMZEFg9KCVUEMkfEvlwolCdiIn59o9aA3kLxIfYXOwDWXF7MZHJhgWQdhFG10HkmyRYb03pOsI/PdVmCsRBOJ9EaO6FG4th9CBn4cMsOHjz3aHcJxrSs7bzL2B1htvJqVoJ5j7ZULpIY0Vv/NBPACxLPx3ZnSdbaFN5a9zkH3T2rRHzpcPzYriDNrRSVgBy/nlwF5uHzYwWj+CkCgfOL020VTkjKKqX1POv+RTo2JfTuHNCFaLPyLGL8t/9wwg7d9TTf0CWifBdBFmH8WzooMhiwrbd5QSianzLIkGSk9oKu9Vfh4zVoIfjtDcMYtpbYWefxdcfGVkyzmUnB6zU+1L4n4O5ORZwofY3AQuG+SdJvTv3KL95Ml/4RFiGZ5850pWfS4TkjkfO7yFQrYERfu9P0aTihG95i+YQN02GyErq0L7IkErEXHFW3PrvN4LW8fOkd0B30EGOoBttMQNoP7anfepa1JdfoKz8rt8abDM40IJEG1+Puket/IjnFaNID9CdijjP2eF7fPZSwfuuehcXAB5y9BBneilCxR7l+//K65CxZpuKNn35/cKn8zLYbBBMDkhBfExVjrVgpbe44ZHtMVCRE99LF5t9Zhuo6O58a1tXoAKz3Gd+Ijy4gn6te/Exd6zsjQCU5jYTjFS/ET497glkh4NTRCe2MHiRH9YAAAAAA==)\n\nВ современном алфавите сохранилась другая подобная ей **составная** буква. Запишите её печатный вариант.",
+      "answer": {
+        "type": "string",
+        "value": "Ы",
+        "accept": [
+          "ы"
+        ]
+      },
+      "solution_md": "Буква «ук» составная: она записывалась как сочетание двух знаков — О и У.\n\nВ современном алфавите так же устроена только буква **Ы**: в печатном начертании у неё явно видны два элемента — мягкий знак и палочка.",
+      "hints": [
+        "Составная буква — та, у которой в начертании видно две части.",
+        "Речь именно о том, как буква выглядит, а не о её происхождении.",
+        "В современном алфавите такая буква ровно одна."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным ключом организатора."
+      },
+      "points": 2
+    },
+    {
+      "id": "russian-4-msk-2627p-06",
+      "subject": "russian",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "vocabulary",
+      "level": 4,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2026-27/prigl/russ/ans-russ-4-prigl-msk-26-27.pdf",
+        "year": 2026,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Соотнесите лингвистические термины с их значениями.",
+      "answer": {
+        "type": "parts",
+        "labels": [
+          "Синонимы",
+          "Зоонимы",
+          "Топонимы",
+          "Антонимы",
+          "Омонимы"
+        ],
+        "value": [
+          "Слова одной части речи, близкие по лексическому значению",
+          "Клички животных",
+          "Имя собственное для любого места на планете",
+          "Слова одной части речи, противоположные по лексическому значению",
+          "Слова, которые одинаково пишутся и произносятся, но имеют совершенно разные лексические значения"
+        ],
+        "accept": []
+      },
+      "solution_md": "Греческий корень *оним* означает «имя», и он есть во всех этих терминах.\n\n**Синонимы** — близкие по значению (*син-* — «вместе»). **Антонимы** — противоположные (*анти-* — «против»). **Омонимы** — одинаковые по звучанию, но разные по смыслу (*омо-* — «одинаковый»). **Зоонимы** — клички животных (*зоо-* — «животное»). **Топонимы** — названия мест (*топос* — «место»).",
+      "hints": [
+        "Разбери первую часть каждого термина: син-, анти-, омо-, зоо-, топо-.",
+        "«Зоопарк» и «топография» подскажут два из них.",
+        "«Анти-» всегда означает противоположность."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным ключом организатора."
+      },
+      "points": 5
+    },
+    {
+      "id": "russian-4-msk-2627p-07",
+      "subject": "russian",
+      "grade": 4,
+      "grade_mapping": {
+        "nl_stage": "basisschool",
+        "groep": 6,
+        "klas": null
+      },
+      "topic": "syntax",
+      "level": 4,
+      "origin": "archive",
+      "source_attribution": {
+        "name": "Всероссийская олимпиада школьников, Москва",
+        "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2026-27/prigl/russ/ans-russ-4-prigl-msk-26-27.pdf",
+        "year": 2026,
+        "stage": "invitational",
+        "author": "Центр педагогического мастерства"
+      },
+      "statement_md": "Укажите строку, в которой все имена существительные изменяются по числам.",
+      "answer": {
+        "type": "choice",
+        "value": "исследование, студент, стипендия",
+        "options": [
+          "финансы, деньги, обмен",
+          "вода, Крым, тишина",
+          "сливки, бутерброд, сметана",
+          "исследование, студент, стипендия"
+        ]
+      },
+      "solution_md": "Некоторые существительные употребляются только во множественном числе (*финансы*, *деньги*, *сливки*) или только в единственном (*тишина*, *сметана*, *Крым* — имя собственное).\n\nА слова *исследование*, *студент*, *стипендия* свободно образуют обе формы: исследования, студенты, стипендии.",
+      "hints": [
+        "Попробуй образовать множественное число от каждого слова.",
+        "Некоторые слова существуют только во множественном числе.",
+        "Названия городов и стран по числам обычно не изменяются."
+      ],
+      "verification": {
+        "verdict": "pass",
+        "method": "official_answer_key",
+        "model": null,
+        "notes": "Пригласительный этап. Ответ сверен с официальным ключом организатора."
+      },
+      "points": 2
     }
   ]
 }

@@ -58,6 +58,20 @@ async function main(): Promise<void> {
     throw new Error(`задачи без атрибуции: ${unattributed.map((t) => t.id).join(', ')}`)
   }
 
+  // Papers repeat themselves across stages and years, and a child meeting the
+  // same question twice in one topic reads as a bug.
+  const byStatement = new Map<string, string[]>()
+  for (const task of tasks) {
+    const key = task.statement_md.replace(/\s+/g, ' ').trim()
+    byStatement.set(key, [...(byStatement.get(key) ?? []), task.id])
+  }
+  const duplicates = [...byStatement.values()].filter((ids) => ids.length > 1)
+  if (duplicates.length > 0) {
+    throw new Error(
+      `одинаковые условия у задач:\n${duplicates.map((ids) => '  ' + ids.join(' = ')).join('\n')}`,
+    )
+  }
+
   // Figures are inlined last, so the schema check above still reads short,
   // human-legible statements rather than megabytes of base64.
   const cache = new Map<string, string>()
