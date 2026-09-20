@@ -531,3 +531,31 @@ button.primary {
   flex: 1;
   justify-content: center;
 }
+
+/* --- Предложение обновиться --- */
+
+.sw-toast {
+  position: fixed;
+  left: 1rem;
+  right: 1rem;
+  bottom: calc(1rem + env(safe-area-inset-bottom));
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  border: 2px solid var(--surface-raised);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 45%);
+}
+
+.sw-toast span {
+  flex: 1 1 12rem;
+}
+
+.sw-toast button {
+  min-height: 2.5rem;
+  padding: 0.5rem 1rem;
+}

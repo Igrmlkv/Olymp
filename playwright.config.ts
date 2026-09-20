@@ -9,7 +9,8 @@ import { defineConfig, devices } from '@playwright/test'
  * Not part of `pnpm test`: it needs a downloaded browser and a running dev
  * server, neither of which belongs in the CI check job today.
  */
-const BASE_URL = process.env.OLYMP_E2E_URL ?? 'http://localhost:5173'
+const DEV_URL = process.env.OLYMP_E2E_URL ?? 'http://localhost:5173'
+const PREVIEW_URL = 'http://localhost:4173'
 
 export default defineConfig({
   testDir: './e2e',
@@ -21,7 +22,6 @@ export default defineConfig({
   timeout: 60_000,
   expect: { timeout: 10_000 },
   use: {
-    baseURL: BASE_URL,
     trace: 'retain-on-failure',
     // The audience is children on phones and tablets, so that is the shape
     // every screenshot is taken in.
@@ -29,11 +29,35 @@ export default defineConfig({
     isMobile: false,
     hasTouch: false,
   },
-  projects: [{ name: 'chromium', use: { browserName: 'chromium' } }],
-  webServer: {
-    command: 'pnpm --filter @olymp/pwa dev',
-    url: BASE_URL,
-    reuseExistingServer: true,
-    timeout: 120_000,
-  },
+  projects: [
+    {
+      name: 'dev',
+      testIgnore: /service-worker\.spec\.ts/,
+      use: { browserName: 'chromium', baseURL: DEV_URL },
+    },
+    {
+      // The service worker only exists in a build, so this one project runs
+      // against `vite preview` instead of the dev server.
+      name: 'build',
+      testMatch: /service-worker\.spec\.ts/,
+      use: { browserName: 'chromium', baseURL: PREVIEW_URL },
+    },
+  ],
+  webServer: [
+    {
+      command: 'pnpm --filter @olymp/pwa dev',
+      url: DEV_URL,
+      reuseExistingServer: true,
+      timeout: 120_000,
+    },
+    {
+      // Always rebuilt, never reused: a preview server left over from an
+      // earlier build would serve a stale service worker, and the suite would
+      // quietly test the version we are trying to replace.
+      command: 'pnpm --filter @olymp/pwa build && pnpm --filter @olymp/pwa preview',
+      url: PREVIEW_URL,
+      reuseExistingServer: false,
+      timeout: 180_000,
+    },
+  ],
 })

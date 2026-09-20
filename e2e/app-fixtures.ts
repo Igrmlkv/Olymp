@@ -50,14 +50,27 @@ export function tasksByTopic(pkg: ContentPackage, topic: string): Task[] {
   return pkg.tasks.filter((t) => t.topic === topic).sort((a, b) => a.level - b.level)
 }
 
-/** Opens the app as a first-time visitor and gets past the grade picker. */
+/**
+ * Opens the app as a first-time visitor and gets past the grade picker.
+ *
+ * The first paint is a loader while the profile is read out of IndexedDB, so
+ * the picker has to be waited for rather than probed: asking "is it visible?"
+ * straight after `goto` answered "no", the grade was never picked, and the
+ * test then met the picker again two navigations later.
+ */
 export async function start(page: Page, path = '/'): Promise<void> {
-  await page.goto(path)
+  await page.goto('/')
+
   const picker = page.getByRole('heading', { name: 'В каком ты классе?' })
-  if (await picker.isVisible().catch(() => false)) {
+  const home = page.getByRole('heading', { name: 'Олимп' })
+  await picker.or(home).waitFor()
+
+  if (await picker.isVisible()) {
     await page.getByRole('button', { name: `${GRADE} класс` }).click()
     await expect(picker).toBeHidden()
   }
+
+  if (path !== '/') await page.goto(path)
 }
 
 /**

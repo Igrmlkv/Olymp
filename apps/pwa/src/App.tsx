@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect, useState } from 'react'
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router'
 import { getProfile } from './lib/profile.js'
 import { flushTelemetry, track } from './lib/telemetry.js'
+import { UpdatePrompt } from './components/UpdatePrompt.js'
 import { GradePickerScreen } from './screens/GradePickerScreen.js'
 import { HomeScreen } from './screens/HomeScreen.js'
 import type { Grade } from '@olymp/schema'
@@ -49,12 +50,21 @@ export function App() {
   }, [])
 
   if (grade === undefined) return <Loading />
-  if (grade === null) return <GradePickerScreen onPicked={setGrade} />
 
-  // Routes are full-screen, so one boundary gives the same granularity as four.
   return (
-    <Suspense fallback={<Loading />}>
-      <RouterProvider router={router} />
-    </Suspense>
+    <>
+      {/* Outside the router: an update is offered on every screen, including
+          the grade picker, and must survive navigation. */}
+      <UpdatePrompt />
+      {grade === null ? (
+        <GradePickerScreen onPicked={setGrade} />
+      ) : (
+        // Routes are full-screen, so one boundary gives the same granularity
+        // as four.
+        <Suspense fallback={<Loading />}>
+          <RouterProvider router={router} />
+        </Suspense>
+      )}
+    </>
   )
 }

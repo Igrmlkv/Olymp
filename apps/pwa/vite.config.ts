@@ -7,6 +7,9 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'prompt',
+      // We register the worker ourselves in UpdatePrompt, which is what makes
+      // "prompt" mean anything; the injected script had no one to prompt.
+      injectRegister: null,
       includeAssets: ['favicon.svg', 'icons/*.png'],
       manifest: {
         name: 'Олимп — математика и русский',
@@ -25,6 +28,10 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
+        // Take control of the page that installed us. Without it the first
+        // session stays uncontrolled, and then "Обновить" has no controller to
+        // swap: the new worker activates and the page never reloads.
+        clientsClaim: true,
         // Content packages are versioned and immutable, so cache-first is safe:
         // a new version means a new URL.
         runtimeCaching: [
@@ -54,11 +61,15 @@ export default defineConfig({
       },
     },
   },
+  // The proxy Worker holds the Anthropic key; the client never sees it.
+  // `preview` needs it as well: without it the built app — the only build that
+  // has a service worker — cannot load a package at all.
   server: {
     port: 5173,
-    proxy: {
-      // The proxy Worker holds the Anthropic key; the client never sees it.
-      '/api': { target: 'http://127.0.0.1:8787', changeOrigin: true },
-    },
+    proxy: { '/api': { target: 'http://127.0.0.1:8787', changeOrigin: true } },
+  },
+  preview: {
+    port: 4173,
+    proxy: { '/api': { target: 'http://127.0.0.1:8787', changeOrigin: true } },
   },
 })
