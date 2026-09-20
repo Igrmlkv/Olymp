@@ -1,0 +1,100 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      # v4 targets Node 20, which the runners force onto Node 24 with a
+      # deprecation warning. v5 is the match for this project: it ships on
+      # Node 24, while v6 carries the pnpm 11 installer and warns about the
+      # v10 layout we pin. Bump to v6 when the project moves to pnpm 11.
+      # Version comes from `packageManager` in package.json; setting it here too is an error.
+      - uses: pnpm/action-setup@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Test
+        run: pnpm test
+
+      - name: Build
+        run: pnpm build
+
+  e2e:
+    runs-on: ubuntu-latest
+    env:
+      # wrangler asks about telemetry on first run; a CI runner has no one to ask.
+      WRANGLER_SEND_METRICS: false
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: pnpm/action-setup@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      # Keyed on the Playwright version: a browser build belongs to the
+      # runner that ships it, and pnpm-lock pins that version.
+      - name: Cache the browser
+        uses: actions/cache@v5
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
+
+      - name: Install Chromium
+        run: pnpm exec playwright install --with-deps chromium
+
+      # The worker serves packages out of R2, and a local R2 starts empty.
+      # Without this the app loads and every topic is empty — which the suite
+      # would report as a product failure rather than a missing fixture.
+      - name: Put the content packages into the local R2
+        run: pnpm r2:seed:local
+
+      # nohup, because the step's shell exits as soon as this returns and the
+      # worker has to outlive it.
+      - name: Start the proxy worker
+        run: nohup pnpm dev:proxy > wrangler.log 2>&1 &
+
+      - name: Wait for the worker
+        run: |
+          for i in $(seq 1 60); do
+            curl -sf http://127.0.0.1:8787/api/health > /dev/null && exit 0
+            sleep 1
+          done
+          echo "the proxy worker did not come up on :8787" >&2
+          cat wrangler.log >&2
+          exit 1
+
+      # Both servers the suite needs are started by Playwright itself
+      # (vite dev, and a fresh build behind vite preview).
+      - name: End-to-end
+        run: pnpm e2e
+
+      - name: Keep the screenshots
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: e2e-screenshots
+          path: |
+            e2e/screenshots/
+            e2e/.artifacts/
+          retention-days: 7
+          if-no-files-found: ignore

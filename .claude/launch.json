@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "pwa",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["--filter", "@olymp/pwa", "dev"],
+      "port": 5173
+    },
+    {
+      "name": "proxy",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["--filter", "@olymp/proxy", "dev"],
+      "port": 8787
+    }
+  ]
+}

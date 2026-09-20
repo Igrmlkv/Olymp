@@ -1,0 +1,40 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# build output
+dist/
+build/
+*.tsbuildinfo
+
+# Cloudflare / Wrangler
+.wrangler/
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
+
+# env & secrets
+.env
+.env.*
+!.env.example
+
+# Content packages ARE tracked: the archive bank is curated source content and
+# the app is unusable without it. Only pipeline run artifacts stay out.
+
+# pipeline run artifacts
+pipeline/.runs/
+pipeline/.cache/
+
+# editors / OS
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# test & coverage
+coverage/
+
+# playwright
+e2e/screenshots/
+e2e/.artifacts/
+playwright-report/

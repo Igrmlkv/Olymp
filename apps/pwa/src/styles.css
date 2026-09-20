@@ -1,0 +1,561 @@
+/*
+ * Sized for 10-year-olds on phones: 56px minimum tap targets, 18px base text,
+ * WCAG AA contrast on every pairing below.
+ */
+:root {
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --surface-raised: #334155;
+  --text: #f8fafc;
+  --muted: #cbd5e1;
+  --accent: #fbbf24;
+  --accent-text: #1f2937;
+  --ok: #4ade80;
+  --no: #fca5a5;
+  --radius: 16px;
+  --tap: 56px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.screen {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 4rem;
+}
+
+h1 {
+  font-size: 1.75rem;
+  margin: 0.5rem 0 1rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+  margin: 1.5rem 0 0.5rem;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.error {
+  color: var(--no);
+}
+
+button,
+.link-button,
+.grade-button,
+.topic-card,
+.world-card {
+  min-height: var(--tap);
+  border-radius: var(--radius);
+  border: 2px solid var(--surface-raised);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  padding: 0.75rem 1.25rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+button:disabled,
+[aria-disabled='true'] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+button.primary {
+  background: var(--accent);
+  color: var(--accent-text);
+  border-color: var(--accent);
+  font-weight: 700;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.back-link {
+  display: inline-block;
+  color: var(--muted);
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+}
+
+.home-header .streak {
+  font-size: 1.25rem;
+  margin: 0.5rem 0 0;
+}
+
+.world-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.world-card {
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 8rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.world-card--math {
+  border-color: #38bdf8;
+}
+
+.world-card--russian {
+  border-color: #f472b6;
+}
+
+.world-emoji {
+  font-size: 2.5rem;
+}
+
+.home-actions,
+.task-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.link-button--quiet {
+  background: transparent;
+  color: var(--muted);
+}
+
+.grade-list,
+.topic-list,
+.olympiad-tasks,
+.hints,
+.summary {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.hints {
+  list-style: decimal inside;
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+
+.grade-button,
+.topic-card {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.grade-number {
+  font-weight: 700;
+}
+
+.topic-card--empty {
+  cursor: default;
+}
+
+.badge {
+  background: var(--surface-raised);
+  color: var(--muted);
+  border-radius: 999px;
+  padding: 0.125rem 0.625rem;
+  font-size: 0.875rem;
+}
+
+.statement,
+.solution {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin: 1rem 0;
+  white-space: pre-wrap;
+}
+
+.solution {
+  border-left: 4px solid var(--ok);
+}
+
+.answer-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.answer-input {
+  flex: 1 1 12rem;
+  min-height: var(--tap);
+  border-radius: var(--radius);
+  border: 2px solid var(--surface-raised);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  padding: 0 1rem;
+}
+
+.verdict {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.verdict--ok {
+  color: var(--ok);
+}
+
+.verdict--no {
+  color: var(--no);
+}
+
+.olympiad-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  padding: 0.75rem 0;
+}
+
+.timer {
+  font-size: 2rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+.timer--low {
+  color: var(--no);
+}
+
+.attribution {
+  margin-top: 2rem;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.attribution a {
+  color: var(--muted);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* --- Markdown в формулировках и разборах --- */
+
+.statement > :first-child,
+.solution > :first-child {
+  margin-top: 0;
+}
+
+.statement > :last-child,
+.solution > :last-child {
+  margin-bottom: 0;
+}
+
+.statement blockquote,
+.solution blockquote {
+  margin: 0.75rem 0;
+  padding-left: 1rem;
+  border-left: 3px solid var(--surface-raised);
+  font-style: italic;
+  color: var(--muted);
+}
+
+.statement table,
+.solution table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.75rem 0;
+  font-size: 0.9375rem;
+}
+
+.statement th,
+.statement td,
+.solution th,
+.solution td {
+  border: 1px solid var(--surface-raised);
+  padding: 0.375rem 0.625rem;
+  text-align: left;
+}
+
+.statement th,
+.solution th {
+  background: var(--surface-raised);
+}
+
+.statement ol,
+.statement ul,
+.solution ol,
+.solution ul {
+  padding-left: 1.5rem;
+  margin: 0.5rem 0;
+}
+
+.statement code,
+.solution code {
+  background: var(--surface-raised);
+  border-radius: 6px;
+  padding: 0.0625rem 0.375rem;
+}
+
+/* Markdown внутри подсказки не должен добавлять вертикальные отступы. */
+.hints p {
+  display: inline;
+  margin: 0;
+}
+
+.hints > li > div {
+  display: inline;
+}
+
+/* --- Варианты ответа --- */
+
+.options {
+  border: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+  flex: 1 1 100%;
+}
+
+.options-legend {
+  padding: 0 0 0.5rem;
+  color: var(--muted);
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: var(--tap);
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--surface-raised);
+  border-radius: var(--radius);
+  background: var(--surface);
+  cursor: pointer;
+}
+
+.option--on {
+  border-color: var(--accent);
+  background: var(--surface-raised);
+}
+
+.option input {
+  width: 1.5rem;
+  height: 1.5rem;
+  accent-color: var(--accent);
+  flex: none;
+}
+
+.options:disabled .option {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/*
+ * Рисунок — часть условия, а не иллюстрация. Но высоту надо ограничить: в
+ * заданиях с четырьмя вариантами-картинками каждая иначе занимает целый экран,
+ * и сравнить их невозможно.
+ */
+.statement img,
+.solution img {
+  display: block;
+  max-width: 100%;
+  max-height: 40vh;
+  width: auto;
+  height: auto;
+  margin: 0.75rem auto;
+  border-radius: 8px;
+  /* Схемы рисуются чёрным по белому и на тёмном фоне теряются. */
+  background: #fff;
+  padding: 0.5rem;
+}
+
+/*
+ * Варианты-картинки записываются таблицей: подпись в заголовке столбца, рисунок
+ * под ней. Так вариант жёстко связан со своим рисунком, и все видны сразу.
+ */
+.statement td img,
+.solution td img {
+  max-height: 20vh;
+  margin: 0 auto;
+  padding: 0.25rem;
+}
+
+.statement td,
+.solution td {
+  text-align: center;
+  vertical-align: top;
+}
+
+/* Ответ из нескольких частей: подпись слева, поле справа. */
+.parts .part {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.375rem;
+  border: none;
+  background: none;
+  padding: 0;
+  min-height: 0;
+}
+
+.part-label {
+  color: var(--muted);
+}
+
+.parts .answer-input {
+  width: 100%;
+}
+
+@media (min-width: 30rem) {
+  .parts .part {
+    grid-template-columns: minmax(8rem, 2fr) minmax(6rem, 1fr);
+    align-items: center;
+    gap: 0.75rem;
+  }
+}
+
+/* --- Список задач в теме --- */
+
+.task-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.task-row {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: var(--tap);
+  padding: 0.625rem 1rem;
+  border: 2px solid var(--surface-raised);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.task-row-number {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.task-row-title {
+  /*
+    Две строки, а не одна. В одну строку на телефоне помещалось «На
+    международной ...» — и четыре разные задачи выглядели одинаково, то есть
+    список переставал различать то, ради чего он существует.
+  */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  line-height: 1.35;
+}
+
+.task-row-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.task-row-mark {
+  width: 1.25rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.task-row--solved {
+  border-color: var(--ok);
+}
+
+.task-row--solved .task-row-mark {
+  color: var(--ok);
+}
+
+.task-row--attempted {
+  border-color: var(--accent);
+}
+
+.task-row--attempted .task-row-mark {
+  color: var(--accent);
+}
+
+/* --- Листание задач --- */
+
+.task-nav {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.task-nav button {
+  flex: 1;
+  justify-content: center;
+}
+
+/* --- Предложение обновиться --- */
+
+.sw-toast {
+  position: fixed;
+  left: 1rem;
+  right: 1rem;
+  bottom: calc(1rem + env(safe-area-inset-bottom));
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  border: 2px solid var(--surface-raised);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 45%);
+}
+
+.sw-toast span {
+  flex: 1 1 12rem;
+}
+
+.sw-toast button {
+  min-height: 2.5rem;
+  padding: 0.5rem 1rem;
+}

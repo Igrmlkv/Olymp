@@ -1,0 +1,29 @@
+{
+  "name": "@olymp/pipeline",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate": "tsx src/generate.ts",
+    "verify": "tsx src/verify.ts",
+    "publish": "tsx src/publish.ts",
+    "build": "tsc -p tsconfig.json --noEmit",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "import-archive": "tsx src/import-archive.ts",
+    "extract-images": "node scripts/extract-archive-images.mjs",
+    "coverage": "tsx src/coverage.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.68.0",
+    "@olymp/schema": "workspace:*",
+    "zod": "^4.1.13"
+  },
+  "devDependencies": {
+    "@types/node": "^22.18.0",
+    "sharp": "^0.34.4",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
+  }
+}

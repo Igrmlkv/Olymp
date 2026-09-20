@@ -1,0 +1,255 @@
+{
+  "_comment": [
+    "Каждая скачанная работа ВсОШ и её размер. Это учёт того, что опубликовано,",
+    "а сколько из работы взято — считается из самого банка по source_attribution.url,",
+    "чтобы два числа не разошлись (pipeline/src/papers.ts, `pnpm --filter",
+    "@olymp/pipeline coverage`).",
+    "",
+    "task_count — число заданий В РАБОТЕ, пересчитанное по PDF: у пригласительного",
+    "этапа и школьного этапа 2025/26 каждое задание идёт в нескольких вариантах,",
+    "и каждый вариант — отдельная задача. null означает «не сверено с PDF».",
+    "",
+    "unusable — задания, которые взять нельзя, с причиной. Без этого они выглядят",
+    "как недоделка и каждый раз проверяются заново."
+  ],
+  "papers": [
+    {
+      "id": "math-4-prigl-2122",
+      "subject": "math",
+      "grade": 4,
+      "season": "2021/22",
+      "stage": "invitational",
+      "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2021-22/prigl/math/tasks-math-4-prigl-msk-21-22.pdf",
+      "task_count": 7,
+      "unusable": [{ "count": 7, "reason": "организатор не публиковал ключ ответов — проверять ответ нечем" }]
+    },
+    {
+      "id": "math-4-prigl-2223",
+      "subject": "math",
+      "grade": 4,
+      "season": "2022/23",
+      "stage": "invitational",
+      "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2022-23/prigl/math/sol-math-4-prigl-msk-22-23.pdf",
+      "max_score": 8,
+      "variants": 4,
+      "task_count": 32,
+      "structure": "8 заданий × 4 варианта",
+      "unusable": [
+        { "count": 4, "reason": "задание 2: варианты ответа даны картинками без подписей" },
+        { "count": 4, "reason": "задание 7: часть ответа — отметить клетку на картинке поля, схема ответов этого не выражает" },
+        { "count": 4, "reason": "задание 8: на каждую строку сопоставления приходится множество допустимых значений, схема ответов этого не выражает" }
+      ]
+    },
+    {
+      "id": "math-4-sch-2324",
+      "subject": "math",
+      "grade": 4,
+      "season": "2023/24",
+      "stage": "school",
+      "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2023-24/school/math/ans-math-4-sch-msk-23-24.pdf",
+      "task_count": 8,
+      "unusable": []
+    },
+    {
+      "id": "math-4-prigl-2324",
+      "subject": "math",
+      "grade": 4,
+      "season": "2023/24",
+      "stage": "invitational",
+      "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2023-24/prigl/math/sol-math-4-prigl-msk-23-24.pdf",
+      "max_score": 8,
+      "variants": 4,
+      "task_count": 32,
+      "structure": "8 заданий × 4 варианта",
+      "unusable": [
+        { "count": 4, "reason": "задание 1: шесть носков картинками без подписей и номеров, сослаться на вариант нельзя" },
+        { "count": 4, "reason": "задание 2 «Морской бой»: поле опубликовано только с отмеченным ответом" }
+      ]
+    },
+    {
+      "id": "math-4-sch-2425",
+      "subject": "math",
+      "grade": 4,
+      "season": "2024/25",
+      "stage": "school",
+      "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2024-25/school/math/sol-math-4-sch-msk-24-25.pdf",
+      "task_count": 8,
+      "unusable": []
+    },
+    {
+      "id": "math-4-prigl-2425",
+      "subject": "math",
+      "grade": 4,
+      "season": "2024/25",
+      "stage": "invitational",
+      "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2024-25/prigl/math/sol-math-4-prigl-msk-24-25.pdf",
+      "max_score": 8,
+      "task_count": 8,
+      "unusable": []
+    },
+    {
+      "id": "math-4-sch-2526",
+      "subject": "math",
+      "grade": 4,
+      "season": "2025/26",
+      "stage": "school",
+      "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/school/math/sol-math-4-sch-msk-25-26.pdf",
+      "max_score": 8,
+      "variants": 4,
+      "task_count": 30,
+      "structure": "задание 1 в 2 вариантах, задания 2–8 в 4",
+      "unusable": []
+    },
+    {
+      "id": "math-4-prigl-2526",
+      "subject": "math",
+      "grade": 4,
+      "season": "2025/26",
+      "stage": "invitational",
+      "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/prigl/math/sol-math-4-prigl-msk-25-26.pdf",
+      "max_score": 8,
+      "variants": 4,
+      "task_count": 32,
+      "structure": "8 заданий × 4 варианта",
+      "unusable": [{ "count": 4, "reason": "задание 3: варианты ответа даны картинками без подписей" }]
+    },
+    {
+      "id": "math-4-prigl-2627",
+      "subject": "math",
+      "grade": 4,
+      "season": "2026/27",
+      "stage": "invitational",
+      "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2026-27/prigl/math/sol-math-4-prigl-msk-26-27.pdf",
+      "max_score": 56,
+      "task_count": 8,
+      "unusable": []
+    },
+
+    {
+      "id": "russ-4-sch-2122",
+      "subject": "russian",
+      "grade": 4,
+      "season": "2021/22",
+      "stage": "school",
+      "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2021-22/school/russ/ans-russ-4-sch-msk-21-22.pdf",
+      "task_count": 15,
+      "max_score": 42,
+      "unusable": []
+    },
+    {
+      "id": "russ-4-prigl-2122",
+      "subject": "russian",
+      "grade": 4,
+      "season": "2021/22",
+      "stage": "invitational",
+      "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2021-22/prigl/russ/ans-russ-4-prigl-msk-21-22.pdf",
+      "max_score": 13,
+      "task_count": 11,
+      "structure": "ключ ответов перечисляет задания 1–11 и содержит их условия целиком; файл с заданиями — скан без текстового слоя",
+      "unusable": [{ "count": 1, "points": 3, "reason": "задание 11 дословно повторяет задание 8 работы 2022/23, взятое в банк" }]
+    },
+    {
+      "id": "russ-4-sch-2223",
+      "subject": "russian",
+      "grade": 4,
+      "season": "2022/23",
+      "stage": "school",
+      "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2022-23/school/russ/ans-russ-4-sch-msk-22-23.pdf",
+      "task_count": 15,
+      "structure": "в ключе нет итоговой суммы баллов: сверено только число заданий",
+      "unusable": []
+    },
+    {
+      "id": "russ-4-prigl-2223",
+      "subject": "russian",
+      "grade": 4,
+      "season": "2022/23",
+      "stage": "invitational",
+      "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2022-23/prigl/russ/ans-russ-4-prigl-msk-22-23.pdf",
+      "task_count": 17,
+      "max_score": 23,
+      "structure": "16 заданий, но 17 полей для ответа: задание 5 стоит 2 балла и состоит из двух вопросов с отдельными полями",
+      "unusable": []
+    },
+    {
+      "id": "russ-4-sch-2324",
+      "subject": "russian",
+      "grade": 4,
+      "season": "2023/24",
+      "stage": "school",
+      "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2023-24/school/russ/ans-russ-4-sch-msk-23-24.pdf",
+      "max_score": 34,
+      "structure": "нумерация организатора идёт 1, 2, 3–4, 6, 7, 8–9, 10–11, 12 — задачи 5 в работе нет; в ключе заявлен максимум 36, но сумма его же критериев по заданиям — 34",
+      "task_count": 10,
+      "unusable": []
+    },
+    {
+      "id": "russ-4-prigl-2324",
+      "subject": "russian",
+      "grade": 4,
+      "season": "2023/24",
+      "stage": "invitational",
+      "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2023-24/prigl/russ/ans-russ-4-prigl-msk-23-24.pdf",
+      "task_count": 16,
+      "max_score": 33,
+      "unusable": [{ "count": 6, "points": 12, "reason": "дословно повторяют задания школьного этапа, уже взятые в банк" }]
+    },
+    {
+      "id": "russ-4-sch-2425",
+      "subject": "russian",
+      "grade": 4,
+      "season": "2024/25",
+      "stage": "school",
+      "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2024-25/school/russ/ans-russ-4-sch-msk-24-25.pdf",
+      "max_score": 37,
+      "task_count": 16,
+      "structure": "нумерация организатора идёт 1–14, 16–19, 20 — задания 15 в работе нет; задания 4–6, 7–9, 12–13 и 16–19 оцениваются внутри одной задачи; в ключе заявлен максимум 40, но сумма его же критериев по заданиям — 37",
+      "unusable": []
+    },
+    {
+      "id": "russ-4-prigl-2425",
+      "subject": "russian",
+      "grade": 4,
+      "season": "2024/25",
+      "stage": "invitational",
+      "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2024-25/prigl/russ/ans-russ-4-prigl-msk-24-25.pdf",
+      "max_score": 29,
+      "task_count": 14,
+      "unusable": [{ "count": 1, "points": 1, "reason": "задание 7 дословно повторяет задание 8 работы 2026/27, взятое в банк" }]
+    },
+    {
+      "id": "russ-4-sch-2526",
+      "subject": "russian",
+      "grade": 4,
+      "season": "2025/26",
+      "stage": "school",
+      "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/school/russ/ans-russ-4-sch-msk-25-26.pdf",
+      "max_score": 52,
+      "task_count": 16,
+      "structure": "26 заданий, объединённых организатором в 10 задач; часть заданий оценивается только вместе (15–17, 18–21, 10–13), поэтому в банке они взяты одной задачей — всего 16",
+      "unusable": []
+    },
+    {
+      "id": "russ-4-prigl-2526",
+      "subject": "russian",
+      "grade": 4,
+      "season": "2025/26",
+      "stage": "invitational",
+      "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2025-26/prigl/russ/ans-russ-4-prigl-msk-25-26.pdf",
+      "max_score": 32,
+      "task_count": 8,
+      "unusable": [{ "count": 1, "points": 5, "reason": "задание 1: пять мест на рисунке отмечены знаками «?» без номеров и подписей, сослаться на конкретное место нечем" }]
+    },
+    {
+      "id": "russ-4-prigl-2627",
+      "subject": "russian",
+      "grade": 4,
+      "season": "2026/27",
+      "stage": "invitational",
+      "url": "https://vos.olimpiada.ru/upload/files/Arhive_tasks/2026-27/prigl/russ/ans-russ-4-prigl-msk-26-27.pdf",
+      "max_score": 28,
+      "task_count": 9,
+      "unusable": []
+    }
+  ]
+}
