@@ -128,6 +128,31 @@ export function ensurePackage(subject: Subject, grade: Grade): Promise<StoredPac
   return pending
 }
 
+/** Every package this device holds, for the parent screen. */
+export async function listStoredPackages(): Promise<StoredPackage[]> {
+  return db.packages.toArray()
+}
+
+/**
+ * The check a parent can ask for, ignoring the twice-a-day throttle.
+ *
+ * Needed because the background refresh applies on the next launch, and
+ * somebody looking at an old bank right now has no way to tell whether the app
+ * is stale or simply has no newer version to offer.
+ */
+export async function checkForNewPackage(
+  subject: Subject,
+  grade: Grade,
+): Promise<{ updated: boolean; version: string }> {
+  const stored = await getStoredPackage(subject, grade)
+  const fresh = await downloadPackage(subject, grade)
+  inMemory.delete(`${subject}-${grade}`)
+
+  const updated = stored?.version !== fresh.version
+  if (updated) void track('package_updated', { subject, grade })
+  return { updated, version: fresh.version }
+}
+
 export function tasksByTopic(pkg: ContentPackage, topic: string): Task[] {
   return pkg.tasks.filter((t) => t.topic === topic).sort((a, b) => a.level - b.level)
 }

@@ -256,6 +256,48 @@ test('тема без задач объясняет себя по прямой �
   await shot(page, '13-empty-topic-direct')
 })
 
+test('родитель видит версию банка и может обновить его', async ({ page }) => {
+  // The bank has to be on the device before there is a version to show.
+  await start(page, '/math')
+  await expect(page.locator('.topic-card').first()).toBeVisible()
+
+  await page.goto('/parents')
+  await expect(page.getByText(/Математика: \d+ задач/)).toBeVisible()
+
+  // Pretend this device is stuck on an old bank — which is what every device
+  // was until packages started being re-checked, and how one of ours ended up
+  // showing the fifteen tasks of the first day for a week.
+  await page.evaluate(
+    () =>
+      new Promise<void>((resolve, reject) => {
+        const open = indexedDB.open('olymp')
+        open.onsuccess = () => {
+          const tx = open.result.transaction('packages', 'readwrite')
+          const store = tx.objectStore('packages')
+          const get = store.get('math-4')
+          get.onsuccess = () => {
+            const row = get.result
+            row.version = '0.0.1'
+            store.put(row)
+          }
+          tx.oncomplete = () => resolve()
+          tx.onerror = () => reject(tx.error)
+        }
+        open.onerror = () => reject(open.error)
+      }),
+  )
+
+  await page.reload()
+  await expect(page.getByText('версия 0.0.1')).toBeVisible()
+
+  const reloaded = page.waitForEvent('load')
+  await page.getByRole('button', { name: 'Проверить обновления' }).click()
+  await reloaded
+
+  await expect(page.getByText('версия 0.0.1')).toBeHidden()
+  await shot(page, '14-parents-package-version')
+})
+
 /** The topic with the most tasks: the one a child is most likely to open. */
 function biggestTopic(tasks: { topic: string }[]): string {
   const counts = new Map<string, number>()
