@@ -3,7 +3,13 @@ import { Link } from 'react-router'
 import { getStreak } from '../lib/streak.js'
 import { getProfile } from '../lib/profile.js'
 import { daysWord } from '../lib/plural.js'
-import { GRADE_MAPPING, type Grade } from '@olymp/schema'
+import {
+  GRADE_MAPPING,
+  SUBJECT_EMOJI,
+  SUBJECT_LABELS_RU,
+  SubjectSchema,
+  type Grade,
+} from '@olymp/schema'
 
 /** Map of worlds. For now: two subjects, the streak, and the olympiad entrance. */
 export function HomeScreen() {
@@ -28,20 +34,21 @@ export function HomeScreen() {
       </header>
 
       <nav className="world-grid">
-        <Link className="world-card world-card--math" to="/math">
-          <span className="world-emoji">🔢</span>
-          <span>Математика</span>
-        </Link>
-        <Link className="world-card world-card--russian" to="/russian">
-          <span className="world-emoji">📖</span>
-          <span>Русский язык</span>
-        </Link>
+        {SubjectSchema.options.map((subject) => (
+          <Link key={subject} className={`world-card world-card--${subject}`} to={`/${subject}`}>
+            <span className="world-emoji">{SUBJECT_EMOJI[subject]}</span>
+            <span>{SUBJECT_LABELS_RU[subject]}</span>
+          </Link>
+        ))}
       </nav>
 
       <section className="home-actions">
-        <Link className="link-button" to="/olympiad/math">
-          Режим олимпиады
-        </Link>
+        {/* Both subjects have a format; only maths had a link before. */}
+        {SubjectSchema.options.map((subject) => (
+          <Link key={subject} className="link-button" to={`/olympiad/${subject}`}>
+            Олимпиада: {SUBJECT_LABELS_RU[subject].toLowerCase()}
+          </Link>
+        ))}
         <Link className="link-button link-button--quiet" to="/parents">
           Для родителей
         </Link>
@@ -52,3 +59,5 @@ export function HomeScreen() {
     </main>
   )
 }
+
+export default HomeScreen

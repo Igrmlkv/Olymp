@@ -1,18 +1,13 @@
 import { z } from 'zod'
 
-/** Russian school grades the app can ever cover. MVP ships grade 4 only. */
-export const GradeSchema = z.union([
-  z.literal(3),
-  z.literal(4),
-  z.literal(5),
-  z.literal(6),
-  z.literal(7),
-  z.literal(8),
-  z.literal(9),
-  z.literal(10),
-  z.literal(11),
-])
-export type Grade = z.infer<typeof GradeSchema>
+/**
+ * Russian school grades the app can ever cover. MVP ships grade 4 only.
+ * The list is the single source: the schema, the grade picker and GRADE_MAPPING
+ * all derive from it, so a new grade cannot be half-added.
+ */
+export const GRADES = [3, 4, 5, 6, 7, 8, 9, 10, 11] as const
+export const GradeSchema = z.union(GRADES.map((g) => z.literal(g)))
+export type Grade = (typeof GRADES)[number]
 
 /** Grades with content in the current release. See docs/roadmap.md. */
 export const SHIPPED_GRADES = [4] as const

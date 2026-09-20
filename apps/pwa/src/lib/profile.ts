@@ -1,5 +1,5 @@
 import { INSTALLATION_ID_ROTATION_DAYS, type Grade } from '@olymp/schema'
-import { db, type Profile } from './db.js'
+import { db, onErase, type Profile } from './db.js'
 
 const DAY_MS = 24 * 60 * 60 * 1000
 
@@ -8,11 +8,27 @@ function newInstallationId(): string {
 }
 
 /**
+ * The profile is one row that changes at most once a month, but it was read
+ * from IndexedDB on every screen mount and on every single telemetry event.
+ * Cached here; writers invalidate.
+ */
+let cached: Promise<Profile> | null = null
+
+onErase(() => {
+  cached = null
+})
+
+/**
  * Returns the local profile, creating it on first run and rotating the
  * installation id once it is older than the rotation window. Rotation is what
  * keeps telemetry from accumulating into a long-lived device fingerprint.
  */
-export async function getProfile(): Promise<Profile> {
+export function getProfile(): Promise<Profile> {
+  cached ??= loadProfile()
+  return cached
+}
+
+async function loadProfile(): Promise<Profile> {
   const now = new Date()
   const existing = await db.profile.get('local')
 
@@ -44,5 +60,7 @@ export async function getProfile(): Promise<Profile> {
 
 export async function setGrade(grade: Grade): Promise<void> {
   const profile = await getProfile()
-  await db.profile.put({ ...profile, grade })
+  const next = { ...profile, grade }
+  await db.profile.put(next)
+  cached = Promise.resolve(next)
 }

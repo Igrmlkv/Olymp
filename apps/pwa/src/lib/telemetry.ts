@@ -1,4 +1,11 @@
-import { bucketToHour, TelemetryEventSchema, type TelemetryEvent, type TelemetryEventName } from '@olymp/schema'
+import {
+  bucketToHour,
+  TelemetryEventSchema,
+  type TelemetryEvent,
+  type TelemetryEventName,
+  MAX_ATTEMPT_COUNT,
+  MAX_DURATION_MS,
+} from '@olymp/schema'
 import { db } from './db.js'
 import { getProfile } from './profile.js'
 
@@ -12,10 +19,21 @@ const MAX_QUEUE = 200
 
 type EventPayload = Omit<TelemetryEvent, 'name' | 'installation_id' | 'occurred_at_hour'>
 
+/**
+ * Callers pass raw numbers; the schema's caps are applied here rather than
+ * restated at every call site. Restating them meant a raised cap left a screen
+ * silently failing validation — and a dropped event, not an error.
+ */
+function clamp(value: number | undefined, max: number): number | undefined {
+  return value === undefined ? undefined : Math.min(Math.max(0, Math.trunc(value)), max)
+}
+
 export async function track(name: TelemetryEventName, payload: EventPayload = {}): Promise<void> {
   const profile = await getProfile()
   const candidate = {
     ...payload,
+    attempt_count: clamp(payload.attempt_count, MAX_ATTEMPT_COUNT),
+    duration_ms: clamp(payload.duration_ms, MAX_DURATION_MS),
     name,
     installation_id: profile.installationId,
     occurred_at_hour: bucketToHour(new Date()),
@@ -28,12 +46,11 @@ export async function track(name: TelemetryEventName, payload: EventPayload = {}
     return
   }
 
-  await db.telemetryQueue.add({ event: parsed.data })
-
-  const size = await db.telemetryQueue.count()
-  if (size > MAX_QUEUE) {
-    const overflow = await db.telemetryQueue.orderBy('id').limit(size - MAX_QUEUE).primaryKeys()
-    await db.telemetryQueue.bulkDelete(overflow)
+  // The auto-increment key is its own high-water mark, so trimming costs one
+  // query instead of a count, a key scan and a bulk delete on every event.
+  const id = await db.telemetryQueue.add({ event: parsed.data })
+  if (typeof id === 'number' && id > MAX_QUEUE) {
+    await db.telemetryQueue.where('id').below(id - MAX_QUEUE).delete()
   }
 }
 

@@ -28,13 +28,6 @@ export const OlympiadFormatSchema = z.object({
 })
 export type OlympiadFormat = z.infer<typeof OlympiadFormatSchema>
 
-/** Time limits by grade, per the Sirius regulations. */
-export function olympiadMinutesForGrade(grade: Grade): number {
-  if (grade <= 5) return 60
-  if (grade <= 8) return 90
-  return 120
-}
-
 /**
  * Shipped MVP formats, Moscow first because the shipped archive packages are
  * Moscow school-stage tasks — pairing them with the Sirius 56-point scale would

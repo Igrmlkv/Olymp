@@ -1,5 +1,6 @@
 import { ContentPackageSchema, type ContentPackage, type Grade, type Subject, type Task } from '@olymp/schema'
-import { db, type StoredPackage } from './db.js'
+import { db, onErase, type StoredPackage } from './db.js'
+import { track } from './telemetry.js'
 
 /**
  * Packages are fetched once, validated, and kept in IndexedDB. From then on the
@@ -52,6 +53,12 @@ export async function downloadPackage(subject: Subject, grade: Grade): Promise<S
     payload,
   }
   await db.packages.put(stored)
+
+  void track('package_downloaded', {
+    subject: payload.manifest.subject,
+    grade: payload.manifest.grade,
+  })
+
   return stored
 }
 
@@ -59,11 +66,31 @@ export async function getStoredPackage(subject: Subject, grade: Grade): Promise<
   return db.packages.where({ subject, grade }).first()
 }
 
+/**
+ * A package is immutable for its version, so once loaded it is held in memory:
+ * moving between the topic list and a task used to structured-clone ~40 KB of
+ * tasks out of IndexedDB on every navigation.
+ */
+const inMemory = new Map<string, Promise<StoredPackage>>()
+
+onErase(() => inMemory.clear())
+
 /** Cached package if present, otherwise a download. Throws offline with nothing cached. */
-export async function ensurePackage(subject: Subject, grade: Grade): Promise<StoredPackage> {
-  const cached = await getStoredPackage(subject, grade)
-  if (cached) return cached
-  return downloadPackage(subject, grade)
+export function ensurePackage(subject: Subject, grade: Grade): Promise<StoredPackage> {
+  const key = `${subject}-${grade}`
+  let pending = inMemory.get(key)
+
+  if (!pending) {
+    pending = (async () => {
+      const stored = await getStoredPackage(subject, grade)
+      return stored ?? downloadPackage(subject, grade)
+    })()
+    // A failed load must not be remembered as the answer forever.
+    pending.catch(() => inMemory.delete(key))
+    inMemory.set(key, pending)
+  }
+
+  return pending
 }
 
 export function tasksByTopic(pkg: ContentPackage, topic: string): Task[] {

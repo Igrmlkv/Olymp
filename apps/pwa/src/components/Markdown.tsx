@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 
@@ -8,11 +9,21 @@ import remarkGfm from 'remark-gfm'
  * Raw HTML is deliberately NOT enabled. Packages arrive over the network, and
  * the checksum only proves the manifest agrees with itself — it is not a
  * signature, so package content is never trusted enough to inject as HTML.
+ *
+ * Memoised because react-markdown re-parses on every render: olympiad mode
+ * re-renders once a second for the timer, and on every keystroke, with a dozen
+ * statements on screen.
  */
-export function Markdown({ children, className }: { children: string; className?: string }) {
+export const Markdown = memo(function Markdown({
+  children,
+  className,
+}: {
+  children: string
+  className?: string
+}) {
   return (
     <div className={className}>
       <ReactMarkdown remarkPlugins={[remarkGfm]}>{children}</ReactMarkdown>
     </div>
   )
-}
+})

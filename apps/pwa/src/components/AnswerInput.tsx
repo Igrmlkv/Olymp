@@ -1,3 +1,4 @@
+import { useId } from 'react'
 import type { Answer } from '@olymp/schema'
 
 /**
@@ -20,40 +21,34 @@ export function AnswerInput({
   disabled?: boolean
   label?: string
 }) {
-  if (answer.type === 'choice') {
-    const selected = Array.isArray(value) ? value[0] : value
-    return (
-      <fieldset className="options" disabled={disabled}>
-        <legend className="visually-hidden">{label}</legend>
-        {answer.options.map((option) => (
-          <label key={option} className={option === selected ? 'option option--on' : 'option'}>
-            <input
-              type="radio"
-              name="answer"
-              value={option}
-              checked={option === selected}
-              onChange={() => onChange(option)}
-            />
-            <span>{option}</span>
-          </label>
-        ))}
-      </fieldset>
-    )
-  }
+  // Olympiad mode renders one of these per task. A shared id/name would put
+  // every task's radios in the same group, so choosing an answer to task 3
+  // would clear task 1.
+  const id = useId()
 
-  if (answer.type === 'multi') {
-    const selected = Array.isArray(value) ? value : []
-    const toggle = (option: string) =>
+  if (answer.type === 'choice' || answer.type === 'multi') {
+    const multiple = answer.type === 'multi'
+    const selected = Array.isArray(value) ? value : value === '' ? [] : [value]
+    const toggle = (option: string) => {
+      if (!multiple) return onChange(option)
       onChange(
         selected.includes(option) ? selected.filter((v) => v !== option) : [...selected, option],
       )
+    }
+
     return (
       <fieldset className="options" disabled={disabled}>
-        <legend className="options-legend">{label}: выбери все подходящие</legend>
+        <legend className={multiple ? 'options-legend' : 'visually-hidden'}>
+          {multiple ? `${label}: выбери все подходящие` : label}
+        </legend>
         {answer.options.map((option) => (
-          <label key={option} className={selected.includes(option) ? 'option option--on' : 'option'}>
+          <label
+            key={option}
+            className={selected.includes(option) ? 'option option--on' : 'option'}
+          >
             <input
-              type="checkbox"
+              type={multiple ? 'checkbox' : 'radio'}
+              name={id}
               value={option}
               checked={selected.includes(option)}
               onChange={() => toggle(option)}
@@ -67,11 +62,11 @@ export function AnswerInput({
 
   return (
     <>
-      <label className="visually-hidden" htmlFor="answer">
+      <label className="visually-hidden" htmlFor={id}>
         {label}
       </label>
       <input
-        id="answer"
+        id={id}
         className="answer-input"
         value={Array.isArray(value) ? value.join(' ') : value}
         onChange={(e) => onChange(e.target.value)}

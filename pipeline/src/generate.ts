@@ -2,8 +2,19 @@ import { readFile, mkdir, writeFile } from 'node:fs/promises'
 import { randomUUID } from 'node:crypto'
 import { resolve } from 'node:path'
 import { z } from 'zod'
-import { AnswerSchema, GRADE_MAPPING, GradeSchema, SubjectSchema, TopicSchema, type Task } from '@olymp/schema'
+import {
+  AnswerSchema,
+  GRADE_MAPPING,
+  GradeSchema,
+  SUBJECT_LABELS_RU,
+  SubjectSchema,
+  TOPIC_LABELS_RU,
+  TopicSchema,
+  type Task,
+} from '@olymp/schema'
+import { arg } from './args.js'
 import { createClient, extractJson, textFrom } from './anthropic-client.js'
+import { ARCHIVE_DIR, PROMPTS_DIR, runDir } from './paths.js'
 import { MODELS } from './models.js'
 
 /**
@@ -15,7 +26,6 @@ import { MODELS } from './models.js'
  */
 
 const PROMPT_VERSION = 'gen-v1'
-const ROOT = resolve(import.meta.dirname, '..')
 
 const DraftTaskSchema = z.object({
   statement_md: z.string().min(1),
@@ -33,29 +43,21 @@ const ArgsSchema = z.object({
   count: z.number().int().min(1).max(50),
 })
 
-function parseArgs(argv: string[]): z.infer<typeof ArgsSchema> {
-  const raw: Record<string, string> = {}
-  for (let i = 0; i < argv.length; i += 2) {
-    const key = argv[i]?.replace(/^--/, '')
-    const value = argv[i + 1]
-    if (key && value) raw[key] = value
-  }
+function parseArgs(): z.infer<typeof ArgsSchema> {
   return ArgsSchema.parse({
-    subject: raw.subject,
-    grade: Number(raw.grade),
-    topic: raw.topic,
-    level: Number(raw.level ?? 1),
-    count: Number(raw.count ?? 10),
+    subject: arg('subject'),
+    grade: Number(arg('grade')),
+    topic: arg('topic'),
+    level: Number(arg('level') ?? 1),
+    count: Number(arg('count') ?? 10),
   })
 }
-
-const SUBJECT_RU = { math: 'математика', russian: 'русский язык' } as const
 
 async function loadFewShot(subject: string, topic: string): Promise<string> {
   // Archive samples are the difficulty anchor. Absent an archive, the model
   // still produces tasks, just with a looser calibration — flagged in the log.
   try {
-    const path = resolve(ROOT, '..', 'content', 'archive', `${subject}-${topic}.json`)
+    const path = resolve(ARCHIVE_DIR, `${subject}-${topic}.json`)
     const samples = JSON.parse(await readFile(path, 'utf8')) as unknown[]
     return JSON.stringify(samples.slice(0, 3), null, 2)
   } catch {
@@ -65,16 +67,16 @@ async function loadFewShot(subject: string, topic: string): Promise<string> {
 }
 
 async function main(): Promise<void> {
-  const args = parseArgs(process.argv.slice(2))
+  const args = parseArgs()
   const client = createClient()
 
-  const template = await readFile(resolve(ROOT, 'prompts', 'generation.md'), 'utf8')
+  const template = await readFile(resolve(PROMPTS_DIR, 'generation.md'), 'utf8')
   const fewShot = await loadFewShot(args.subject, args.topic)
 
   const prompt = template
-    .replace(/\{\{subject_ru\}\}/g, SUBJECT_RU[args.subject])
+    .replace(/\{\{subject_ru\}\}/g, SUBJECT_LABELS_RU[args.subject])
     .replace(/\{\{grade\}\}/g, String(args.grade))
-    .replace(/\{\{topic_ru\}\}/g, args.topic)
+    .replace(/\{\{topic_ru\}\}/g, TOPIC_LABELS_RU[args.topic])
     .replace(/\{\{level\}\}/g, String(args.level))
     .replace(/\{\{count\}\}/g, String(args.count))
     .replace(/\{\{few_shot\}\}/g, fewShot)
@@ -109,10 +111,10 @@ async function main(): Promise<void> {
   }))
 
   const runId = `${args.subject}-${args.grade}-${args.topic}-${Date.now()}`
-  const runDir = resolve(ROOT, '.runs', runId)
-  await mkdir(runDir, { recursive: true })
+  const dir = runDir(runId)
+  await mkdir(dir, { recursive: true })
   await writeFile(
-    resolve(runDir, 'draft.json'),
+    resolve(dir, 'draft.json'),
     JSON.stringify({ prompt_version: PROMPT_VERSION, model: MODELS.generator, tasks }, null, 2),
   )
 

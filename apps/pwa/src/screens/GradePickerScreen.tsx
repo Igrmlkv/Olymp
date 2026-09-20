@@ -1,7 +1,5 @@
-import { GRADE_MAPPING, SHIPPED_GRADES, type Grade } from '@olymp/schema'
+import { GRADE_MAPPING, GRADES, SHIPPED_GRADES, type Grade } from '@olymp/schema'
 import { setGrade } from '../lib/profile.js'
-
-const ALL_GRADES: Grade[] = [3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 /**
  * First screen a child sees. The Dutch hint ("4 класс ≈ groep 6") matters:
@@ -19,7 +17,7 @@ export function GradePickerScreen({ onPicked }: { onPicked?: (grade: Grade) => v
       <p className="muted">Подсказка показывает, какой это класс в нидерландской школе.</p>
 
       <ul className="grade-list">
-        {ALL_GRADES.map((grade) => {
+        {GRADES.map((grade) => {
           const shipped = (SHIPPED_GRADES as readonly number[]).includes(grade)
           return (
             <li key={grade}>
@@ -35,3 +33,5 @@ export function GradePickerScreen({ onPicked }: { onPicked?: (grade: Grade) => v
     </main>
   )
 }
+
+export default GradePickerScreen

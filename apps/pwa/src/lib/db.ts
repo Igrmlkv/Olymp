@@ -72,8 +72,19 @@ export class OlympDatabase extends Dexie {
 
 export const db = new OlympDatabase()
 
-/** Wipes every trace of the child from the device. Exposed on the parent screen. */
+/**
+ * Wipes every trace of the child from the device. Exposed on the parent screen.
+ * Listeners let the profile and package caches drop what they hold, so nothing
+ * survives the erase in memory.
+ */
+const eraseListeners = new Set<() => void>()
+
+export function onErase(listener: () => void): void {
+  eraseListeners.add(listener)
+}
+
 export async function eraseAllLocalData(): Promise<void> {
   await db.delete()
   await db.open()
+  for (const listener of eraseListeners) listener()
 }

@@ -13,28 +13,22 @@ import type { Grade } from '@olymp/schema'
  *
  * Offline is unaffected: the service worker precaches every emitted chunk.
  */
-const TopicScreen = lazy(async () => ({ default: (await import('./screens/TopicScreen.js')).TopicScreen }))
-const TaskScreen = lazy(async () => ({ default: (await import('./screens/TaskScreen.js')).TaskScreen }))
-const OlympiadScreen = lazy(async () => ({
-  default: (await import('./screens/OlympiadScreen.js')).OlympiadScreen,
-}))
-const ParentScreen = lazy(async () => ({ default: (await import('./screens/ParentScreen.js')).ParentScreen }))
+const TopicScreen = lazy(() => import('./screens/TopicScreen.js'))
+const TaskScreen = lazy(() => import('./screens/TaskScreen.js'))
+const OlympiadScreen = lazy(() => import('./screens/OlympiadScreen.js'))
+const ParentScreen = lazy(() => import('./screens/ParentScreen.js'))
 
 function Loading() {
   return <p className="screen">Загружаем…</p>
 }
 
-function lazyRoute(element: React.ReactNode) {
-  return <Suspense fallback={<Loading />}>{element}</Suspense>
-}
-
 const router = createBrowserRouter([
   { path: '/', element: <HomeScreen /> },
   { path: '/grade', element: <GradePickerScreen /> },
-  { path: '/:subject', element: lazyRoute(<TopicScreen />) },
-  { path: '/:subject/:topic', element: lazyRoute(<TaskScreen />) },
-  { path: '/olympiad/:subject', element: lazyRoute(<OlympiadScreen />) },
-  { path: '/parents', element: lazyRoute(<ParentScreen />) },
+  { path: '/:subject', element: <TopicScreen /> },
+  { path: '/:subject/:topic', element: <TaskScreen /> },
+  { path: '/olympiad/:subject', element: <OlympiadScreen /> },
+  { path: '/parents', element: <ParentScreen /> },
   { path: '*', element: <Navigate to="/" replace /> },
 ])
 
@@ -45,18 +39,20 @@ export function App() {
     void (async () => {
       const profile = await getProfile()
       setGrade(profile.grade)
-      await track('app_open')
-      await flushTelemetry()
+      void track('app_open')
+      // Not awaited: a network round trip must not sit on the startup path
+      // ahead of the first route chunk and the content package.
+      void flushTelemetry()
     })()
   }, [])
 
-  if (grade === undefined) {
-    return <Loading />
-  }
+  if (grade === undefined) return <Loading />
+  if (grade === null) return <GradePickerScreen onPicked={setGrade} />
 
-  if (grade === null) {
-    return <GradePickerScreen onPicked={setGrade} />
-  }
-
-  return <RouterProvider router={router} />
+  // Routes are full-screen, so one boundary gives the same granularity as four.
+  return (
+    <Suspense fallback={<Loading />}>
+      <RouterProvider router={router} />
+    </Suspense>
+  )
 }

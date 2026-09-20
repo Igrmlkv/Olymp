@@ -1,8 +1,17 @@
 import { describe, expect, it } from 'vitest'
-import { GRADE_MAPPING } from './grade.js'
-import { TaskSchema } from './task.js'
-import { ContentPackageSchema } from './package-manifest.js'
-import { findOlympiadFormat, olympiadMinutesForGrade } from './olympiad.js'
+import { GRADE_MAPPING, GRADES } from './grade.js'
+import {
+  MathTopicSchema,
+  RussianTopicSchema,
+  StageSchema,
+  SUBJECT_LABELS_RU,
+  SubjectSchema,
+  TaskSchema,
+  TOPIC_LABELS_RU,
+  STAGE_LABELS_RU,
+} from './task.js'
+import { ContentPackageSchema, summariseVerdicts } from './package-manifest.js'
+import { findOlympiadFormat } from './olympiad.js'
 
 const validTask = {
   id: 'math-4-0001',
@@ -86,12 +95,6 @@ describe('olympiad formats', () => {
   it('scores Russian grade 4 out of 52, per the 2025/26 answer key', () => {
     expect(findOlympiadFormat('russian', 4)).toMatchObject({ max_score: 52, season: '2025/26' })
   })
-
-  it('follows the Sirius time ladder by grade', () => {
-    expect(olympiadMinutesForGrade(4)).toBe(60)
-    expect(olympiadMinutesForGrade(7)).toBe(90)
-    expect(olympiadMinutesForGrade(10)).toBe(120)
-  })
 })
 
 describe('answer options', () => {
@@ -124,5 +127,36 @@ describe('answer options', () => {
       verification: { verdict: 'pass', method: 'official_answer_key', model: null },
     })
     expect(result.success).toBe(true)
+  })
+})
+
+describe('Russian labels cover their enums', () => {
+  it('labels every topic, so no child is shown a raw slug', () => {
+    for (const topic of [...MathTopicSchema.options, ...RussianTopicSchema.options]) {
+      expect(TOPIC_LABELS_RU[topic]).toBeTruthy()
+    }
+  })
+
+  it('labels every subject and every stage', () => {
+    for (const subject of SubjectSchema.options) expect(SUBJECT_LABELS_RU[subject]).toBeTruthy()
+    for (const stage of StageSchema.options) expect(STAGE_LABELS_RU[stage]).toBeTruthy()
+  })
+
+  it('maps every grade the picker can offer', () => {
+    for (const grade of GRADES) expect(GRADE_MAPPING[grade].hint_ru).toBeTruthy()
+  })
+})
+
+describe('summariseVerdicts', () => {
+  it('tallies each verdict once', () => {
+    const t = (verdict: 'pass' | 'fail' | 'needs_review') => ({
+      verification: { verdict, method: 'm', model: null },
+    })
+    expect(summariseVerdicts([t('pass'), t('pass'), t('fail'), t('needs_review')])).toEqual({
+      total: 4,
+      passed: 2,
+      failed: 1,
+      needs_review: 1,
+    })
   })
 })

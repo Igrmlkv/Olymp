@@ -26,6 +26,10 @@ export const TelemetryEventNameSchema = z.enum([
 ])
 export type TelemetryEventName = z.infer<typeof TelemetryEventNameSchema>
 
+/** Caps that keep a counter from becoming a fingerprint. Applied by the client. */
+export const MAX_ATTEMPT_COUNT = 50
+export const MAX_DURATION_MS = 3_600_000
+
 export const TelemetryEventSchema = z.object({
   name: TelemetryEventNameSchema,
   /** Random, client-generated, rotated; never derived from anything identifying. */
@@ -38,8 +42,8 @@ export const TelemetryEventSchema = z.object({
   level: LevelSchema.optional(),
   task_id: z.string().optional(),
   /** Attempts before the event; capped so it cannot become a fingerprint. */
-  attempt_count: z.number().int().min(0).max(50).optional(),
-  duration_ms: z.number().int().min(0).max(3_600_000).optional(),
+  attempt_count: z.number().int().min(0).max(MAX_ATTEMPT_COUNT).optional(),
+  duration_ms: z.number().int().min(0).max(MAX_DURATION_MS).optional(),
   correct: z.boolean().optional(),
 })
 export type TelemetryEvent = z.infer<typeof TelemetryEventSchema>

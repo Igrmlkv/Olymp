@@ -1,82 +1,43 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router'
 import { findOlympiadFormat, SubjectSchema, type OlympiadFormat, type Task } from '@olymp/schema'
-import { ensurePackage } from '../lib/content.js'
 import { checkAnswer } from '../lib/answer.js'
 import { getProfile } from '../lib/profile.js'
 import { formatDuration } from '../lib/time.js'
-import { pointsWord, tasksWord } from '../lib/plural.js'
+import { minutesWord, pointsWord, tasksWord } from '../lib/plural.js'
 import { track } from '../lib/telemetry.js'
+import { usePackage } from '../lib/usePackage.js'
 import { Markdown } from '../components/Markdown.js'
+import { TaskStatement } from '../components/TaskStatement.js'
 import { AnswerInput } from '../components/AnswerInput.js'
 
 /**
- * Timed run in the real school-stage format: duration, max score and scoring
- * mode all come from the package format, never hardcoded — Sirius and Moscow
- * change them between seasons.
+ * Timed run in the real school-stage format: duration and scoring mode come
+ * from the package format, never hardcoded — Sirius and Moscow change them
+ * between seasons.
  */
 export function OlympiadScreen() {
   const { subject: rawSubject } = useParams()
-  const subject = SubjectSchema.safeParse(rawSubject)
+  const parsed = SubjectSchema.safeParse(rawSubject)
+  const subject = parsed.success ? parsed.data : null
 
+  const state = usePackage(subject)
   const [format, setFormat] = useState<OlympiadFormat | null>(null)
-  const [tasks, setTasks] = useState<Task[]>([])
   const [answers, setAnswers] = useState<Record<string, string | string[]>>({})
-  const [remainingMs, setRemainingMs] = useState<number | null>(null)
+  const [startedAt, setStartedAt] = useState<number | null>(null)
   const [finished, setFinished] = useState(false)
-  const startedAt = useRef<number | null>(null)
 
   useEffect(() => {
-    if (!subject.success) return
-    void (async () => {
-      const profile = await getProfile()
-      if (!profile.grade) return
-      const fmt = findOlympiadFormat(subject.data, profile.grade)
-      if (!fmt) return
-      setFormat(fmt)
-      const pkg = await ensurePackage(subject.data, profile.grade)
-      const count = Math.min(fmt.task_count ?? pkg.payload.tasks.length, pkg.payload.tasks.length)
-      setTasks(pkg.payload.tasks.slice(0, count))
-    })()
-  }, [rawSubject])
+    if (subject === null) return
+    void getProfile().then((profile) => {
+      if (profile.grade) setFormat(findOlympiadFormat(subject, profile.grade) ?? null)
+    })
+  }, [subject])
 
-  useEffect(() => {
-    if (remainingMs === null || finished) return
-    const timer = setInterval(() => {
-      setRemainingMs((ms) => {
-        if (ms === null) return null
-        if (ms <= 1000) {
-          setFinished(true)
-          return 0
-        }
-        return ms - 1000
-      })
-    }, 1000)
-    return () => clearInterval(timer)
-  }, [remainingMs !== null, finished])
-
-  function start() {
-    if (!format) return
-    startedAt.current = Date.now()
-    setRemainingMs(format.time_limit_min * 60_000)
-    void track('olympiad_started', { subject: format.subject, grade: format.grade })
-  }
-
-  function finish() {
-    setFinished(true)
-    if (format) {
-      void track('olympiad_finished', {
-        subject: format.subject,
-        grade: format.grade,
-        duration_ms: startedAt.current ? Math.min(Date.now() - startedAt.current, 3_600_000) : undefined,
-      })
-    }
-  }
-
-  const earned = tasks.reduce(
-    (sum, t) => sum + (checkAnswer(t.answer, answers[t.id] ?? '') ? t.points : 0),
-    0,
-  )
+  const tasks: Task[] =
+    state.status === 'ready' && format
+      ? state.pkg.tasks.slice(0, Math.min(format.task_count ?? state.pkg.tasks.length, state.pkg.tasks.length))
+      : []
 
   /**
    * Score against what this run actually contains, not the official paper's
@@ -87,10 +48,27 @@ export function OlympiadScreen() {
   const availableScore = tasks.reduce((sum, t) => sum + t.points, 0)
   const isFullPaper = format !== null && availableScore === format.max_score
 
-  if (!subject.success) return <p className="screen">Неизвестный предмет.</p>
-  if (!format) return <p className="screen">Для твоего класса режим олимпиады пока не настроен.</p>
+  function finish() {
+    if (finished) return
+    setFinished(true)
+    if (format) {
+      void track('olympiad_finished', {
+        subject: format.subject,
+        grade: format.grade,
+        duration_ms: startedAt ? Date.now() - startedAt : undefined,
+      })
+    }
+  }
 
-  if (remainingMs === null) {
+  if (subject === null) return <p className="screen">Неизвестный предмет.</p>
+  if (state.status === 'error') {
+    return <p className="screen error">Не получилось загрузить задачи: {state.message}</p>
+  }
+  if (state.status !== 'ready' || !format) {
+    return <p className="screen muted">Загружаем…</p>
+  }
+
+  if (startedAt === null) {
     return (
       <main className="screen">
         <Link className="back-link" to="/">
@@ -98,30 +76,43 @@ export function OlympiadScreen() {
         </Link>
         <h1>Режим олимпиады</h1>
         <p>
-          {format.time_limit_min} минут · {tasks.length} {tasksWord(tasks.length)} · максимум{' '}
-          {availableScore} {pointsWord(availableScore)}.
+          {format.time_limit_min} {minutesWord(format.time_limit_min)} · {tasks.length}{' '}
+          {tasksWord(tasks.length)} · максимум {availableScore} {pointsWord(availableScore)}.
         </p>
         <p className="muted">
           Формат школьного этапа {format.season}
           {isFullPaper
             ? '.'
-            : `: полная работа — ${format.max_score} ${pointsWord(format.max_score)}, но часть заданий
-               опирается на рисунки и в приложение пока не вошла.`}
+            : `: полная работа — ${format.max_score} ${pointsWord(format.max_score)}, но часть заданий опирается на рисунки и в приложение пока не вошла.`}
         </p>
         <p className="muted">Таймер запустится сразу. Подсказок в этом режиме нет.</p>
-        <button className="primary" onClick={start} disabled={tasks.length === 0}>
+        <button
+          className="primary"
+          disabled={tasks.length === 0}
+          onClick={() => {
+            setStartedAt(Date.now())
+            void track('olympiad_started', { subject: format.subject, grade: format.grade })
+          }}
+        >
           Начать
         </button>
       </main>
     )
   }
 
+  const earned = finished
+    ? tasks.reduce((sum, t) => sum + (checkAnswer(t.answer, answers[t.id] ?? '') ? t.points : 0), 0)
+    : 0
+
   return (
     <main className="screen">
       <header className="olympiad-header">
-        <span className={remainingMs < 5 * 60_000 ? 'timer timer--low' : 'timer'}>
-          {formatDuration(remainingMs)}
-        </span>
+        <Countdown
+          startedAt={startedAt}
+          limitMs={format.time_limit_min * 60_000}
+          stopped={finished}
+          onExpire={finish}
+        />
         {!finished && <button onClick={finish}>Завершить</button>}
       </header>
 
@@ -137,7 +128,7 @@ export function OlympiadScreen() {
             <p className="muted">
               Задача {i + 1} · {task.points} {pointsWord(task.points)}
             </p>
-            <Markdown className="statement">{task.statement_md}</Markdown>
+            <TaskStatement task={task} />
             <AnswerInput
               answer={task.answer}
               value={answers[task.id] ?? ''}
@@ -152,3 +143,47 @@ export function OlympiadScreen() {
     </main>
   )
 }
+
+/**
+ * Its own component so the per-second tick re-renders two digits instead of the
+ * whole paper — re-rendering the list means re-parsing every statement's
+ * Markdown, once a second, for an hour.
+ *
+ * Derived from a deadline rather than a decrementing counter, so a tab that
+ * slept does not come back with a stale clock.
+ */
+function Countdown({
+  startedAt,
+  limitMs,
+  stopped,
+  onExpire,
+}: {
+  startedAt: number
+  limitMs: number
+  stopped: boolean
+  onExpire: () => void
+}) {
+  const [now, setNow] = useState(() => Date.now())
+  const onExpireRef = useRef(onExpire)
+  onExpireRef.current = onExpire
+
+  const remainingMs = Math.max(0, startedAt + limitMs - now)
+
+  useEffect(() => {
+    if (stopped) return
+    const timer = setInterval(() => setNow(Date.now()), 1000)
+    return () => clearInterval(timer)
+  }, [stopped])
+
+  useEffect(() => {
+    if (!stopped && remainingMs === 0) onExpireRef.current()
+  }, [stopped, remainingMs])
+
+  return (
+    <span className={remainingMs < 5 * 60_000 ? 'timer timer--low' : 'timer'}>
+      {formatDuration(remainingMs)}
+    </span>
+  )
+}
+
+export default OlympiadScreen

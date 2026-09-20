@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { GradeSchema } from './grade.js'
-import { SubjectSchema, TaskSchema } from './task.js'
+import { SubjectSchema, TaskSchema, type Task } from './task.js'
 
 export const VerificationSummarySchema = z.object({
   total: z.number().int().min(0),
@@ -9,6 +9,21 @@ export const VerificationSummarySchema = z.object({
   needs_review: z.number().int().min(0),
 })
 export type VerificationSummary = z.infer<typeof VerificationSummarySchema>
+
+/**
+ * The one producer of the summary shape. The pipeline tallied verdicts inline in
+ * three places before this existed, so a fourth verdict would have been counted
+ * in some of them and silently dropped in the rest.
+ */
+export function summariseVerdicts(tasks: Pick<Task, 'verification'>[]): VerificationSummary {
+  const summary: VerificationSummary = { total: tasks.length, passed: 0, failed: 0, needs_review: 0 }
+  for (const task of tasks) {
+    if (task.verification.verdict === 'pass') summary.passed += 1
+    else if (task.verification.verdict === 'fail') summary.failed += 1
+    else summary.needs_review += 1
+  }
+  return summary
+}
 
 /** Semver, so the client can decide whether a cached package is stale. */
 const SemverSchema = z.string().regex(/^\d+\.\d+\.\d+$/, 'expected semver, e.g. 1.0.0')

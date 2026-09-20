@@ -79,3 +79,5 @@ export function ParentScreen() {
     </main>
   )
 }
+
+export default ParentScreen

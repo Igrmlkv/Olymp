@@ -1,3 +1,4 @@
+import { MODEL_PRICING, type ModelId } from '@olymp/schema'
 import type { Env } from './types.js'
 
 const ANTHROPIC_URL = 'https://api.anthropic.com/v1/messages'
@@ -44,15 +45,10 @@ export async function callAnthropic(env: Env, payload: Record<string, unknown>):
   return { status: response.status, body, usage, latencyMs: Date.now() - startedAt }
 }
 
-/** Prices in USD per 1M tokens, September 2026. Kept here so cost logging is self-contained. */
-const PRICING: Record<string, { input: number; output: number }> = {
-  'claude-opus-5': { input: 5, output: 25 },
-  'claude-fable-5-1': { input: 10, output: 50 },
-  'claude-haiku-4-5-20251001': { input: 1, output: 5 },
-}
-
 export function estimateCostUsd(model: string, usage: ProxyUsage | null): number | null {
-  const price = PRICING[model]
+  // Keyed off the shared model ids: a model swap in the pipeline used to leave
+  // this returning null, and the cost audit silently recorded nothing.
+  const price = MODEL_PRICING[model as ModelId]
   if (!price || !usage) return null
   // Cached reads are billed at a discount; treated as full price here so the
   // logged figure is an upper bound, reconciled later against the Admin API.

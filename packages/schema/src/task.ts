@@ -19,6 +19,34 @@ export const TOPICS_BY_SUBJECT: Record<Subject, readonly Topic[]> = {
   russian: RussianTopicSchema.options,
 }
 
+/**
+ * Russian labels live beside the enums they name, typed by them. A new topic or
+ * stage without a label is a compile error rather than a child being shown
+ * `multi_digit`, or an attribution line losing its stage — and attribution is a
+ * legal requirement, not decoration (docs/legal/attribution.md).
+ */
+export const SUBJECT_LABELS_RU: Record<Subject, string> = {
+  math: 'Математика',
+  russian: 'Русский язык',
+}
+
+export const SUBJECT_EMOJI: Record<Subject, string> = {
+  math: '🔢',
+  russian: '📖',
+}
+
+export const TOPIC_LABELS_RU: Record<Topic, string> = {
+  multi_digit: 'Многозначные числа',
+  fractions: 'Доли и дроби',
+  word_problems: 'Текстовые задачи',
+  logic: 'Логика',
+  geometry: 'Геометрия',
+  orthography: 'Орфография',
+  vocabulary: 'Словарный запас',
+  reading: 'Чтение и понимание',
+  syntax: 'Синтаксис и пунктуация',
+}
+
 /** Difficulty ladder inside a world; 5 is boss-task territory. */
 export const LevelSchema = z.number().int().min(1).max(5)
 export type Level = z.infer<typeof LevelSchema>
@@ -30,11 +58,14 @@ export type Origin = z.infer<typeof OriginSchema>
  * Mandatory for every archive task: Auteurswet art. 15a quotation relies on
  * full attribution. See docs/legal/attribution.md.
  */
+export const StageSchema = z.enum(['school', 'municipal', 'regional', 'final'])
+export type Stage = z.infer<typeof StageSchema>
+
 export const SourceAttributionSchema = z.object({
   name: z.string().min(1),
   url: z.url(),
   year: z.number().int().min(2000).max(2100),
-  stage: z.enum(['school', 'municipal', 'regional', 'final']),
+  stage: StageSchema,
   author: z.string().optional(),
 })
 export type SourceAttribution = z.infer<typeof SourceAttributionSchema>
@@ -57,6 +88,13 @@ export const AnswerSchema = z
     path: ['value'],
   })
 export type Answer = z.infer<typeof AnswerSchema>
+
+export const STAGE_LABELS_RU: Record<Stage, string> = {
+  school: 'школьный этап',
+  municipal: 'муниципальный этап',
+  regional: 'региональный этап',
+  final: 'заключительный этап',
+}
 
 export const VerificationSchema = z.object({
   verdict: z.enum(['pass', 'fail', 'needs_review']),

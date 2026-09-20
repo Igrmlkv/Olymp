@@ -84,13 +84,16 @@ app.post('/api/hint', async (c) => {
     ],
   })
 
-  await logProxyRequest(c.env, {
-    route: '/api/hint',
-    model,
-    status: result.status,
-    latencyMs: result.latencyMs,
-    usage: result.usage,
-  })
+  // The model has already answered; the audit row must not hold the response.
+  c.executionCtx.waitUntil(
+    logProxyRequest(c.env, {
+      route: '/api/hint',
+      model,
+      status: result.status,
+      latencyMs: result.latencyMs,
+      usage: result.usage,
+    }),
+  )
 
   if (result.status !== 200) return c.json({ error: 'upstream error' }, 502)
   return c.json(result.body)

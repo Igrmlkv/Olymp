@@ -1,8 +1,9 @@
 import { readFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 import { describe, expect, it } from 'vitest'
-import { ContentPackageSchema } from '@olymp/schema'
+import { ContentPackageSchema, packageKey, type ContentPackage } from '@olymp/schema'
 import { computeChecksum } from './checksum.js'
+import { CONTENT_DIR } from './paths.js'
 
 /**
  * Guards the packages that actually ship. A hand edit to content/archive/ that
@@ -10,26 +11,39 @@ import { computeChecksum } from './checksum.js'
  * checksum mismatch in the app.
  */
 
-const ROOT = resolve(import.meta.dirname, '..', '..')
-const SHIPPED = [
-  'content/packages/math/grade-4/latest.json',
-  'content/packages/russian/grade-4/latest.json',
+const SHIPPED: { subject: 'math' | 'russian'; grade: 4 }[] = [
+  { subject: 'math', grade: 4 },
+  { subject: 'russian', grade: 4 },
 ]
 
-describe.each(SHIPPED)('%s', (path) => {
-  it('parses, and its checksum matches its tasks', async () => {
-    const raw: unknown = JSON.parse(await readFile(resolve(ROOT, path), 'utf8'))
-    const pkg = ContentPackageSchema.parse(raw)
+const cache = new Map<string, Promise<ContentPackage>>()
 
+/** Parsing a 600 KB package is the expensive part; do it once per file. */
+function load(key: string): Promise<ContentPackage> {
+  let pkg = cache.get(key)
+  if (!pkg) {
+    pkg = readFile(resolve(CONTENT_DIR, key), 'utf8').then((raw) =>
+      ContentPackageSchema.parse(JSON.parse(raw)),
+    )
+    cache.set(key, pkg)
+  }
+  return pkg
+}
+
+describe.each(SHIPPED)('$subject grade $grade', ({ subject, grade }) => {
+  const versionKey = packageKey(subject, grade, '1.0.0')
+  const latestKey = packageKey(subject, grade, 'latest')
+
+  it('parses, and its checksum matches its tasks', async () => {
+    const pkg = await load(latestKey)
     expect(computeChecksum(pkg.tasks)).toBe(pkg.manifest.checksum)
     expect(pkg.tasks.length).toBe(pkg.manifest.task_count)
   })
 
   it('attributes every archive task, as Auteurswet art. 15a requires', async () => {
-    const raw: unknown = JSON.parse(await readFile(resolve(ROOT, path), 'utf8'))
-    const pkg = ContentPackageSchema.parse(raw)
-
+    const pkg = await load(latestKey)
     const archive = pkg.tasks.filter((t) => t.origin === 'archive')
+
     expect(archive.length).toBeGreaterThan(0)
     for (const task of archive) {
       expect(task.source_attribution).not.toBeNull()
@@ -38,9 +52,15 @@ describe.each(SHIPPED)('%s', (path) => {
   })
 
   it('ships only tasks that passed verification', async () => {
-    const raw: unknown = JSON.parse(await readFile(resolve(ROOT, path), 'utf8'))
-    const pkg = ContentPackageSchema.parse(raw)
-
+    const pkg = await load(latestKey)
     expect(pkg.tasks.every((t) => t.verification.verdict === 'pass')).toBe(true)
+  })
+
+  it('keeps `latest` pointing at the pinned version', async () => {
+    // The two writes live in one helper now, but they used to drift — publish
+    // never wrote `latest` at all.
+    const [latest, pinned] = await Promise.all([load(latestKey), load(versionKey)])
+    expect(latest.manifest.checksum).toBe(pinned.manifest.checksum)
+    expect(latest.manifest.version).toBe(pinned.manifest.version)
   })
 })
